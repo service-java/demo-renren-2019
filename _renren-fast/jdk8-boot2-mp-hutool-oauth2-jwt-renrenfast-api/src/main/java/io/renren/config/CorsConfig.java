@@ -9,6 +9,7 @@ public class CorsConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
+        // 允许跨域
         registry.addMapping("/**")
             .allowedOrigins("*")
             .allowCredentials(true)
