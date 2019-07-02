@@ -3,6 +3,7 @@
   "version": "1.6.18",
   "scripts": {
     "install:cnpm": "cnpm install",
+    "install:tyarn": "tyarn install",
     "remove": "rimraf node_modules",
     "serve": "vue-cli-service serve --open",
     "start": "npm run serve",
