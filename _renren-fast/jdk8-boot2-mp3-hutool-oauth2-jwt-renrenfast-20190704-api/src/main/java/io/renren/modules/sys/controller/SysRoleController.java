@@ -9,7 +9,7 @@
 package io.renren.modules.sys.controller;
 
 import io.renren.common.annotation.SysLog;
-import io.renren.common.utils.Constant;
+import io.renren.common.utils.constant.Constant;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.R;
 import io.renren.common.validator.ValidatorUtils;
@@ -52,7 +52,7 @@ public class SysRoleController extends AbstractController {
 
 		return R.ok().put("page", page);
 	}
-	
+
 	/**
 	 * 角色列表
 	 */
@@ -60,16 +60,16 @@ public class SysRoleController extends AbstractController {
 	@RequiresPermissions("sys:role:select")
 	public R select(){
 		Map<String, Object> map = new HashMap<>();
-		
+
 		//如果不是超级管理员，则只查询自己所拥有的角色列表
 		if(getUserId() != Constant.SUPER_ADMIN){
 			map.put("create_user_id", getUserId());
 		}
 		List<SysRoleEntity> list = (List<SysRoleEntity>) sysRoleService.listByMap(map);
-		
+
 		return R.ok().put("list", list);
 	}
-	
+
 	/**
 	 * 角色信息
 	 */
@@ -77,14 +77,14 @@ public class SysRoleController extends AbstractController {
 	@RequiresPermissions("sys:role:info")
 	public R info(@PathVariable("roleId") Long roleId){
 		SysRoleEntity role = sysRoleService.getById(roleId);
-		
+
 		//查询角色对应的菜单
 		List<Long> menuIdList = sysRoleMenuService.queryMenuIdList(roleId);
 		role.setMenuIdList(menuIdList);
-		
+
 		return R.ok().put("role", role);
 	}
-	
+
 	/**
 	 * 保存角色
 	 */
@@ -93,13 +93,13 @@ public class SysRoleController extends AbstractController {
 	@RequiresPermissions("sys:role:save")
 	public R save(@RequestBody SysRoleEntity role){
 		ValidatorUtils.validateEntity(role);
-		
+
 		role.setCreateUserId(getUserId());
 		sysRoleService.saveRole(role);
-		
+
 		return R.ok();
 	}
-	
+
 	/**
 	 * 修改角色
 	 */
@@ -108,13 +108,13 @@ public class SysRoleController extends AbstractController {
 	@RequiresPermissions("sys:role:update")
 	public R update(@RequestBody SysRoleEntity role){
 		ValidatorUtils.validateEntity(role);
-		
+
 		role.setCreateUserId(getUserId());
 		sysRoleService.update(role);
-		
+
 		return R.ok();
 	}
-	
+
 	/**
 	 * 删除角色
 	 */
@@ -123,7 +123,7 @@ public class SysRoleController extends AbstractController {
 	@RequiresPermissions("sys:role:delete")
 	public R delete(@RequestBody Long[] roleIds){
 		sysRoleService.deleteBatch(roleIds);
-		
+
 		return R.ok();
 	}
 }

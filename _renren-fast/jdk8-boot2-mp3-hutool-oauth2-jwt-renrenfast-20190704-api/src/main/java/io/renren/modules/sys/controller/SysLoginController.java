@@ -10,7 +10,7 @@ package io.renren.modules.sys.controller;
 
 import io.renren.common.utils.R;
 import io.renren.modules.sys.entity.SysUserEntity;
-import io.renren.modules.sys.form.SysLoginForm;
+import io.renren.modules.sys.controller.query.SysLoginFormQuery;
 import io.renren.modules.sys.service.SysCaptchaService;
 import io.renren.modules.sys.service.SysUserService;
 import io.renren.modules.sys.service.SysUserTokenService;
@@ -63,7 +63,7 @@ public class SysLoginController extends AbstractController {
 	 * 登录
 	 */
 	@PostMapping("/sys/login")
-	public Map<String, Object> login(@RequestBody SysLoginForm form)throws IOException {
+	public R login(@RequestBody SysLoginFormQuery form)throws IOException {
 		boolean captcha = sysCaptchaService.validate(form.getUuid(), form.getCaptcha());
 		if(!captcha){
 			return R.error("验证码不正确");
@@ -96,5 +96,5 @@ public class SysLoginController extends AbstractController {
 		sysUserTokenService.logout(getUserId());
 		return R.ok();
 	}
-	
+
 }

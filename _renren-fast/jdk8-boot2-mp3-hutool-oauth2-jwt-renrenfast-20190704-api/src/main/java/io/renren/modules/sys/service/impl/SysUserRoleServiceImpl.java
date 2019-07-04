@@ -29,8 +29,11 @@ public class SysUserRoleServiceImpl extends ServiceImpl<SysUserRoleDao, SysUserR
 
 	@Override
 	public void saveOrUpdate(Long userId, List<Long> roleIdList) {
-		//先删除用户与角色关系
+		// 先删除用户与角色关系
 		this.removeByMap(new MapUtils().put("user_id", userId));
+
+		// 这种方法有什么区别??
+		// baseMapper.deleteByMap(new MapUtils().put("user_id", userId));
 
 		if(roleIdList == null || roleIdList.size() == 0){
 			return ;
