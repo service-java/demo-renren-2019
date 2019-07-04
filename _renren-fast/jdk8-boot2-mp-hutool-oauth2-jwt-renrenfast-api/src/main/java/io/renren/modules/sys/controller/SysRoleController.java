@@ -56,8 +56,8 @@ public class SysRoleController extends AbstractController {
 	public R select(){
 		Map<String, Object> map = new HashMap<>();
 
-
-		//如果不是超级管理员，则只查询自己所拥有的角色列表
+		// 如果不是超级管理员，则只查询自己所拥有(创建??)的角色列表
+        // 别的管理员创建的角色无法共用???
 		if(getUserId() != Constant.SUPER_ADMIN){
 			map.put("create_user_id", getUserId());
 		}

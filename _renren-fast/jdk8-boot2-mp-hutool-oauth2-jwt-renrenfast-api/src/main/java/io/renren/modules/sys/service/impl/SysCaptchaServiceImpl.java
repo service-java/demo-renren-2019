@@ -47,6 +47,7 @@ public class SysCaptchaServiceImpl extends ServiceImpl<SysCaptchaDao, SysCaptcha
         if(StringUtils.isBlank(uuid)){
             throw new RRException("uuid不能为空");
         }
+
         //生成文字验证码
         String code = producer.createText();
 
@@ -67,10 +68,12 @@ public class SysCaptchaServiceImpl extends ServiceImpl<SysCaptchaDao, SysCaptcha
             return false;
         }
 
-        //删除验证码
+        // 删除验证码
+        // 无论是否验证通过，这个码都废了
         this.deleteById(uuid);
 
-        if(captchaEntity.getCode().equalsIgnoreCase(code) && captchaEntity.getExpireTime().getTime() >= System.currentTimeMillis()){
+        if(captchaEntity.getCode().equalsIgnoreCase(code)
+                && captchaEntity.getExpireTime().getTime() >= System.currentTimeMillis()){
             return true;
         }
 

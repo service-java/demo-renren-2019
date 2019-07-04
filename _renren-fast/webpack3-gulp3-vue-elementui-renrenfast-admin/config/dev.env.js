@@ -4,5 +4,6 @@ const prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  OPEN_PROXY: false // 是否开启代理, 重置后需重启vue-cli
+  // 是否开启代理, 重置后需重启vue-cli
+  OPEN_PROXY: false
 })

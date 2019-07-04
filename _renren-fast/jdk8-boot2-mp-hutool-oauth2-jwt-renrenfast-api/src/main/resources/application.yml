@@ -7,7 +7,8 @@ server:
   port: 8080
   connection-timeout: 5000ms
   servlet:
-    context-path: /renren-fast
+     # 设置前缀
+     context-path: /renren-fast
 
 
 spring:
@@ -19,12 +20,13 @@ spring:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
   servlet:
+    # 设置上传文件格式(多选)
     multipart:
       max-file-size: 100MB
       max-request-size: 100MB
       enabled: true
   redis:
-    open: true  # 是否开启redis缓存  true开启   false关闭
+    open: false  # 是否开启redis缓存
     database: 0
     host: localhost
     port: 6379

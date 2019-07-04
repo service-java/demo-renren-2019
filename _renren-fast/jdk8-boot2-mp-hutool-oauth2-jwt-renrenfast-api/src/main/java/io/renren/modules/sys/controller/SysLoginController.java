@@ -24,7 +24,7 @@ import java.util.Map;
 
 /**
  * 登录相关
- * 
+ *
  * @author chenshun
  * @email sunlightcs@gmail.com
  * @date 2016年11月10日 下午1:15:31
@@ -42,8 +42,9 @@ public class SysLoginController extends AbstractController {
 	 * 验证码
 	 */
 	@GetMapping("captcha.jpg")
-	public void captcha(HttpServletResponse response, String uuid)throws ServletException, IOException {
-		response.setHeader("Cache-Control", "no-store, no-cache");
+	public void captcha(HttpServletResponse response, String uuid) throws ServletException, IOException {
+		// 禁止图片缓存 ??
+	    response.setHeader("Cache-Control", "no-store, no-cache");
 		response.setContentType("image/jpeg");
 
 		//获取图片验证码
@@ -58,7 +59,7 @@ public class SysLoginController extends AbstractController {
 	 * 登录
 	 */
 	@PostMapping("/sys/login")
-	public Map<String, Object> login(@RequestBody SysLoginForm form)throws IOException {
+	public R login(@RequestBody SysLoginForm form) throws IOException {
 		boolean captcha = sysCaptchaService.validate(form.getUuid(), form.getCaptcha());
 		if(!captcha){
 			return R.error("验证码不正确");
@@ -91,5 +92,5 @@ public class SysLoginController extends AbstractController {
 		sysUserTokenService.logout(getUserId());
 		return R.ok();
 	}
-	
+
 }
