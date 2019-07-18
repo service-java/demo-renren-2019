@@ -31,6 +31,9 @@
         header-align="center"
         align="center"
         label="URL地址">
+          <template slot-scope="scope">
+              <a :href="scope.row.url" target="_blank" :download="scope.row.url">{{scope.row.url}}</a>
+          </template>
       </el-table-column>
       <el-table-column
         prop="createDate"

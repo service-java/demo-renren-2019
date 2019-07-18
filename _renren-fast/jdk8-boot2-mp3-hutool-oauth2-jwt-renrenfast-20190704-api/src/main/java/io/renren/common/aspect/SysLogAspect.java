@@ -39,10 +39,10 @@ import java.util.Date;
 public class SysLogAspect {
 	@Autowired
 	private SysLogService sysLogService;
-	
+
 	@Pointcut("@annotation(io.renren.common.annotation.SysLog)")
-	public void logPointCut() { 
-		
+	public void logPointCut() {
+
 	}
 
 	@Around("logPointCut()")
@@ -91,10 +91,8 @@ public class SysLogAspect {
 
 		//用户名
 		String username = ((SysUserEntity) SecurityUtils.getSubject().getPrincipal()).getUsername();
-		sysLog.setUsername(username);
+		sysLog.setUsername(username).setTime(time).setCreateDate(new Date());
 
-		sysLog.setTime(time);
-		sysLog.setCreateDate(new Date());
 		//保存系统日志
 		sysLogService.save(sysLog);
 	}

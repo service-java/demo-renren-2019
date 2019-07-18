@@ -39,8 +39,8 @@ public class SQLFilter {
         String[] keywords = {"master", "truncate", "insert", "select", "delete", "update", "declare", "alter", "drop"};
 
         //判断是否包含非法字符
-        for(String keyword : keywords){
-            if(str.indexOf(keyword) != -1){
+        for (String keyword : keywords){
+            if (str.indexOf(keyword) != -1) {
                 throw new RRException("包含非法字符");
             }
         }
