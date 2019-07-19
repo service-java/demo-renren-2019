@@ -8,27 +8,60 @@
 
 package io.renren.modules.sys.service;
 
+import io.renren.common.utils.constant.Constant;
+import io.renren.modules.sys.dao.SysMenuDao;
+import io.renren.modules.sys.dao.SysUserDao;
+import io.renren.modules.sys.dao.SysUserTokenDao;
+import io.renren.modules.sys.entity.SysMenuEntity;
 import io.renren.modules.sys.entity.SysUserEntity;
 import io.renren.modules.sys.entity.SysUserTokenEntity;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.Set;
+import java.util.*;
 
-/**
- * shiro相关接口
- *
- * @author Mark sunlightcs@gmail.com
- */
-public interface ShiroService {
-    /**
-     * 获取用户权限列表
-     */
-    Set<String> getUserPermissions(long userId);
+@Service
+public class ShiroService  {
+    @Autowired
+    private SysMenuDao sysMenuDao;
+    @Autowired
+    private SysUserDao sysUserDao;
+    @Autowired
+    private SysUserTokenDao sysUserTokenDao;
 
-    SysUserTokenEntity queryByToken(String token);
 
-    /**
-     * 根据用户ID，查询用户
-     * @param userId
-     */
-    SysUserEntity queryUser(Long userId);
+    public Set<String> getUserPermissions(long userId) {
+        List<String> permsList;
+
+        //系统管理员，拥有最高权限
+        if(userId == Constant.SUPER_ADMIN){
+            List<SysMenuEntity> menuList = sysMenuDao.selectList(null);
+            permsList = new ArrayList<>(menuList.size());
+            for(SysMenuEntity menu : menuList){
+                permsList.add(menu.getPerms());
+            }
+        }else{
+            permsList = sysUserDao.queryAllPerms(userId);
+        }
+        //用户权限列表
+        Set<String> permsSet = new HashSet<>();
+        for(String perms : permsList){
+            if(StringUtils.isBlank(perms)){
+                continue;
+            }
+            permsSet.addAll(Arrays.asList(perms.trim().split(",")));
+        }
+        return permsSet;
+    }
+
+
+    public SysUserTokenEntity queryByToken(String token) {
+        return sysUserTokenDao.queryByToken(token);
+    }
+
+
+    public SysUserEntity queryUser(Long userId) {
+        return sysUserDao.selectById(userId);
+    }
 }

@@ -31,4 +31,17 @@ mybatis-plus:
 ```
 
 2. lombok.config默认启用链式调用
+
+```properties
+lombok.accessors.chain=true
+```
+
 3. 为了方便, service不写interface -> lazy
+
+4. pojo位置调整
+
+```
+1. controller/query
+2. service/dto
+3. vo
+```

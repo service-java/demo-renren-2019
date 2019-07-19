@@ -8,8 +8,11 @@
 
 package io.renren.modules.sys.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import io.renren.common.utils.MapUtils;
+import io.renren.modules.sys.dao.SysUserRoleDao;
 import io.renren.modules.sys.entity.SysUserRoleEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -20,17 +23,38 @@ import java.util.List;
  *
  * @author Mark sunlightcs@gmail.com
  */
-public interface SysUserRoleService extends IService<SysUserRoleEntity> {
-	
-	void saveOrUpdate(Long userId, List<Long> roleIdList);
-	
-	/**
-	 * 根据用户ID，获取角色ID列表
-	 */
-	List<Long> queryRoleIdList(Long userId);
+@Service("sysUserRoleService")
+public class SysUserRoleService extends ServiceImpl<SysUserRoleDao, SysUserRoleEntity>  {
 
-	/**
-	 * 根据角色ID数组，批量删除
-	 */
-	int deleteBatch(Long[] roleIds);
+
+	public void saveOrUpdate(Long userId, List<Long> roleIdList) {
+		// 先删除用户与角色关系
+		this.removeByMap(new MapUtils().put("user_id", userId));
+
+		// 这种方法有什么区别??
+		// baseMapper.deleteByMap(new MapUtils().put("user_id", userId));
+
+		if(roleIdList == null || roleIdList.size() == 0){
+			return ;
+		}
+
+		//保存用户与角色关系
+		for(Long roleId : roleIdList){
+			SysUserRoleEntity sysUserRoleEntity = new SysUserRoleEntity();
+			sysUserRoleEntity.setUserId(userId);
+			sysUserRoleEntity.setRoleId(roleId);
+
+			this.save(sysUserRoleEntity);
+		}
+	}
+
+
+	public List<Long> queryRoleIdList(Long userId) {
+		return baseMapper.queryRoleIdList(userId);
+	}
+
+
+	public int deleteBatch(Long[] roleIds){
+		return baseMapper.deleteBatch(roleIds);
+	}
 }

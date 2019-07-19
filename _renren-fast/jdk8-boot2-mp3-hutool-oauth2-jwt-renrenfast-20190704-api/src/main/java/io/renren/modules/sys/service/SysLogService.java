@@ -8,21 +8,31 @@
 
 package io.renren.modules.sys.service;
 
-
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.renren.common.utils.PageUtils;
+import io.renren.common.utils.Query;
+import io.renren.modules.sys.dao.SysLogDao;
 import io.renren.modules.sys.entity.SysLogEntity;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
 
-/**
- * 系统日志
- *
- * @author Mark sunlightcs@gmail.com
- */
-public interface SysLogService extends IService<SysLogEntity> {
+@Service("sysLogService")
+public class SysLogService extends ServiceImpl<SysLogDao, SysLogEntity> {
 
-    PageUtils queryPage(Map<String, Object> params);
 
+    public PageUtils queryPage(Map<String, Object> params) {
+        String key = (String)params.get("key");
+
+        IPage<SysLogEntity> page = this.page(
+            new Query<SysLogEntity>().getPage(params),
+            new QueryWrapper<SysLogEntity>().like(StringUtils.isNotBlank(key),"username", key)
+        );
+
+        return new PageUtils(page);
+    }
 }
