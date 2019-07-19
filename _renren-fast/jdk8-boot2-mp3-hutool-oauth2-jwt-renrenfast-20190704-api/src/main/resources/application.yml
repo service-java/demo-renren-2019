@@ -7,6 +7,7 @@ server:
   port: 8080
   connection-timeout: 5000ms
   servlet:
+    # 写上前缀 多个系统则易于辨识
     context-path: /renren-fast
 
 spring:
@@ -79,3 +80,4 @@ renren:
     # token有效时长，7天，单位秒
     expire: 604800
     header: token
+

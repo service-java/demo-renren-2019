@@ -2,7 +2,7 @@
   <div class="mod-oss">
     <el-form :inline="true" :model="dataForm">
       <el-form-item>
-        <el-button type="primary" @click="configHandle()">云存储配置</el-button>
+        <el-button type="primary" @click="configHandle()">存储配置(oss/本地服务器)</el-button>
         <el-button type="primary" @click="uploadHandle()">上传文件</el-button>
         <el-button type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
       </el-form-item>

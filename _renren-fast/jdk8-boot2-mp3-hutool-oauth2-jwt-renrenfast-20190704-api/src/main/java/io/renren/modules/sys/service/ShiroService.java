@@ -35,19 +35,20 @@ public class ShiroService  {
         List<String> permsList;
 
         //系统管理员，拥有最高权限
-        if(userId == Constant.SUPER_ADMIN){
+        if (userId == Constant.SUPER_ADMIN) {
             List<SysMenuEntity> menuList = sysMenuDao.selectList(null);
             permsList = new ArrayList<>(menuList.size());
             for(SysMenuEntity menu : menuList){
                 permsList.add(menu.getPerms());
             }
-        }else{
+        } else {
             permsList = sysUserDao.queryAllPerms(userId);
         }
-        //用户权限列表
+
+        // 用户权限列表(去重)
         Set<String> permsSet = new HashSet<>();
-        for(String perms : permsList){
-            if(StringUtils.isBlank(perms)){
+        for (String perms : permsList){
+            if (StringUtils.isBlank(perms)) {
                 continue;
             }
             permsSet.addAll(Arrays.asList(perms.trim().split(",")));

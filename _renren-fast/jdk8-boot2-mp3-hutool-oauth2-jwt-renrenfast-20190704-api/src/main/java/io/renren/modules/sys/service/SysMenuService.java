@@ -28,7 +28,13 @@ public class SysMenuService extends ServiceImpl<SysMenuDao, SysMenuEntity> {
 	@Autowired
 	private SysRoleMenuService sysRoleMenuService;
 
-
+    /**
+     * 获取菜单
+     * 限制范围ids
+     * @param parentId
+     * @param menuIdList
+     * @return
+     */
 	public List<SysMenuEntity> queryListParentId(Long parentId, List<Long> menuIdList) {
 		List<SysMenuEntity> menuList = queryListParentId(parentId);
 		if(menuIdList == null){
@@ -44,20 +50,23 @@ public class SysMenuService extends ServiceImpl<SysMenuDao, SysMenuEntity> {
 		return userMenuList;
 	}
 
-
 	public List<SysMenuEntity> queryListParentId(Long parentId) {
 		return baseMapper.queryListParentId(parentId);
 	}
 
 
+    /**
+     * 获取非按钮菜单(目录+菜单)
+     * @return
+     */
 	public List<SysMenuEntity> queryNotButtonList() {
 		return baseMapper.queryNotButtonList();
 	}
 
 
 	public List<SysMenuEntity> getUserMenuList(Long userId) {
-		//系统管理员，拥有最高权限
-		if(userId == Constant.SUPER_ADMIN){
+		// 系统管理员，拥有最高权限
+		if (userId == Constant.SUPER_ADMIN){
 			return getAllMenuList(null);
 		}
 

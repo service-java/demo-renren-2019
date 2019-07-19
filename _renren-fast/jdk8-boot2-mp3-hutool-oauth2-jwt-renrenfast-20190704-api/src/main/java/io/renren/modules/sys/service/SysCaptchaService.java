@@ -56,7 +56,7 @@ public class SysCaptchaService extends ServiceImpl<SysCaptchaDao, SysCaptchaEnti
             return false;
         }
 
-        //删除验证码
+        // 删除验证码
         this.removeById(uuid);
 
         if(captchaEntity.getCode().equalsIgnoreCase(code) && captchaEntity.getExpireTime().getTime() >= System.currentTimeMillis()){

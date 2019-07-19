@@ -160,6 +160,7 @@
       },
       // 删除
       deleteHandle (id) {
+        // 传入id删除一个, 否则遍历选中的数组
         var userIds = id ? [id] : this.dataListSelections.map(item => {
           return item.userId
         })
