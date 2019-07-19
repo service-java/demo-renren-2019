@@ -38,10 +38,11 @@ lombok.accessors.chain=true
 
 3. 为了方便, service不写interface -> lazy
 
-4. pojo位置调整
+4. pojo位置
 
 ```
 1. controller/query
 2. service/dto
-3. vo
+3. model/common-pojo(vo+dto+query+...)
+4. utils/constant
 ```
