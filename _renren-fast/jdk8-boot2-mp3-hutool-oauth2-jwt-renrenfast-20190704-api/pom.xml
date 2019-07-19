@@ -304,6 +304,21 @@
 				<!-- 运行命令 mvn clean package docker:build 打包并生成docker镜像 -->
 			</plugin>
 		</plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <!-- mybatis-xml位置 -->
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
 	</build>
 
 	<repositories>
