@@ -11,7 +11,7 @@ package io.renren.modules.sys.controller;
 import io.renren.common.aop.annotation.SysLog;
 import io.renren.common.constant.Constant;
 import io.renren.common.utils.PageUtils;
-import io.renren.common.utils.R;
+import io.renren.common.base.R;
 import io.renren.common.validator.ValidatorUtils;
 import io.renren.modules.sys.entity.SysRoleEntity;
 import io.renren.modules.sys.service.SysRoleMenuService;

@@ -11,7 +11,7 @@ package io.renren.modules.app.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import io.renren.common.exception.RRException;
+import io.renren.common.base.exception.RRException;
 import io.renren.common.validator.Assert;
 import io.renren.modules.app.dao.UserDao;
 import io.renren.modules.app.entity.UserEntity;

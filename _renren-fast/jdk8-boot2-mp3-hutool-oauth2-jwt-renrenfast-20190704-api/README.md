@@ -45,3 +45,11 @@ lombok.accessors.chain=true
 2. service/dto
 3. model/common-pojo(vo+dto+query+...)
 ```
+
+5. 禁用devtools, 用jRebel更新重载
+
+
+# TODO
+
+- 上传下载支持本地
+- 报表导入导出

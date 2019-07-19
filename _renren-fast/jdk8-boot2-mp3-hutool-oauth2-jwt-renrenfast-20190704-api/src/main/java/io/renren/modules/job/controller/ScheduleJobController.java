@@ -10,7 +10,7 @@ package io.renren.modules.job.controller;
 
 import io.renren.common.aop.annotation.SysLog;
 import io.renren.common.utils.PageUtils;
-import io.renren.common.utils.R;
+import io.renren.common.base.R;
 import io.renren.common.validator.ValidatorUtils;
 import io.renren.modules.job.entity.ScheduleJobEntity;
 import io.renren.modules.job.service.ScheduleJobService;

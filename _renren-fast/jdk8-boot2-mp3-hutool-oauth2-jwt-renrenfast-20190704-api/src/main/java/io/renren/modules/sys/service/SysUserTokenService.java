@@ -9,7 +9,7 @@
 package io.renren.modules.sys.service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import io.renren.common.utils.R;
+import io.renren.common.base.R;
 import io.renren.modules.sys.dao.SysUserTokenDao;
 import io.renren.modules.sys.entity.SysUserTokenEntity;
 import io.renren.modules.sys.oauth2.TokenGenerator;

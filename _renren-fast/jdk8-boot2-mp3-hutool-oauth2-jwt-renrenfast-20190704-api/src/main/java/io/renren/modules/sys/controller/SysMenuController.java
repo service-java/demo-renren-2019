@@ -9,9 +9,9 @@
 package io.renren.modules.sys.controller;
 
 import io.renren.common.aop.annotation.SysLog;
-import io.renren.common.exception.RRException;
+import io.renren.common.base.exception.RRException;
 import io.renren.common.constant.Constant;
-import io.renren.common.utils.R;
+import io.renren.common.base.R;
 import io.renren.modules.sys.entity.SysMenuEntity;
 import io.renren.modules.sys.service.ShiroService;
 import io.renren.modules.sys.service.SysMenuService;

@@ -8,7 +8,7 @@
 
 package io.renren.modules.sys.controller;
 
-import io.renren.common.utils.R;
+import io.renren.common.base.R;
 import io.renren.modules.sys.entity.SysUserEntity;
 import io.renren.modules.sys.controller.query.SysLoginFormQuery;
 import io.renren.modules.sys.service.SysCaptchaService;
@@ -27,7 +27,6 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Map;
 
 /**
  * 登录相关

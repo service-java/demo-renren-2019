@@ -12,7 +12,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.renren.common.utils.PageUtils;
-import io.renren.common.utils.Query;
+import io.renren.common.base.Query;
 import io.renren.modules.sys.dao.SysLogDao;
 import io.renren.modules.sys.entity.SysLogEntity;
 import org.apache.commons.lang.StringUtils;
@@ -24,15 +24,15 @@ import java.util.Map;
 @Service("sysLogService")
 public class SysLogService extends ServiceImpl<SysLogDao, SysLogEntity> {
 
-
     public PageUtils queryPage(Map<String, Object> params) {
         String key = (String)params.get("key");
 
         IPage<SysLogEntity> page = this.page(
             new Query<SysLogEntity>().getPage(params),
-            new QueryWrapper<SysLogEntity>().like(StringUtils.isNotBlank(key),"username", key)
+            new QueryWrapper<SysLogEntity>().like(StringUtils.isNotBlank(key), "username", key)
         );
 
         return new PageUtils(page);
     }
+
 }

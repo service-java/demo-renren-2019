@@ -12,7 +12,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.renren.common.utils.PageUtils;
-import io.renren.common.utils.Query;
+import io.renren.common.base.Query;
 import io.renren.common.constant.Constant;
 import io.renren.modules.job.dao.ScheduleJobDao;
 import io.renren.modules.job.entity.ScheduleJobEntity;

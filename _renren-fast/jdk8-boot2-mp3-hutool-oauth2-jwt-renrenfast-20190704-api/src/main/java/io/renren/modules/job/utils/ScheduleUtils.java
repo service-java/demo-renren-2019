@@ -8,7 +8,7 @@
 
 package io.renren.modules.job.utils;
 
-import io.renren.common.exception.RRException;
+import io.renren.common.base.exception.RRException;
 import io.renren.common.constant.Constant;
 import io.renren.modules.job.entity.ScheduleJobEntity;
 import org.quartz.*;
