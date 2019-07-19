@@ -44,5 +44,4 @@ lombok.accessors.chain=true
 1. controller/query
 2. service/dto
 3. model/common-pojo(vo+dto+query+...)
-4. utils/constant
 ```

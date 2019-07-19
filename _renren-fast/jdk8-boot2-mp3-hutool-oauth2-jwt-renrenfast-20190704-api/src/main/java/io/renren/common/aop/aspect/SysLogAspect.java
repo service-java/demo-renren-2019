@@ -6,10 +6,10 @@
  * 版权所有，侵权必究！
  */
 
-package io.renren.common.aspect;
+package io.renren.common.aop.aspect;
 
 import com.google.gson.Gson;
-import io.renren.common.annotation.SysLog;
+import io.renren.common.aop.annotation.SysLog;
 import io.renren.common.utils.HttpContextUtils;
 import io.renren.common.utils.IPUtils;
 import io.renren.modules.sys.entity.SysLogEntity;
@@ -40,7 +40,7 @@ public class SysLogAspect {
 	@Autowired
 	private SysLogService sysLogService;
 
-	@Pointcut("@annotation(io.renren.common.annotation.SysLog)")
+	@Pointcut("@annotation(io.renren.common.aop.annotation.SysLog)")
 	public void logPointCut() {
 
 	}

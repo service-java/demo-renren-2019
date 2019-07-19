@@ -41,8 +41,7 @@ public class SysUserRoleService extends ServiceImpl<SysUserRoleDao, SysUserRoleE
 		//保存用户与角色关系
 		for(Long roleId : roleIdList){
 			SysUserRoleEntity sysUserRoleEntity = new SysUserRoleEntity();
-			sysUserRoleEntity.setUserId(userId);
-			sysUserRoleEntity.setRoleId(roleId);
+			sysUserRoleEntity.setUserId(userId).setRoleId(roleId);
 
 			this.save(sysUserRoleEntity);
 		}

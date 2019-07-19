@@ -14,7 +14,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.renren.common.exception.RRException;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.Query;
-import io.renren.common.utils.constant.Constant;
+import io.renren.common.constant.Constant;
 import io.renren.modules.sys.dao.SysRoleDao;
 import io.renren.modules.sys.entity.SysRoleEntity;
 import org.apache.commons.lang.StringUtils;

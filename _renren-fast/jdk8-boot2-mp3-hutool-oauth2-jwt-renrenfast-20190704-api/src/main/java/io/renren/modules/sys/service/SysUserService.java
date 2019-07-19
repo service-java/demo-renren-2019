@@ -14,7 +14,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.renren.common.exception.RRException;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.Query;
-import io.renren.common.utils.constant.Constant;
+import io.renren.common.constant.Constant;
 import io.renren.modules.sys.dao.SysUserDao;
 import io.renren.modules.sys.entity.SysUserEntity;
 import org.apache.commons.lang.RandomStringUtils;
@@ -78,8 +78,7 @@ public class SysUserService extends ServiceImpl<SysUserDao, SysUserEntity>  {
 		user.setCreateTime(new Date());
 		//sha256加密
 		String salt = RandomStringUtils.randomAlphanumeric(20);
-		user.setPassword(new Sha256Hash(user.getPassword(), salt).toHex());
-		user.setSalt(salt);
+		user.setPassword(new Sha256Hash(user.getPassword(), salt).toHex()).setSalt(salt);
 		this.save(user);
 
 		//检查角色是否越权

@@ -11,7 +11,7 @@ package io.renren.modules.sys.service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.renren.common.utils.MapUtils;
-import io.renren.common.utils.constant.Constant;
+import io.renren.common.constant.Constant;
 import io.renren.modules.sys.dao.SysMenuDao;
 import io.renren.modules.sys.entity.SysMenuEntity;
 import org.springframework.beans.factory.annotation.Autowired;

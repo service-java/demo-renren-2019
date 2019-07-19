@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package io.renren.common.annotation;
+package io.renren.common.aop.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

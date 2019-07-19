@@ -42,10 +42,8 @@ public class SysCaptchaService extends ServiceImpl<SysCaptchaDao, SysCaptchaEnti
         String code = producer.createText();
 
         SysCaptchaEntity captchaEntity = new SysCaptchaEntity();
-        captchaEntity.setUuid(uuid);
-        captchaEntity.setCode(code);
         //5分钟后过期
-        captchaEntity.setExpireTime(DateUtils.addDateMinutes(new Date(), 5));
+        captchaEntity.setUuid(uuid).setCode(code).setExpireTime(DateUtils.addDateMinutes(new Date(), 5));
         this.save(captchaEntity);
 
         return producer.createImage(code);

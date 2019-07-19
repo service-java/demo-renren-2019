@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package io.renren.common.utils.constant;
+package io.renren.common.constant;
 
 /**
  * 常量

@@ -10,8 +10,8 @@ package io.renren.modules.oss.controller;
 
 import com.google.gson.Gson;
 import io.renren.common.exception.RRException;
-import io.renren.common.utils.constant.ConfigConstant;
-import io.renren.common.utils.constant.Constant;
+import io.renren.common.constant.ConfigConstant;
+import io.renren.common.constant.Constant;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.R;
 import io.renren.common.validator.ValidatorUtils;

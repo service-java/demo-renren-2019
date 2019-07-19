@@ -39,8 +39,7 @@ public class SysRoleMenuService extends ServiceImpl<SysRoleMenuDao, SysRoleMenuE
 		//保存角色与菜单关系
 		for(Long menuId : menuIdList){
 			SysRoleMenuEntity sysRoleMenuEntity = new SysRoleMenuEntity();
-			sysRoleMenuEntity.setMenuId(menuId);
-			sysRoleMenuEntity.setRoleId(roleId);
+			sysRoleMenuEntity.setMenuId(menuId).setRoleId(roleId);
 
 			this.save(sysRoleMenuEntity);
 		}

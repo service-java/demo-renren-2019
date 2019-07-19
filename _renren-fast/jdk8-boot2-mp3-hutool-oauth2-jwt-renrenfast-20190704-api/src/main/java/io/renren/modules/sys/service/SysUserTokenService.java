@@ -38,17 +38,12 @@ public class SysUserTokenService extends ServiceImpl<SysUserTokenDao, SysUserTok
 		SysUserTokenEntity tokenEntity = this.getById(userId);
 		if(tokenEntity == null){
 			tokenEntity = new SysUserTokenEntity();
-			tokenEntity.setUserId(userId);
-			tokenEntity.setToken(token);
-			tokenEntity.setUpdateTime(now);
-			tokenEntity.setExpireTime(expireTime);
+			tokenEntity.setUserId(userId).setToken(token).setUpdateTime(now).setExpireTime(expireTime);
 
 			//保存token
 			this.save(tokenEntity);
 		}else{
-			tokenEntity.setToken(token);
-			tokenEntity.setUpdateTime(now);
-			tokenEntity.setExpireTime(expireTime);
+			tokenEntity.setToken(token).setUpdateTime(now).setExpireTime(expireTime);
 
 			//更新token
 			this.updateById(tokenEntity);
@@ -66,8 +61,7 @@ public class SysUserTokenService extends ServiceImpl<SysUserTokenDao, SysUserTok
 
 		//修改token
 		SysUserTokenEntity tokenEntity = new SysUserTokenEntity();
-		tokenEntity.setUserId(userId);
-		tokenEntity.setToken(token);
+		tokenEntity.setUserId(userId).setToken(token);
 		this.updateById(tokenEntity);
 	}
 }

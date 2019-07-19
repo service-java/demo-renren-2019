@@ -10,7 +10,7 @@ package io.renren.common.utils;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import io.renren.common.utils.constant.Constant;
+import io.renren.common.constant.Constant;
 import io.renren.common.xss.SQLFilter;
 import org.apache.commons.lang.StringUtils;
 
