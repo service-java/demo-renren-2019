@@ -32,7 +32,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/app")
-@Api("APP登录接口")
+//@Api("APP登录接口")
 public class AppLoginController {
     @Autowired
     private UserService userService;
@@ -43,7 +43,7 @@ public class AppLoginController {
      * 登录
      */
     @PostMapping("login")
-    @ApiOperation("登录")
+    // @ApiOperation("登录")
     public R login(@RequestBody LoginForm form){
         //表单校验
         ValidatorUtils.validateEntity(form);

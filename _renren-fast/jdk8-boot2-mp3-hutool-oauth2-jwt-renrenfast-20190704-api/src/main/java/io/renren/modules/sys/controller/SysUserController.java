@@ -9,7 +9,7 @@
 package io.renren.modules.sys.controller;
 
 import io.renren.common.aop.annotation.SysLog;
-import io.renren.common.constant.Constant;
+import io.renren.common.constant.Constants;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.base.R;
 import io.renren.common.validator.Assert;
@@ -20,6 +20,8 @@ import io.renren.modules.sys.entity.SysUserEntity;
 import io.renren.modules.sys.controller.query.PasswordFormQuery;
 import io.renren.modules.sys.service.SysUserRoleService;
 import io.renren.modules.sys.service.SysUserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.crypto.hash.Sha256Hash;
@@ -34,6 +36,7 @@ import java.util.Map;
  *
  * @author Mark sunlightcs@gmail.com
  */
+@Api(tags = "系统用户")
 @RestController
 @RequestMapping("/sys/user")
 public class SysUserController extends AbstractController {
@@ -43,14 +46,12 @@ public class SysUserController extends AbstractController {
 	private SysUserRoleService sysUserRoleService;
 
 
-	/**
-	 * 所有用户列表
-	 */
-	@GetMapping("/list")
+	@ApiOperation("所有用户列表")
+    @GetMapping("/list")
 	@RequiresPermissions("sys:user:list")
 	public R list(@RequestParam Map<String, Object> params){
 		//只有超级管理员，才能查看所有管理员列表
-		if(getUserId() != Constant.SUPER_ADMIN){
+		if(getUserId() != Constants.SUPER_ADMIN){
 			params.put("createUserId", getUserId());
 		}
 		PageUtils page = sysUserService.queryPage(params);
@@ -58,17 +59,15 @@ public class SysUserController extends AbstractController {
 		return R.ok().put("page", page);
 	}
 
-	/**
-	 * 获取登录的用户信息
-	 */
+
+	@ApiOperation("获取登录的用户信息")
 	@GetMapping("/info")
 	public R info(){
 		return R.ok().put("user", getUser());
 	}
 
-	/**
-	 * 修改登录用户密码
-	 */
+
+	@ApiOperation("修改密码")
 	@SysLog("修改密码")
 	@PostMapping("/password")
 	public R password(@RequestBody PasswordFormQuery form){
@@ -88,9 +87,8 @@ public class SysUserController extends AbstractController {
 		return R.ok();
 	}
 
-	/**
-	 * 用户信息
-	 */
+
+	@ApiOperation("用户信息")
 	@GetMapping("/info/{userId}")
 	@RequiresPermissions("sys:user:info")
 	public R info(@PathVariable("userId") Long userId){
@@ -103,9 +101,8 @@ public class SysUserController extends AbstractController {
 		return R.ok().put("user", user);
 	}
 
-	/**
-	 * 保存用户
-	 */
+
+	@ApiOperation("保存用户")
 	@SysLog("保存用户")
 	@PostMapping("/save")
 	@RequiresPermissions("sys:user:save")
@@ -118,9 +115,8 @@ public class SysUserController extends AbstractController {
 		return R.ok();
 	}
 
-	/**
-	 * 修改用户
-	 */
+
+	@ApiOperation("修改用户")
 	@SysLog("修改用户")
 	@PostMapping("/update")
 	@RequiresPermissions("sys:user:update")
@@ -134,9 +130,7 @@ public class SysUserController extends AbstractController {
 		return R.ok();
 	}
 
-	/**
-	 * 删除用户
-	 */
+	@ApiOperation("删除用户")
 	@SysLog("删除用户")
 	@PostMapping("/delete")
 	@RequiresPermissions("sys:user:delete")

@@ -32,13 +32,13 @@ import java.util.Date;
  */
 @RestController
 @RequestMapping("/app")
-@Api("APP注册接口")
+//@Api("APP注册接口")
 public class AppRegisterController {
     @Autowired
     private UserService userService;
 
     @PostMapping("register")
-    @ApiOperation("注册")
+    // @ApiOperation("注册")
     public R register(@RequestBody RegisterForm form){
         //表单校验
         ValidatorUtils.validateEntity(form);

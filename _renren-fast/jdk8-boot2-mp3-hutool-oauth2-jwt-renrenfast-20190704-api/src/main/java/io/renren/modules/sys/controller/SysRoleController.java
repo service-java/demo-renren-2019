@@ -9,13 +9,14 @@
 package io.renren.modules.sys.controller;
 
 import io.renren.common.aop.annotation.SysLog;
-import io.renren.common.constant.Constant;
+import io.renren.common.constant.Constants;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.base.R;
 import io.renren.common.validator.ValidatorUtils;
 import io.renren.modules.sys.entity.SysRoleEntity;
 import io.renren.modules.sys.service.SysRoleMenuService;
 import io.renren.modules.sys.service.SysRoleService;
+import io.swagger.annotations.Api;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,7 @@ import java.util.Map;
  *
  * @author Mark sunlightcs@gmail.com
  */
+@Api(tags = "角色管理")
 @RestController
 @RequestMapping("/sys/role")
 public class SysRoleController extends AbstractController {
@@ -44,7 +46,7 @@ public class SysRoleController extends AbstractController {
 	@RequiresPermissions("sys:role:list")
 	public R list(@RequestParam Map<String, Object> params){
 		//如果不是超级管理员，则只查询自己创建的角色列表
-		if(getUserId() != Constant.SUPER_ADMIN){
+		if(getUserId() != Constants.SUPER_ADMIN){
 			params.put("createUserId", getUserId());
 		}
 
@@ -62,7 +64,7 @@ public class SysRoleController extends AbstractController {
 		Map<String, Object> map = new HashMap<>();
 
 		//如果不是超级管理员，则只查询自己所拥有的角色列表
-		if(getUserId() != Constant.SUPER_ADMIN){
+		if(getUserId() != Constants.SUPER_ADMIN){
 			map.put("create_user_id", getUserId());
 		}
 		List<SysRoleEntity> list = (List<SysRoleEntity>) sysRoleService.listByMap(map);

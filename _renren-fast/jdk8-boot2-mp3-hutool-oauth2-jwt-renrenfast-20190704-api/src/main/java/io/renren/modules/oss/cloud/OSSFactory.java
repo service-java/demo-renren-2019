@@ -9,8 +9,8 @@
 package io.renren.modules.oss.cloud;
 
 
-import io.renren.common.constant.ConfigConstant;
-import io.renren.common.constant.Constant;
+import io.renren.common.constant.ConfigConstants;
+import io.renren.common.constant.Constants;
 import io.renren.common.utils.SpringContextUtils;
 import io.renren.modules.sys.service.SysConfigService;
 
@@ -28,13 +28,13 @@ public final class OSSFactory {
 
     public static CloudStorageService build(){
         //获取云存储配置信息
-        CloudStorageConfig config = sysConfigService.getConfigObject(ConfigConstant.CLOUD_STORAGE_CONFIG_KEY, CloudStorageConfig.class);
+        CloudStorageConfig config = sysConfigService.getConfigObject(ConfigConstants.CLOUD_STORAGE_CONFIG_KEY, CloudStorageConfig.class);
 
-        if(config.getType() == Constant.CloudService.QINIU.getValue()){
+        if(config.getType() == Constants.CloudService.QINIU.getValue()){
             return new QiniuCloudStorageService(config);
-        }else if(config.getType() == Constant.CloudService.ALIYUN.getValue()){
+        }else if(config.getType() == Constants.CloudService.ALIYUN.getValue()){
             return new AliyunCloudStorageService(config);
-        }else if(config.getType() == Constant.CloudService.QCLOUD.getValue()){
+        }else if(config.getType() == Constants.CloudService.QCLOUD.getValue()){
             return new QcloudCloudStorageService(config);
         }
 

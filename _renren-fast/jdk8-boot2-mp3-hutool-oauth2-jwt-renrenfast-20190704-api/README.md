@@ -1,5 +1,13 @@
 # README
 
+
+- http://localhost:8080/renren-fast/swagger-ui.html#/
+- http://localhost:8080/renren-fast/druid/sql.html
+- 账号 admin/admin
+- 可能需要打开 redis-server
+
+# 调整
+
 在renren-fast的基础上作几个简单调整
 
 1. mapping.xml移出resources/mapper, 搬到dao附近

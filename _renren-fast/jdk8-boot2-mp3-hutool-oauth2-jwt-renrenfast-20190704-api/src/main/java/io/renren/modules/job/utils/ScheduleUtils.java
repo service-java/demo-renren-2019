@@ -9,7 +9,7 @@
 package io.renren.modules.job.utils;
 
 import io.renren.common.base.exception.RRException;
-import io.renren.common.constant.Constant;
+import io.renren.common.constant.Constants;
 import io.renren.modules.job.entity.ScheduleJobEntity;
 import org.quartz.*;
 
@@ -67,7 +67,7 @@ public class ScheduleUtils {
             scheduler.scheduleJob(jobDetail, trigger);
 
             //暂停任务
-            if(scheduleJob.getStatus() == Constant.ScheduleStatus.PAUSE.getValue()){
+            if(scheduleJob.getStatus() == Constants.ScheduleStatus.PAUSE.getValue()){
             	pauseJob(scheduler, scheduleJob.getJobId());
             }
         } catch (SchedulerException e) {
@@ -97,7 +97,7 @@ public class ScheduleUtils {
             scheduler.rescheduleJob(triggerKey, trigger);
 
             //暂停任务
-            if(scheduleJob.getStatus() == Constant.ScheduleStatus.PAUSE.getValue()){
+            if(scheduleJob.getStatus() == Constants.ScheduleStatus.PAUSE.getValue()){
             	pauseJob(scheduler, scheduleJob.getJobId());
             }
 

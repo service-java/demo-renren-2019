@@ -11,7 +11,7 @@ package io.renren.modules.sys.service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.renren.common.utils.MapUtils;
-import io.renren.common.constant.Constant;
+import io.renren.common.constant.Constants;
 import io.renren.modules.sys.dao.SysMenuDao;
 import io.renren.modules.sys.entity.SysMenuEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,7 +66,7 @@ public class SysMenuService extends ServiceImpl<SysMenuDao, SysMenuEntity> {
 
 	public List<SysMenuEntity> getUserMenuList(Long userId) {
 		// 系统管理员，拥有最高权限
-		if (userId == Constant.SUPER_ADMIN){
+		if (userId == Constants.SUPER_ADMIN){
 			return getAllMenuList(null);
 		}
 
@@ -103,7 +103,7 @@ public class SysMenuService extends ServiceImpl<SysMenuDao, SysMenuEntity> {
 
 		for(SysMenuEntity entity : menuList){
 			//目录
-			if(entity.getType() == Constant.MenuType.CATALOG.getValue()){
+			if(entity.getType() == Constants.MenuType.CATALOG.getValue()){
 				entity.setList(getMenuTreeList(queryListParentId(entity.getMenuId(), menuIdList), menuIdList));
 			}
 			subMenuList.add(entity);

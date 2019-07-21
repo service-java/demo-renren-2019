@@ -13,7 +13,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.renren.common.base.Query;
 import io.renren.common.base.exception.RRException;
-import io.renren.common.constant.Constant;
+import io.renren.common.constant.Constants;
 import io.renren.common.utils.PageUtils;
 import io.renren.modules.sys.dao.SysUserDao;
 import io.renren.modules.sys.entity.SysUserEntity;
@@ -145,7 +145,7 @@ public class SysUserService extends ServiceImpl<SysUserDao, SysUserEntity>  {
         // }
 
 		// 如果不是超级管理员，则需要判断用户的角色是否自己创建
-		if (user.getCreateUserId() == Constant.SUPER_ADMIN) {
+		if (user.getCreateUserId() == Constants.SUPER_ADMIN) {
 			return ;
 		}
 

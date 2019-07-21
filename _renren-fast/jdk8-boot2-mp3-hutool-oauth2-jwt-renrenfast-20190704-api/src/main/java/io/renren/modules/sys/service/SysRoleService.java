@@ -14,7 +14,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.renren.common.base.exception.RRException;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.base.Query;
-import io.renren.common.constant.Constant;
+import io.renren.common.constant.Constants;
 import io.renren.modules.sys.dao.SysRoleDao;
 import io.renren.modules.sys.entity.SysRoleEntity;
 import org.apache.commons.lang.StringUtils;
@@ -105,7 +105,7 @@ public class SysRoleService extends ServiceImpl<SysRoleDao, SysRoleEntity>  {
 	 */
 	private void checkPrems(SysRoleEntity role){
 		//如果不是超级管理员，则需要判断角色的权限是否超过自己的权限
-		if(role.getCreateUserId() == Constant.SUPER_ADMIN){
+		if(role.getCreateUserId() == Constants.SUPER_ADMIN){
 			return ;
 		}
 

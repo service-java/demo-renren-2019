@@ -32,7 +32,7 @@
         align="center"
         label="URL地址">
           <template slot-scope="scope">
-              <a :href="scope.row.url" target="_blank" :download="scope.row.url">{{scope.row.url}}</a>
+              <a :href="getFileUrl(scope.row.url)" target="_blank" :download="scope.row.url">{{scope.row.url}}</a>
           </template>
       </el-table-column>
       <el-table-column
@@ -94,6 +94,12 @@
       this.getDataList()
     },
     methods: {
+      getFileUrl (url) {
+        if (url.indexOf('http') === 0) {
+          return url
+        }
+        return `${window.SITE_CONFIG['baseUrl']}/common/download?fileName=${url}&delete=false`
+      },
       // 获取数据列表
       getDataList () {
         this.dataListLoading = true

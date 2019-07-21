@@ -11,6 +11,7 @@ package io.renren.modules.sys.controller;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.base.R;
 import io.renren.modules.sys.service.SysLogService;
+import io.swagger.annotations.Api;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,7 @@ import java.util.Map;
  *
  * @author Mark sunlightcs@gmail.com
  */
+@Api(tags = "系统日志")
 @Controller
 @RequestMapping("/sys/log")
 public class SysLogController {

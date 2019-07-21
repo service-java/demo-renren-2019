@@ -14,6 +14,8 @@ import io.renren.modules.sys.controller.query.SysLoginFormQuery;
 import io.renren.modules.sys.service.SysCaptchaService;
 import io.renren.modules.sys.service.SysUserService;
 import io.renren.modules.sys.service.SysUserTokenService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.io.IOUtils;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,7 @@ import java.io.IOException;
  *
  * @author Mark sunlightcs@gmail.com
  */
+@Api(tags = "系统登录")
 @RestController
 public class SysLoginController extends AbstractController {
 	@Autowired
@@ -46,6 +49,7 @@ public class SysLoginController extends AbstractController {
 	 * 验证码
 	 */
 	@GetMapping("captcha.jpg")
+    @ApiOperation("获取验证码")
 	public void captcha(HttpServletResponse response, String uuid)throws IOException {
 		response.setHeader("Cache-Control", "no-store, no-cache");
 		response.setContentType("image/jpeg");
@@ -61,6 +65,7 @@ public class SysLoginController extends AbstractController {
 	/**
 	 * 登录
 	 */
+	@ApiOperation("用户登录")
 	@PostMapping("/sys/login")
 	public R login(@RequestBody SysLoginFormQuery form)throws IOException {
 		boolean captcha = sysCaptchaService.validate(form.getUuid(), form.getCaptcha());

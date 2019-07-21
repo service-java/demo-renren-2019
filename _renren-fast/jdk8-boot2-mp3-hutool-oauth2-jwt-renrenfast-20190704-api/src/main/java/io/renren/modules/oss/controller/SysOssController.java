@@ -10,19 +10,23 @@ package io.renren.modules.oss.controller;
 
 import com.google.gson.Gson;
 import io.renren.common.base.exception.RRException;
-import io.renren.common.constant.ConfigConstant;
-import io.renren.common.constant.Constant;
+import io.renren.common.constant.ConfigConstants;
+import io.renren.common.constant.Constants;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.base.R;
+import io.renren.common.utils.file.FileUploadUtils;
 import io.renren.common.validator.ValidatorUtils;
 import io.renren.common.validator.group.AliyunGroup;
 import io.renren.common.validator.group.QcloudGroup;
 import io.renren.common.validator.group.QiniuGroup;
+import io.renren.modules.oss.cloud.LocalStorageConfig;
 import io.renren.modules.oss.cloud.CloudStorageConfig;
 import io.renren.modules.oss.cloud.OSSFactory;
 import io.renren.modules.oss.entity.SysOssEntity;
 import io.renren.modules.oss.service.SysOssService;
 import io.renren.modules.sys.service.SysConfigService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +41,7 @@ import java.util.Map;
  *
  * @author Mark sunlightcs@gmail.com
  */
+@Api(tags="OSS服务")
 @RestController
 @RequestMapping("sys/oss")
 public class SysOssController {
@@ -45,7 +50,7 @@ public class SysOssController {
     @Autowired
     private SysConfigService sysConfigService;
 
-    private final static String KEY = ConfigConstant.CLOUD_STORAGE_CONFIG_KEY;
+    private final static String KEY = ConfigConstants.CLOUD_STORAGE_CONFIG_KEY;
 
 	/**
 	 * 列表
@@ -80,13 +85,13 @@ public class SysOssController {
 		//校验类型
 		ValidatorUtils.validateEntity(config);
 
-		if(config.getType() == Constant.CloudService.QINIU.getValue()){
+		if(config.getType() == Constants.CloudService.QINIU.getValue()){
 			//校验七牛数据
 			ValidatorUtils.validateEntity(config, QiniuGroup.class);
-		}else if(config.getType() == Constant.CloudService.ALIYUN.getValue()){
+		}else if(config.getType() == Constants.CloudService.ALIYUN.getValue()){
 			//校验阿里云数据
 			ValidatorUtils.validateEntity(config, AliyunGroup.class);
-		}else if(config.getType() == Constant.CloudService.QCLOUD.getValue()){
+		}else if(config.getType() == Constants.CloudService.QCLOUD.getValue()){
 			//校验腾讯云数据
 			ValidatorUtils.validateEntity(config, QcloudGroup.class);
 		}
@@ -120,8 +125,34 @@ public class SysOssController {
 		return R.ok().put("url", url);
 	}
 
+    /**
+     * 上传文件
+     */
+    @ApiOperation("本地上传")
+    @PostMapping("/localUpload")
+    @RequiresPermissions("sys:oss:all")
+    public R localUpload(@RequestParam("file") MultipartFile file) throws Exception {
+        if (file.isEmpty()) {
+            throw new RRException("上传文件不能为空");
+        }
 
-	/**
+        // 上传文件路径(真实存储路径)
+        String filePath = LocalStorageConfig.getUploadPath();
+
+        // 上传并返回新文件名称
+        String fileName = FileUploadUtils.upload(filePath, file);
+
+        //保存文件信息
+        SysOssEntity ossEntity = new SysOssEntity();
+        ossEntity.setUrl(fileName);
+        ossEntity.setCreateDate(new Date());
+        sysOssService.save(ossEntity);
+        return R.ok();
+    }
+
+
+
+    /**
 	 * 删除
 	 */
 	@PostMapping("/delete")

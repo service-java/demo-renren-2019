@@ -10,11 +10,12 @@ package io.renren.modules.sys.controller;
 
 import io.renren.common.aop.annotation.SysLog;
 import io.renren.common.base.exception.RRException;
-import io.renren.common.constant.Constant;
+import io.renren.common.constant.Constants;
 import io.renren.common.base.R;
 import io.renren.modules.sys.entity.SysMenuEntity;
 import io.renren.modules.sys.service.ShiroService;
 import io.renren.modules.sys.service.SysMenuService;
+import io.swagger.annotations.Api;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ import java.util.Set;
  *
  * @author Mark sunlightcs@gmail.com
  */
+@Api(tags = "系统菜单")
 @RestController
 @RequestMapping("/sys/menu")
 public class SysMenuController extends AbstractController {
@@ -158,31 +160,31 @@ public class SysMenuController extends AbstractController {
 		}
 
 		//菜单
-		if(menu.getType() == Constant.MenuType.MENU.getValue()){
+		if(menu.getType() == Constants.MenuType.MENU.getValue()){
 			if(StringUtils.isBlank(menu.getUrl())){
 				throw new RRException("菜单URL不能为空");
 			}
 		}
 
 		//上级菜单类型
-		int parentType = Constant.MenuType.CATALOG.getValue();
+		int parentType = Constants.MenuType.CATALOG.getValue();
 		if(menu.getParentId() != 0){
 			SysMenuEntity parentMenu = sysMenuService.getById(menu.getParentId());
 			parentType = parentMenu.getType();
 		}
 
 		//目录、菜单
-		if(menu.getType() == Constant.MenuType.CATALOG.getValue() ||
-				menu.getType() == Constant.MenuType.MENU.getValue()){
-			if(parentType != Constant.MenuType.CATALOG.getValue()){
+		if(menu.getType() == Constants.MenuType.CATALOG.getValue() ||
+				menu.getType() == Constants.MenuType.MENU.getValue()){
+			if(parentType != Constants.MenuType.CATALOG.getValue()){
 				throw new RRException("上级菜单只能为目录类型");
 			}
 			return ;
 		}
 
 		//按钮
-		if(menu.getType() == Constant.MenuType.BUTTON.getValue()){
-			if(parentType != Constant.MenuType.MENU.getValue()){
+		if(menu.getType() == Constants.MenuType.BUTTON.getValue()){
+			if(parentType != Constants.MenuType.MENU.getValue()){
 				throw new RRException("上级菜单只能为菜单类型");
 			}
 			return ;

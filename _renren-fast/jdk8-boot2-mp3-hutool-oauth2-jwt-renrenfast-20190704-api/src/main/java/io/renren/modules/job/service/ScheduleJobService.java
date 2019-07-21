@@ -13,7 +13,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.base.Query;
-import io.renren.common.constant.Constant;
+import io.renren.common.constant.Constants;
 import io.renren.modules.job.dao.ScheduleJobDao;
 import io.renren.modules.job.entity.ScheduleJobEntity;
 import io.renren.modules.job.utils.ScheduleUtils;
@@ -65,7 +65,7 @@ public class ScheduleJobService extends ServiceImpl<ScheduleJobDao, ScheduleJobE
 	@Transactional(rollbackFor = Exception.class)
 	public void saveJob(ScheduleJobEntity scheduleJob) {
 		scheduleJob.setCreateTime(new Date());
-		scheduleJob.setStatus(Constant.ScheduleStatus.NORMAL.getValue());
+		scheduleJob.setStatus(Constants.ScheduleStatus.NORMAL.getValue());
         this.save(scheduleJob);
 
         ScheduleUtils.createScheduleJob(scheduler, scheduleJob);
@@ -112,7 +112,7 @@ public class ScheduleJobService extends ServiceImpl<ScheduleJobDao, ScheduleJobE
     		ScheduleUtils.pauseJob(scheduler, jobId);
     	}
 
-    	updateBatch(jobIds, Constant.ScheduleStatus.PAUSE.getValue());
+    	updateBatch(jobIds, Constants.ScheduleStatus.PAUSE.getValue());
     }
 
 
@@ -122,7 +122,7 @@ public class ScheduleJobService extends ServiceImpl<ScheduleJobDao, ScheduleJobE
     		ScheduleUtils.resumeJob(scheduler, jobId);
     	}
 
-    	updateBatch(jobIds, Constant.ScheduleStatus.NORMAL.getValue());
+    	updateBatch(jobIds, Constants.ScheduleStatus.NORMAL.getValue());
     }
 
 }

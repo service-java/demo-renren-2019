@@ -8,7 +8,7 @@
 
 package io.renren.modules.sys.service;
 
-import io.renren.common.constant.Constant;
+import io.renren.common.constant.Constants;
 import io.renren.modules.sys.dao.SysMenuDao;
 import io.renren.modules.sys.dao.SysUserDao;
 import io.renren.modules.sys.dao.SysUserTokenDao;
@@ -35,7 +35,7 @@ public class ShiroService  {
         List<String> permsList;
 
         //系统管理员，拥有最高权限
-        if (userId == Constant.SUPER_ADMIN) {
+        if (userId == Constants.SUPER_ADMIN) {
             List<SysMenuEntity> menuList = sysMenuDao.selectList(null);
             permsList = new ArrayList<>(menuList.size());
             for(SysMenuEntity menu : menuList){

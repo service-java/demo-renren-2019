@@ -13,7 +13,7 @@ package io.renren.common.constant;
  *
  * @author Mark sunlightcs@gmail.com
  */
-public class ConfigConstant {
+public class ConfigConstants {
     /**
      * 云存储配置KEY
      */
