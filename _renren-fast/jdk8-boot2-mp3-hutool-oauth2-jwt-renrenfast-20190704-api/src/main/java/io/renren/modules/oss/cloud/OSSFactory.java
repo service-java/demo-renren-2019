@@ -11,7 +11,7 @@ package io.renren.modules.oss.cloud;
 
 import io.renren.common.constant.ConfigConstants;
 import io.renren.common.constant.Constants;
-import io.renren.common.utils.SpringContextUtils;
+import io.renren.common.util.SpringContextUtils;
 import io.renren.modules.sys.service.SysConfigService;
 
 /**

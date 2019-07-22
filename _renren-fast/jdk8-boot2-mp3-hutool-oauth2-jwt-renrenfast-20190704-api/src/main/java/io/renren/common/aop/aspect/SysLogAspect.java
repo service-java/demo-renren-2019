@@ -10,8 +10,8 @@ package io.renren.common.aop.aspect;
 
 import com.google.gson.Gson;
 import io.renren.common.aop.annotation.SysLog;
-import io.renren.common.utils.HttpContextUtils;
-import io.renren.common.utils.IPUtils;
+import io.renren.common.util.HttpContextUtils;
+import io.renren.common.util.IPUtils;
 import io.renren.modules.sys.entity.SysLogEntity;
 import io.renren.modules.sys.entity.SysUserEntity;
 import io.renren.modules.sys.service.SysLogService;

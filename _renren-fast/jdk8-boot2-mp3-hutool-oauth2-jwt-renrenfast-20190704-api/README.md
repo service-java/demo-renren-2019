@@ -4,7 +4,16 @@
 - http://localhost:8080/renren-fast/swagger-ui.html#/
 - http://localhost:8080/renren-fast/druid/sql.html
 - 账号 admin/admin
-- 可能需要打开 redis-server
+- 默认不开启redis
+
+- 下载与图片显示
+
+```
+// 图片
+http://localhost:8080/renren-fast/profile/upload/2019/07/22/f3c65c5a111a6da10bd9acd426d2cd03.jpg
+
+http://localhost:8080/renren-fast/common/download?fileName=/upload/2019/07/22/f3c65c5a111a6da10bd9acd426d2cd03.jpg&delete=false
+```
 
 # 调整
 

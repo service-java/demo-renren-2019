@@ -10,7 +10,7 @@ package io.renren.modules.sys.controller;
 
 import io.renren.common.aop.annotation.SysLog;
 import io.renren.common.constant.Constants;
-import io.renren.common.utils.PageUtils;
+import io.renren.common.util.PageUtils;
 import io.renren.common.base.R;
 import io.renren.common.validator.ValidatorUtils;
 import io.renren.modules.sys.entity.SysRoleEntity;

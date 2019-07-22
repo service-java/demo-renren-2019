@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package io.renren.common.utils;
+package io.renren.common.util;
 
 import io.renren.common.base.exception.RRException;
 import io.renren.modules.sys.entity.SysUserEntity;

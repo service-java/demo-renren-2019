@@ -1,4 +1,4 @@
-package io.renren.common.utils;
+package io.renren.common.util;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;

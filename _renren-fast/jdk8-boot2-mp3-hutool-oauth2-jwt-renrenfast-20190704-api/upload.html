@@ -22,9 +22,11 @@
 </head>
 <body>
 
-<input id="filePath" name="filePath" class="form-control" style="width: 200px;" type="file">
+<div class="form form-inline p-5">
+    <input id="filePath" name="filePath" class="form-control" style="width: 200px;" type="file">
+    <button class="btn btn-primary" id="btn_upload">提交</button>
+</div>
 
-<button class="btn btn-primary" id="btn_upload">提交</button>
 
 <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -58,7 +60,7 @@
           contentType: false,
           dataType: "json",
           success: function(result) {
-            debugger
+            console.log(result)
           }
         });
       }

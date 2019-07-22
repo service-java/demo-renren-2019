@@ -10,7 +10,7 @@ package io.renren.modules.oss.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import io.renren.common.utils.PageUtils;
+import io.renren.common.util.PageUtils;
 import io.renren.common.base.Query;
 import io.renren.modules.oss.dao.SysOssDao;
 import io.renren.modules.oss.entity.SysOssEntity;

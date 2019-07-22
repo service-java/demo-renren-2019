@@ -12,14 +12,14 @@ import com.google.gson.Gson;
 import io.renren.common.base.exception.RRException;
 import io.renren.common.constant.ConfigConstants;
 import io.renren.common.constant.Constants;
-import io.renren.common.utils.PageUtils;
+import io.renren.common.util.PageUtils;
 import io.renren.common.base.R;
-import io.renren.common.utils.file.FileUploadUtils;
+import io.renren.common.util.file.FileUploadUtils;
 import io.renren.common.validator.ValidatorUtils;
 import io.renren.common.validator.group.AliyunGroup;
 import io.renren.common.validator.group.QcloudGroup;
 import io.renren.common.validator.group.QiniuGroup;
-import io.renren.modules.oss.cloud.LocalStorageConfig;
+import io.renren.config.properties.LocalStorageProperties;
 import io.renren.modules.oss.cloud.CloudStorageConfig;
 import io.renren.modules.oss.cloud.OSSFactory;
 import io.renren.modules.oss.entity.SysOssEntity;
@@ -137,7 +137,7 @@ public class SysOssController {
         }
 
         // 上传文件路径(真实存储路径)
-        String filePath = LocalStorageConfig.getUploadPath();
+        String filePath = LocalStorageProperties.getUploadPath();
 
         // 上传并返回新文件名称
         String fileName = FileUploadUtils.upload(filePath, file);

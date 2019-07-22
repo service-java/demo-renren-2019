@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package io.renren.common.utils;
+package io.renren.common.util;
 
 import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;

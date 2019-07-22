@@ -1,11 +1,11 @@
-package io.renren.modules.oss.cloud;
+package io.renren.config.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
 @ConfigurationProperties(prefix = "renren.storage")
-public class LocalStorageConfig {
+public class LocalStorageProperties {
     /**
      * 项目名称
      */
@@ -62,7 +62,7 @@ public class LocalStorageConfig {
     }
 
     public void setProfile(String profile) {
-        LocalStorageConfig.profile = profile;
+        LocalStorageProperties.profile = profile;
     }
 
     public static boolean isAddressEnabled() {
@@ -70,7 +70,7 @@ public class LocalStorageConfig {
     }
 
     public void setAddressEnabled(boolean addressEnabled) {
-        LocalStorageConfig.addressEnabled = addressEnabled;
+        LocalStorageProperties.addressEnabled = addressEnabled;
     }
 
 
@@ -78,13 +78,13 @@ public class LocalStorageConfig {
      * 获取下载路径
      */
     public static String getDownloadPath() {
-        return getProfile();
+        return getProfile() + "/download";
     }
 
     /**
      * 获取上传路径
      */
     public static String getUploadPath() {
-        return getProfile();
+        return getProfile() + "/upload";
     }
 }

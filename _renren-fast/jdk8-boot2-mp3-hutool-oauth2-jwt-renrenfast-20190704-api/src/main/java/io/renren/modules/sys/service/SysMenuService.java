@@ -10,7 +10,7 @@ package io.renren.modules.sys.service;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import io.renren.common.utils.MapUtils;
+import io.renren.common.util.MapUtils;
 import io.renren.common.constant.Constants;
 import io.renren.modules.sys.dao.SysMenuDao;
 import io.renren.modules.sys.entity.SysMenuEntity;

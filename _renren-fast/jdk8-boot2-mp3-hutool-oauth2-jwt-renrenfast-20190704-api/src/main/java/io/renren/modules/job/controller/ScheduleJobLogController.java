@@ -8,7 +8,7 @@
 
 package io.renren.modules.job.controller;
 
-import io.renren.common.utils.PageUtils;
+import io.renren.common.util.PageUtils;
 import io.renren.common.base.R;
 import io.renren.modules.job.entity.ScheduleJobLogEntity;
 import io.renren.modules.job.service.ScheduleJobLogService;

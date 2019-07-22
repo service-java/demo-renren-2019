@@ -8,7 +8,7 @@
 
 package io.renren.modules.sys.controller;
 
-import io.renren.common.utils.PageUtils;
+import io.renren.common.util.PageUtils;
 import io.renren.common.base.R;
 import io.renren.modules.sys.service.SysLogService;
 import io.swagger.annotations.Api;
