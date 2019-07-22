@@ -23,10 +23,14 @@
 <body>
 
 <div class="form form-inline p-5">
-    <input id="filePath" name="filePath" class="form-control" style="width: 200px;" type="file">
-    <button class="btn btn-primary" id="btn_upload">提交</button>
+    <input id="filePathPic" name="filePath" class="form-control" style="width: 200px;" type="file">
+    <button class="btn btn-primary" id="btn_upload_pic">提交</button>
 </div>
 
+<div class="form form-inline p-5">
+    <input id="filePathXls" name="filePath" class="form-control" style="width: 200px;" type="file">
+    <button class="btn btn-primary" id="btn_upload_xls">提交</button>
+</div>
 
 <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -37,22 +41,41 @@
 
 
 
-      $("#btn_upload").on("click", uploadFile)
+      $("#btn_upload_pic").on("click", uploadPic)
+      $("#btn_upload_xls").on("click", uploadXls)
 
-      function uploadFile() {
+      function uploadPic() {
         var formData = new FormData();
-        if ($('#filePath')[0].files[0] == null) {
+        if ($('#filePathPic')[0].files[0] == null) {
           alert("请先选择文件路径");
           return false;
         }
-        formData.append('fileName', $("#fileName").val());
-        formData.append('file', $('#filePath')[0].files[0]);
+        formData.append('file', $('#filePathPic')[0].files[0]);
 
         $.ajax({
           url: "http://localhost:8080/renren-fast/sys/oss/localUpload",
-          headers: {
-            token: '9e4493db09bb9c2d121e40194682ef94'
-          },
+          type: 'post',
+          cache: false,
+          data: formData,
+          processData: false,
+          contentType: false,
+          dataType: "json",
+          success: function(result) {
+            console.log(result)
+          }
+        });
+      }
+
+      function uploadXls() {
+        var formData = new FormData();
+        if ($('#filePathXls')[0].files[0] == null) {
+          alert("请先选择文件路径");
+          return false;
+        }
+        formData.append('file', $('#filePathXls')[0].files[0]);
+
+        $.ajax({
+          url: "http://localhost:8080/renren-fast/common/importXls/user",
           type: 'post',
           cache: false,
           data: formData,
