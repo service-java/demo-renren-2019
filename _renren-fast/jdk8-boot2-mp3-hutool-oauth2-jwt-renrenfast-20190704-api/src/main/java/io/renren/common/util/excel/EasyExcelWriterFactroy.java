@@ -9,17 +9,17 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
 
-public class ExcelWriterFactroy extends ExcelWriter {
+public class EasyExcelWriterFactroy extends ExcelWriter {
     private OutputStream outputStream;
     private int sheetNo = 1;
 
-    public ExcelWriterFactroy(OutputStream outputStream, ExcelTypeEnum typeEnum) {
+    public EasyExcelWriterFactroy(OutputStream outputStream, ExcelTypeEnum typeEnum) {
         super(outputStream, typeEnum);
         this.outputStream = outputStream;
     }
 
-    public ExcelWriterFactroy write(List<? extends BaseRowModel> list, String sheetName,
-                                    BaseRowModel object) {
+    public EasyExcelWriterFactroy write(List<? extends BaseRowModel> list, String sheetName,
+                                        BaseRowModel object) {
         this.sheetNo++;
         try {
             Sheet sheet = new Sheet(sheetNo, 0, object.getClass());

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.List;
 
-public class ExcelUtils {
+public class EasyExcelUtils {
 
     public static InputStream getResourcesFileInputStream(String fileName) {
         return Thread.currentThread().getContextClassLoader().getResourceAsStream("" + fileName);
@@ -39,7 +39,7 @@ public class ExcelUtils {
             }
             reader.read(sheet);
         }
-        return excelListener.getDatas();
+        return excelListener.getData();
     }
 
     /**
@@ -71,7 +71,7 @@ public class ExcelUtils {
             return null;
         }
         reader.read(new Sheet(sheetNo, headLineNum, rowModel.getClass()));
-        return excelListener.getDatas();
+        return excelListener.getData();
     }
 
     /**
@@ -101,9 +101,9 @@ public class ExcelUtils {
      * @param sheetName 导入文件的 sheet 名
      * @param object    映射实体类，Excel 模型
      */
-    public static ExcelWriterFactroy writeExcelWithSheets(HttpServletResponse response, List<? extends BaseRowModel> list,
-                                                          String fileName, String sheetName, BaseRowModel object) {
-        ExcelWriterFactroy writer = new ExcelWriterFactroy(getOutputStream(fileName, response), ExcelTypeEnum.XLSX);
+    public static EasyExcelWriterFactroy writeExcelWithSheets(HttpServletResponse response, List<? extends BaseRowModel> list,
+                                                              String fileName, String sheetName, BaseRowModel object) {
+        EasyExcelWriterFactroy writer = new EasyExcelWriterFactroy(getOutputStream(fileName, response), ExcelTypeEnum.XLSX);
         Sheet sheet = new Sheet(1, 0, object.getClass());
         sheet.setSheetName(sheetName);
         writer.write(list, sheet);

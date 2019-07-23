@@ -7,7 +7,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class ExcelUserDTO extends BaseRowModel {
+public class EasyExcelUserDTO extends BaseRowModel {
 
     @ExcelProperty(value = "用户名", index = 0)
     private String username;

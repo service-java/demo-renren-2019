@@ -11,8 +11,6 @@ package io.renren.modules.sys.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.wuwenze.poi.annotation.Excel;
-import com.wuwenze.poi.annotation.ExcelField;
 import io.renren.common.validator.group.AddGroup;
 import io.renren.common.validator.group.UpdateGroup;
 import lombok.Data;
@@ -30,7 +28,6 @@ import java.util.List;
  */
 @Data
 @TableName("sys_user")
-@Excel("系统用户")
 public class SysUserEntity implements Serializable  {
 	private static final long serialVersionUID = 1L;
 
@@ -44,7 +41,6 @@ public class SysUserEntity implements Serializable  {
 	 * 用户名
 	 */
 	@NotBlank(message="用户名不能为空", groups = {AddGroup.class, UpdateGroup.class})
-    @ExcelField(value = "用户名", required = true, maxLength = 20, comment = "提示：必填，长度不能超过20个字符")
     private String username;
 
 	/**
@@ -63,13 +59,11 @@ public class SysUserEntity implements Serializable  {
 	 */
 	@NotBlank(message="邮箱不能为空", groups = {AddGroup.class, UpdateGroup.class})
 	@Email(message="邮箱格式不正确", groups = {AddGroup.class, UpdateGroup.class})
-    @ExcelField(value = "邮箱")
     private String email;
 
 	/**
 	 * 手机号
 	 */
-    @ExcelField(value = "手机号")
     private String mobile;
 
 	/**
@@ -91,7 +85,6 @@ public class SysUserEntity implements Serializable  {
 	/**
 	 * 创建时间
 	 */
-    @ExcelField(value = "创建时间")
     private Date createTime;
 
 }

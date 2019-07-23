@@ -5,7 +5,7 @@
     <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Faster</title>
+    <title>上传测试</title>
 
      <link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet">
      <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -22,19 +22,12 @@
 </head>
 <body>
 
-<div class="form form-inline p-5">
-    <div class="form-group">
-        <label>图片导入</label>
-        <input id="filePathPic" name="filePath" class="form-control" style="width: 200px;" type="file" />
-        <button class="btn btn-primary" id="btn_upload_pic">提交</button>
-    </div>
-</div>
+
 
 <div class="form form-inline p-5">
     <div class="from-group">
-        <label>xls导入</label>
-        <input id="filePathXls" name="filePath" class="form-control" style="width: 200px;" type="file" />
-        <button class="btn btn-primary" id="btn_upload_xls">提交</button>
+        <input id="filePath" name="filePath" class="form-control" style="width: 200px;" type="file" />
+        <button class="btn btn-primary" id="btn_upload">提交</button>
     </div>
 </div>
 
@@ -46,42 +39,25 @@
     $(function () {
 
 
+      $("#btn_upload").on("click", function () {
+        // upload("/common/excelkit/import/user")
+        upload("/common/easyexcel/import/user")
+      })
 
-      $("#btn_upload_pic").on("click", uploadPic)
-      $("#btn_upload_xls").on("click", uploadXls)
 
-      function uploadPic() {
+      function upload(api) {
         var formData = new FormData();
-        if ($('#filePathPic')[0].files[0] == null) {
+        if ($('#filePath')[0].files[0] == null) {
           alert("请先选择文件路径");
           return false;
         }
-        formData.append('file', $('#filePathPic')[0].files[0]);
+        formData.append('file', $('#filePath')[0].files[0]);
 
         $.ajax({
-          url: "http://localhost:8080/renren-fast/sys/oss/localUpload",
-          type: 'post',
-          cache: false,
-          data: formData,
-          processData: false,
-          contentType: false,
-          dataType: "json",
-          success: function(result) {
-            console.log(result)
-          }
-        });
-      }
-
-      function uploadXls() {
-        var formData = new FormData();
-        if ($('#filePathXls')[0].files[0] == null) {
-          alert("请先选择文件路径");
-          return false;
-        }
-        formData.append('file', $('#filePathXls')[0].files[0]);
-
-        $.ajax({
-          url: "http://localhost:8080/renren-fast/common/easyexcel/import/user",
+          url: "http://localhost:8080/renren-fast" + api,
+          headers: {
+            token: 'xxxxxx',
+          },
           type: 'post',
           cache: false,
           data: formData,
