@@ -65,7 +65,9 @@ lombok.accessors.chain=true
 ```
 http://localhost:8080/renren-fast/profile/upload/2019/07/22/f3c65c5a111a6da10bd9acd426d2cd03.jpg
 
+
 http://localhost:8080/renren-fast/common/download?fileName=/upload/2019/07/22/f3c65c5a111a6da10bd9acd426d2cd03.jpg&delete=false
+http://localhost:8080/renren-fast/common/download?fileName=/upload/2019/07/23/984174d33a8ef75aba4b855a0c2715e8.xlsx&delete=false
 ```
 
 
@@ -87,5 +89,19 @@ https://juejin.im/post/5ba320546fb9a05d0b14304b
 
 
 # 一些问题
+
+- easyexcel
+
+```
+1. bufferedInputStream包装一下
+```
+
+- excelkit @deprecated
+
+```
+1. 实体注解貌似不配合lombok，很迷??
+2. 仅支持xlsx格式
+3. 功能局限(date格式转化??, 多sheet, 单元格合并??)
+```
 
 - 管理员创建的角色好像是不能共享??

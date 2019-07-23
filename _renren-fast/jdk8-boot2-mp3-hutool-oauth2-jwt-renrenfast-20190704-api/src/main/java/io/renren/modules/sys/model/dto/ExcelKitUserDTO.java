@@ -1,24 +1,16 @@
 package io.renren.modules.sys.model.dto;
 
-import com.alibaba.excel.metadata.BaseRowModel;
 import com.wuwenze.poi.annotation.Excel;
 import com.wuwenze.poi.annotation.ExcelField;
-import lombok.Data;
 
 import java.util.Date;
 
-@Data
+// 貌似lombok + excelkit 会出问题
+// @Data
 @Excel("系统用户")
-public class ExcelKitUserDTO extends BaseRowModel {
+public class ExcelKitUserDTO {
 
-    @ExcelField(value = "编号")
-    private Long userId;
-
-    @ExcelField(
-            value = "用户名",
-//        required = true,
-            maxLength = 20,
-            comment = "提示：必填，长度不能超过20个字符")
+    @ExcelField(value = "用户名")
     private String username;
 
     @ExcelField(value = "手机号")
@@ -27,7 +19,50 @@ public class ExcelKitUserDTO extends BaseRowModel {
     @ExcelField(value = "邮箱")
     private String email;
 
-    @ExcelField(value = "创建时间", dateFormat = "yyyy/MM/dd")
     private Date createTime;
+
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    @Override
+    public String toString() {
+        return "ExcelKitUserDTO{" +
+                "username='" + username + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+
 
 }

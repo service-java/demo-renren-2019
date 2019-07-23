@@ -35,7 +35,7 @@ public class SysUserEntity implements Serializable  {
 	 * 用户ID
 	 */
 	@TableId
-	private Long userId;
+    private Long userId;
 
 	/**
 	 * 用户名
@@ -52,7 +52,7 @@ public class SysUserEntity implements Serializable  {
 	/**
 	 * 盐
 	 */
-	private String salt;
+    private String salt;
 
 	/**
 	 * 邮箱
@@ -69,7 +69,7 @@ public class SysUserEntity implements Serializable  {
 	/**
 	 * 状态  0：禁用   1：正常
 	 */
-	private Integer status;
+    private Integer status;
 
 	/**
 	 * 角色ID列表
@@ -80,7 +80,8 @@ public class SysUserEntity implements Serializable  {
 	/**
 	 * 创建者ID
 	 */
-	private Long createUserId;
+
+    private Long createUserId;
 
 	/**
 	 * 创建时间

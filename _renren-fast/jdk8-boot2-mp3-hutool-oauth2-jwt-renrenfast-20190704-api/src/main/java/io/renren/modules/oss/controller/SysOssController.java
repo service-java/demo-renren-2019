@@ -9,11 +9,11 @@
 package io.renren.modules.oss.controller;
 
 import com.google.gson.Gson;
+import io.renren.common.base.R;
 import io.renren.common.base.exception.RRException;
 import io.renren.common.constant.ConfigConstants;
 import io.renren.common.constant.Constants;
 import io.renren.common.util.PageUtils;
-import io.renren.common.base.R;
 import io.renren.common.util.file.FileUploadUtils;
 import io.renren.common.validator.ValidatorUtils;
 import io.renren.common.validator.group.AliyunGroup;
@@ -144,8 +144,7 @@ public class SysOssController {
 
         //保存文件信息
         SysOssEntity ossEntity = new SysOssEntity();
-        ossEntity.setUrl(fileName);
-        ossEntity.setCreateDate(new Date());
+        ossEntity.setUrl(fileName).setCreateDate(new Date());
         sysOssService.save(ossEntity);
         return R.ok();
     }
