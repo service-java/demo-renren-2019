@@ -38,14 +38,13 @@ public class EasyExcelListener extends AnalysisEventListener {
      * 根据业务自行实现该方法
      */
     private void doSomething() {
+
     }
 
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
-        /*
-            datas.clear();
-            解析结束销毁不用的资源
-         */
+        // 解析结束销毁不用的资源
+        datas.clear();
     }
 
     public List<Object> getDatas() {

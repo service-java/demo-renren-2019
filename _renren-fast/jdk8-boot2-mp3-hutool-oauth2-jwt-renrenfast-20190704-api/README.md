@@ -72,9 +72,12 @@ lombok.accessors.chain=true
 - 报表导入导出
 
 ```
-1. 一行代码完成 JAVA 的 EXCEL 读写——EasyExcel 的方法封装
-https://juejin.im/post/5ba320546fb9a05d0b14304b
+// 测试地址
+http://localhost:8080/renren-fast/common/easyexcel/import/user
+http://localhost:8080/renren-fast/common/easyexcel/export/user
 
+// 一行代码完成 JAVA 的 EXCEL 读写——EasyExcel 的方法封装
+https://juejin.im/post/5ba320546fb9a05d0b14304b
 ```
 
 

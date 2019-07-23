@@ -23,13 +23,19 @@
 <body>
 
 <div class="form form-inline p-5">
-    <input id="filePathPic" name="filePath" class="form-control" style="width: 200px;" type="file">
-    <button class="btn btn-primary" id="btn_upload_pic">提交</button>
+    <div class="form-group">
+        <label>图片导入</label>
+        <input id="filePathPic" name="filePath" class="form-control" style="width: 200px;" type="file" />
+        <button class="btn btn-primary" id="btn_upload_pic">提交</button>
+    </div>
 </div>
 
 <div class="form form-inline p-5">
-    <input id="filePathXls" name="filePath" class="form-control" style="width: 200px;" type="file">
-    <button class="btn btn-primary" id="btn_upload_xls">提交</button>
+    <div class="from-group">
+        <label>xls导入</label>
+        <input id="filePathXls" name="filePath" class="form-control" style="width: 200px;" type="file" />
+        <button class="btn btn-primary" id="btn_upload_xls">提交</button>
+    </div>
 </div>
 
 <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -75,7 +81,7 @@
         formData.append('file', $('#filePathXls')[0].files[0]);
 
         $.ajax({
-          url: "http://localhost:8080/renren-fast/common/importXls/user",
+          url: "http://localhost:8080/renren-fast/common/easyexcel/import/user",
           type: 'post',
           cache: false,
           data: formData,

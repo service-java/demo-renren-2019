@@ -141,7 +141,9 @@ public class ExcelUtils {
         if (filename == null || (!filename.toLowerCase().endsWith(".xls") && !filename.toLowerCase().endsWith(".xlsx"))) {
             throw new RRException("文件格式错误！");
         }
+
         InputStream inputStream;
+
         try {
             inputStream = new BufferedInputStream(excel.getInputStream());
             return new ExcelReader(inputStream, null, excelListener, false);

@@ -8,6 +8,7 @@ import com.wuwenze.poi.ExcelKit;
 import io.renren.common.base.R;
 import io.renren.common.base.exception.RRException;
 import io.renren.common.util.BeanUtils;
+import io.renren.common.util.excel.EasyExcelListener;
 import io.renren.common.util.excel.ExcelUtils;
 import io.renren.common.util.file.FileUtils;
 import io.renren.config.properties.LocalStorageProperties;
@@ -21,10 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -78,8 +76,9 @@ public class CommonController {
      * 生成 Excel导入模板
      */
     @ApiOperation(value = "Excel模板下载", httpMethod = "GET")
-    @RequestMapping("/excelTemplate")
+    @RequestMapping("/excelkit/export/template")
     public void excelTemplate(HttpServletResponse response) {
+
         // 构建数据
         List<SysUserEntity> list = new ArrayList<>();
         IntStream.range(0, 20).forEach(i -> {
@@ -98,7 +97,7 @@ public class CommonController {
      * 导出 Excel
      */
     @ApiOperation(value = "导出用户EXCEL", httpMethod = "GET")
-    @RequestMapping("/exportXls/user")
+    @RequestMapping("/excelkit/export/user")
     public void exportUser(HttpServletResponse response) {
         try {
             List<SysUserEntity> list = sysUserService.list();
@@ -119,7 +118,8 @@ public class CommonController {
 
 //        EasyExcelListener excelListener = new EasyExcelListener();
 
-        InputStream inputStream = new BufferedInputStream(new FileInputStream(new File("src/main/resources/excelTemplate/user.xlsx")));
+        FileInputStream fileInputStream = new FileInputStream(new File("src/main/resources/excelTemplate/user.xlsx"));
+        InputStream inputStream = new BufferedInputStream(fileInputStream);
         List<Object> data = EasyExcelFactory.read(inputStream, new Sheet(1, 0));
         inputStream.close();
         Console.log(data);
@@ -128,21 +128,42 @@ public class CommonController {
 
 
     @ApiOperation(value = "导入用户", httpMethod = "POST")
-    @PostMapping("/importXls/user")
+    @PostMapping("/easyexcel/import/user")
+    @ResponseBody
     public R importUser(@RequestParam("file") MultipartFile file) throws Exception {
         if (file.isEmpty()) {
             throw new RRException("上传文件不能为空");
         }
 
-        List<Object> data = ExcelUtils.readExcel(file, new BaseRowModel());
+        // List<Object> data = ExcelUtils.readExcel(file, new ExcelUserDTO());
+
+        InputStream inputStream = file.getInputStream();
+        InputStream bufferedInputStream = new BufferedInputStream(inputStream);
+        EasyExcelListener excelListener = new EasyExcelListener();
+        List<Object> data = null;
+
+        // 小于1000行数据
+//        data = EasyExcelFactory.read(inputStream, new Sheet(1, 0));
+//        Console.log(data);
+
+//        data = EasyExcelFactory.read(bufferedInputStream, new Sheet(2, 1, ExcelUserDTO.class));
+//        Console.log(data);
+
+        // 大于1000行数据
+//        EasyExcelFactory.readBySax(bufferedInputStream, new Sheet(1, 0), excelListener);
+//        data = excelListener.getDatas();
+//        Console.log(data);
+
+        EasyExcelFactory.readBySax(bufferedInputStream, new Sheet(2, 1, ExcelUserDTO.class), excelListener);
+        data = excelListener.getDatas();
         Console.log(data);
 
-        return R.ok();
+        return R.ok().put("data", data);
     }
 
 
     @ApiOperation(value = "下载", httpMethod = "GET")
-    @GetMapping("/exportXls/local")
+    @GetMapping("/easyexcel/export/user")
     public void importUser(HttpServletResponse response, HttpServletRequest request) throws Exception {
 
         List<SysUserEntity> list = sysUserService.list();
