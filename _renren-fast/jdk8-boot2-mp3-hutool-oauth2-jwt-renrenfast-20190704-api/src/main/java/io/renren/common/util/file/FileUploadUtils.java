@@ -126,6 +126,7 @@ public class FileUploadUtils {
     private static final String getPathFileName(String uploadDir, String fileName) throws IOException {
         int dirLastIndex = uploadDir.lastIndexOf("/") + 1;
         String currentDir = StringUtils.substring(uploadDir, dirLastIndex);
+        // eg. /upload/2019/07/23/ca427d3cb7cdedf57e0eb72c524b83fb.jpg
         String pathFileName = "/" + currentDir + "/" + fileName;
         return pathFileName;
     }

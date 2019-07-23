@@ -125,11 +125,10 @@ public class SysOssController {
 		return R.ok().put("url", url);
 	}
 
-    /**
-     * 上传文件
-     */
+
     @ApiOperation("本地上传")
-    @PostMapping("/localUpload")
+    @PostMapping("/upload/local")
+    @ResponseBody
     @RequiresPermissions("sys:oss:all")
     public R localUpload(@RequestParam("file") MultipartFile file) throws Exception {
         if (file.isEmpty()) {
@@ -142,11 +141,12 @@ public class SysOssController {
         // 上传并返回新文件名称
         String fileName = FileUploadUtils.upload(filePath, file);
 
-        //保存文件信息
+        // 保存文件信息
         SysOssEntity ossEntity = new SysOssEntity();
         ossEntity.setUrl(fileName).setCreateDate(new Date());
         sysOssService.save(ossEntity);
-        return R.ok();
+
+        return R.ok().put("data", fileName);
     }
 
 

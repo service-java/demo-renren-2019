@@ -85,6 +85,7 @@ public class LocalStorageProperties {
      * 获取上传路径
      */
     public static String getUploadPath() {
+        // 'upload' 会被lastIndexOf截取 用于拼接路径(相当于一个常量， 迷?)
         return getProfile() + "/upload";
     }
 }
