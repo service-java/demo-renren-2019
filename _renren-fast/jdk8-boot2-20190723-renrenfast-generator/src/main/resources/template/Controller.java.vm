@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ${package}.${moduleName}.entity.${className}Entity;
 import ${package}.${moduleName}.service.${className}Service;
-import ${mainPath}.common.utils.PageUtils;
-import ${mainPath}.common.utils.R;
+import ${mainPath}.common.util.PageUtils;
+import ${mainPath}.common.util.Base.R;
 
 
 
