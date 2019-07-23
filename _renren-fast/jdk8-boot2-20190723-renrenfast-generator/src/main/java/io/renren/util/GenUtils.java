@@ -1,5 +1,6 @@
-package io.renren.utils;
+package io.renren.util;
 
+import io.renren.base.exception.RRException;
 import io.renren.entity.ColumnEntity;
 import io.renren.entity.TableEntity;
 import org.apache.commons.configuration.Configuration;

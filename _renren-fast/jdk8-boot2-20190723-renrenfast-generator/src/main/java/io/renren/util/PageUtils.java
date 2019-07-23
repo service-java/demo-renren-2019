@@ -1,11 +1,11 @@
-package io.renren.utils;
+package io.renren.util;
 
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * 分页工具类
- * 
+ *
  * @author chenshun
  * @email sunlightcs@gmail.com
  * @date 2016年11月4日 下午12:59:00
@@ -22,7 +22,7 @@ public class PageUtils implements Serializable {
 	private int currPage;
 	//列表数据
 	private List<?> list;
-	
+
 	/**
 	 * 分页
 	 * @param list        列表数据
@@ -77,5 +77,5 @@ public class PageUtils implements Serializable {
 	public void setList(List<?> list) {
 		this.list = list;
 	}
-	
+
 }

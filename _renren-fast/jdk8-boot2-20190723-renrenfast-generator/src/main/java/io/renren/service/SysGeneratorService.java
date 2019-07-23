@@ -11,9 +11,9 @@ package io.renren.service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import io.renren.dao.GeneratorDao;
-import io.renren.utils.GenUtils;
-import io.renren.utils.PageUtils;
-import io.renren.utils.Query;
+import io.renren.util.GenUtils;
+import io.renren.util.PageUtils;
+import io.renren.base.Query;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,7 @@ import java.util.zip.ZipOutputStream;
 
 /**
  * 代码生成器
- * 
+ *
  * @author Mark sunlightcs@gmail.com
  */
 @Service

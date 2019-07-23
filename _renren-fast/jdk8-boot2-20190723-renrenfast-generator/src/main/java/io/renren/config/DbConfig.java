@@ -9,7 +9,7 @@
 package io.renren.config;
 
 import io.renren.dao.*;
-import io.renren.utils.RRException;
+import io.renren.base.exception.RRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
