@@ -51,7 +51,6 @@ public class CommonController {
             String realFileName = System.currentTimeMillis() + fileName.substring(fileName.indexOf("_") + 1);
             String filePath = LocalStorageProperties.getProfile() + fileName;
 
-
             response.setCharacterEncoding("utf-8");
             response.setContentType("multipart/form-data");
             response.setHeader("Content-Disposition",

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.modules.biz.dao.BizViolationDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.modules.biz.entity.BizViolationEntity" id="bizViolationMap">
+        <result property="violationId" column="violation_id"/>
+        <result property="treatMethod" column="treat_method"/>
+        <result property="description" column="description"/>
+        <result property="violationDate" column="violation_date"/>
+        <result property="isShow" column="is_show"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
+    </resultMap>
+
+
+</mapper>
