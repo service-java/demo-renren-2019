@@ -57,6 +57,13 @@ lombok.accessors.chain=true
 
 5. 禁用devtools, 用jRebel更新重载
 
+```
+// 遇到 xml修改 热更新失败
+下载插件 
+https://github.com/SweetInk/jrebel-mybatisplus
+-Drebel.plugins=d:\jrebel\plugin\jr-mybatisplus.jar
+```
+
 
 # TODO
 

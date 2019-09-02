@@ -10,7 +10,7 @@ package io.renren.modules.sys.controller;
 
 import io.renren.common.base.R;
 import io.renren.modules.sys.entity.SysUserEntity;
-import io.renren.modules.sys.controller.query.SysLoginFormQuery;
+import io.renren.modules.sys.model.query.SysLoginFormQuery;
 import io.renren.modules.sys.service.SysCaptchaService;
 import io.renren.modules.sys.service.SysUserService;
 import io.renren.modules.sys.service.SysUserTokenService;

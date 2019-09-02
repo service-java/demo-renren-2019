@@ -17,7 +17,7 @@ import io.renren.common.validator.ValidatorUtils;
 import io.renren.common.validator.group.AddGroup;
 import io.renren.common.validator.group.UpdateGroup;
 import io.renren.modules.sys.entity.SysUserEntity;
-import io.renren.modules.sys.controller.query.PasswordFormQuery;
+import io.renren.modules.sys.model.query.PasswordFormQuery;
 import io.renren.modules.sys.service.SysUserRoleService;
 import io.renren.modules.sys.service.SysUserService;
 import io.swagger.annotations.Api;

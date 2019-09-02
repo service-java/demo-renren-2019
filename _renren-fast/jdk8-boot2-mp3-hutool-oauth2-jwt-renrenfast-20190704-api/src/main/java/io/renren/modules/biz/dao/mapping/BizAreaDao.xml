@@ -16,4 +16,9 @@
     </resultMap>
 
 
+    <select id="listArea" resultMap="bizAreaMap">
+        SELECT * FROM biz_area WHERE is_delete = 0 AND code != NULL
+    </select>
+
+
 </mapper>

@@ -5,6 +5,10 @@ import io.renren.common.base.exception.RRException;
 import io.renren.common.util.file.FileUploadUtils;
 import io.renren.common.util.file.FileUtils;
 import io.renren.config.properties.LocalStorageProperties;
+import io.renren.modules.app.service.UserService;
+import io.renren.modules.biz.dao.BizAreaDao;
+import io.renren.modules.biz.entity.BizAreaEntity;
+import io.renren.modules.biz.service.BizAreaService;
 import io.renren.modules.oss.entity.SysOssEntity;
 import io.renren.modules.oss.service.SysOssService;
 import io.swagger.annotations.Api;
@@ -14,16 +18,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 示例请求处理
@@ -40,6 +43,9 @@ public class DemoController {
 
     @Autowired
     private SysOssService sysOssService;
+
+    @Autowired
+    private BizAreaService bizAreaService;
 
     @ApiOperation(value = "公共下载", httpMethod = "GET")
     @RequestMapping("/download")
@@ -110,6 +116,16 @@ public class DemoController {
         String fileType = tika.detect(file.getInputStream());
 
         return R.ok().put("data", fileType);
+    }
+
+
+    @ApiOperation("测试一番")
+    @GetMapping("/getDemo")
+    @ResponseBody
+    public R getAllArea() {
+        List<BizAreaEntity> area = bizAreaService.listArea();
+
+        return R.ok().put("data", area);
     }
 
 }

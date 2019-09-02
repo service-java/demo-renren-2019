@@ -5,6 +5,8 @@ import io.renren.common.util.PageUtils;
 import io.renren.modules.biz.dao.BizAreaDao;
 import io.renren.modules.biz.entity.BizAreaEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -28,4 +30,7 @@ public class BizAreaService extends ServiceImpl<BizAreaDao, BizAreaEntity> {
         return new PageUtils(page);
     }
 
+    public List<BizAreaEntity> listArea() {
+        return baseMapper.listArea();
+    }
 }

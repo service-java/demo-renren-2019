@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package io.renren.modules.sys.controller.query;
+package io.renren.modules.sys.model.query;
 
 import lombok.Data;
 
@@ -21,6 +21,5 @@ public class SysLoginFormQuery {
     private String password;
     private String captcha;
     private String uuid;
-
 
 }
