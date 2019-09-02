@@ -9,6 +9,7 @@ import io.renren.modules.oss.entity.SysOssEntity;
 import io.renren.modules.oss.service.SysOssService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.tika.Tika;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Date;
 
 /**
@@ -87,5 +89,27 @@ public class CommonController {
         return R.ok().put("data", fileName);
     }
 
+
+    /**
+     * Tika判断文件类型（可正确判断） https://blog.csdn.net/bingguang1993/article/details/86692332
+     * 常用文件的mime和mimetype的对应关系 https://blog.csdn.net/bingguang1993/article/details/86687748
+     *
+     * @param file
+     * @return
+     * @throws IOException
+     */
+    @ApiOperation("判断文件类型")
+    @PostMapping("/detectFileType")
+    @ResponseBody
+    public R getFileType(@RequestParam("file") MultipartFile file) throws IOException {
+        if (file.isEmpty()) {
+            throw new RRException("上传文件不能为空");
+        }
+
+        Tika tika = new Tika();
+        String fileType = tika.detect(file.getInputStream());
+
+        return R.ok().put("data", fileType);
+    }
 
 }
