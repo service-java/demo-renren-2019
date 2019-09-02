@@ -1,4 +1,4 @@
-package io.renren.modules.common.controller;
+package io.renren.modules.demo.controller;
 
 import cn.hutool.core.lang.Console;
 import com.alibaba.excel.EasyExcelFactory;
@@ -26,14 +26,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 通用请求处理
+ * 示例请求处理
  *
  * @author ruoyi
  */
-@Api(tags = "通用接口")
+@Api(tags = "示例接口")
 @Controller
-@RequestMapping("/common/easyexcel")
-public class CommonEasyExcelController {
+@RequestMapping("/demo/easyexcel")
+public class DemoEasyExcelController {
     @Autowired
     private SysUserService sysUserService;
 

@@ -1,4 +1,4 @@
-package io.renren.modules.common.controller;
+package io.renren.modules.demo.controller;
 
 import cn.hutool.core.lang.Console;
 import com.wuwenze.poi.ExcelKit;
@@ -25,14 +25,14 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 /**
- * 通用请求处理
+ * 示例请求处理
  *
  * @author ruoyi
  */
-@Api(tags = "通用接口")
+@Api(tags = "示例接口")
 @Controller
-@RequestMapping("/common/excelkit")
-public class CommonExcelKitController {
+@RequestMapping("/demo/excelkit")
+public class DemoExcelKitController {
     @Autowired
     private SysUserService sysUserService;
 
