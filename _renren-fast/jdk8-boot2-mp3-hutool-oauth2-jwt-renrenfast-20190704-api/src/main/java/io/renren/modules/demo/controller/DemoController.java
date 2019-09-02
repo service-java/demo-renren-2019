@@ -1,4 +1,4 @@
-package io.renren.modules.common.controller;
+package io.renren.modules.demo.controller;
 
 import io.renren.common.base.R;
 import io.renren.common.base.exception.RRException;
@@ -33,9 +33,9 @@ import java.util.Date;
 @Api(tags = "通用接口")
 @Controller
 @RequestMapping("/common")
-public class CommonController {
+public class DemoController {
 
-    private static final Logger log = LoggerFactory.getLogger(CommonController.class);
+    private static final Logger log = LoggerFactory.getLogger(DemoController.class);
 
 
     @Autowired

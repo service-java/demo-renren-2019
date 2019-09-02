@@ -1,4 +1,4 @@
-package io.renren.modules.common.controller;
+package io.renren.modules.demo.controller;
 
 import cn.hutool.core.lang.Console;
 import com.alibaba.excel.EasyExcelFactory;
@@ -33,7 +33,7 @@ import java.util.List;
 @Api(tags = "通用接口")
 @Controller
 @RequestMapping("/common/easyexcel")
-public class CommonEasyExcelController {
+public class DemoEasyExcelController {
     @Autowired
     private SysUserService sysUserService;
 
