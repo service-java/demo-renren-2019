@@ -19,15 +19,14 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.commons.io.IOUtils;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import sun.misc.BASE64Encoder;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 /**
@@ -61,6 +60,36 @@ public class SysLoginController extends AbstractController {
 		ImageIO.write(image, "jpg", out);
 		IOUtils.closeQuietly(out);
 	}
+
+    /**
+     * 验证码
+     */
+    @GetMapping("captcha")
+    @ApiOperation("获取验证码")
+    @ResponseBody
+    public R captchaBase64(HttpServletResponse response, String uuid)throws IOException {
+        response.setHeader("Cache-Control", "no-store, no-cache");
+        response.setContentType("image/jpeg");
+
+        //获取图片验证码
+        BufferedImage image = sysCaptchaService.getCaptcha(uuid);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        // 写入输出流
+        ImageIO.write(image, "jpg", outputStream);
+        // 转成base64
+        BASE64Encoder encoder = new BASE64Encoder();
+        String base64 = encoder.encode(outputStream.toByteArray());
+        String captchaBase64 = "data:image/jpeg;base64," + base64.replaceAll("\r\n", "");
+
+        // 及时关闭
+        if (outputStream != null) {
+            outputStream.close();
+        }
+//		IOUtils.closeQuietly(outputStream);
+
+        return R.ok().put("data", captchaBase64);
+    }
+
 
 	/**
 	 * 登录

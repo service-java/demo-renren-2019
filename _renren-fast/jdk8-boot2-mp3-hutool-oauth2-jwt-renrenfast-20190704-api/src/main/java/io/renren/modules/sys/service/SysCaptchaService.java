@@ -52,14 +52,14 @@ public class SysCaptchaService extends ServiceImpl<SysCaptchaDao, SysCaptchaEnti
 
     public boolean validate(String uuid, String code) {
         SysCaptchaEntity captchaEntity = this.getOne(new QueryWrapper<SysCaptchaEntity>().eq("uuid", uuid));
-        if(captchaEntity == null){
+        if (captchaEntity == null) {
             return false;
         }
 
         // 删除验证码
         this.removeById(uuid);
 
-        if(captchaEntity.getCode().equalsIgnoreCase(code) && captchaEntity.getExpireTime().getTime() >= System.currentTimeMillis()){
+        if (captchaEntity.getCode().equalsIgnoreCase(code) && captchaEntity.getExpireTime().getTime() >= System.currentTimeMillis()) {
             return true;
         }
 
