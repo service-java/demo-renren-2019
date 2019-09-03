@@ -8,6 +8,7 @@
 
 package io.renren.common.base;
 
+import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.renren.common.constant.Constants;
@@ -33,10 +34,12 @@ public class Query<T> {
         long limit = 10;
 
         if(params.get(Constants.PAGE) != null){
-            curPage = Long.parseLong((String)params.get(Constants.PAGE));
+            // 可能会报 int -> String的错误
+            // curPage = Long.parseLong((String)params.get(Constants.PAGE));
+            curPage = Convert.toLong(params.get(Constants.PAGE));
         }
         if(params.get(Constants.LIMIT) != null){
-            limit = Long.parseLong((String)params.get(Constants.LIMIT));
+            limit = Convert.toLong(params.get(Constants.LIMIT));
         }
 
         //分页对象

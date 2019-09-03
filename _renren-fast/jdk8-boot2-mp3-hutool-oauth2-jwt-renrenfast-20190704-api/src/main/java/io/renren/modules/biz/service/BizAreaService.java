@@ -31,6 +31,6 @@ public class BizAreaService extends ServiceImpl<BizAreaDao, BizAreaEntity> {
     }
 
     public List<BizAreaEntity> listArea() {
-        return baseMapper.listArea();
+        return baseMapper.selectArea();
     }
 }

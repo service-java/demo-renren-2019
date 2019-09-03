@@ -1,13 +1,20 @@
 package io.renren.modules.demo.controller;
 
+import cn.hutool.core.lang.Console;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import io.renren.common.base.Query;
 import io.renren.common.base.R;
 import io.renren.common.base.exception.RRException;
+import io.renren.common.util.MapUtils;
+import io.renren.common.util.PageUtils;
 import io.renren.common.util.file.FileUploadUtils;
 import io.renren.common.util.file.FileUtils;
 import io.renren.config.properties.LocalStorageProperties;
 import io.renren.modules.app.service.UserService;
 import io.renren.modules.biz.dao.BizAreaDao;
 import io.renren.modules.biz.entity.BizAreaEntity;
+import io.renren.modules.biz.entity.BizViolationEntity;
 import io.renren.modules.biz.service.BizAreaService;
 import io.renren.modules.oss.entity.SysOssEntity;
 import io.renren.modules.oss.service.SysOssService;
@@ -24,6 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -120,12 +128,50 @@ public class DemoController {
 
 
     @ApiOperation("测试一番")
-    @GetMapping("/getDemo")
+    @PostMapping("/test")
     @ResponseBody
     public R getAllArea() {
-        List<BizAreaEntity> area = bizAreaService.listArea();
+        BizAreaDao baseMapper = bizAreaService.getBaseMapper();
 
-        return R.ok().put("data", area);
+//        List<BizAreaEntity> area = bizAreaService.listArea();
+//        Console.log(area);
+
+//        area = baseMapper.selectList(new QueryWrapper<BizAreaEntity>().eq("is_delete", 0));
+//        Console.log(area);
+
+          // 删除演示
+//        baseMapper.delete(new QueryWrapper());
+//        baseMapper.deleteByMap(new MapUtils().put("id", 0));
+//        baseMapper.deleteById(0);
+
+          // 批量删除
+//        ArrayList idLists = new ArrayList<>();
+//        idLists.add(1);
+//        idLists.add(2);
+//        // idLists.add("asd");
+//        baseMapper.deleteBatchIds(idLists);
+
+
+        // 插入测试
+//        BizAreaEntity bizAreaEntity = new BizAreaEntity();
+//        bizAreaEntity.setGmtCreate(new Date()).setGmtModified(new Date());
+//        bizAreaEntity.setName("hhhhhhh");
+//        int insert = baseMapper.insert(bizAreaEntity);
+//        Console.log(insert);
+//        // --> 1
+
+        // 查询测试
+//        List<BizAreaEntity> list = baseMapper.selectList(null);
+//        Console.log(list);
+
+        // lambda查询
+        MapUtils query = new MapUtils().put("page", 1).put("limit", 10);
+        IPage<BizAreaEntity> page = bizAreaService.page(
+            new Query<BizAreaEntity>().getPage(query),
+            new QueryWrapper<BizAreaEntity>().lambda().eq(BizAreaEntity::getIsDelete, 0)
+        );
+
+        return R.ok().put("data", new PageUtils(page));
     }
 
 }

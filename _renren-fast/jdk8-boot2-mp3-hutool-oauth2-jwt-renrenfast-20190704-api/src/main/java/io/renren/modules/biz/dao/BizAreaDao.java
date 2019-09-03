@@ -15,5 +15,5 @@ import java.util.List;
  */
 @Mapper
 public interface BizAreaDao extends BaseMapper<BizAreaEntity> {
-    List<BizAreaEntity> listArea();
+    List<BizAreaEntity> selectArea();
 }

@@ -64,6 +64,8 @@ https://github.com/SweetInk/jrebel-mybatisplus
 -Drebel.plugins=d:\jrebel\plugin\jr-mybatisplus.jar
 ```
 
+6. demo+biz目录下的代码是瞎写的，用之前一定要删了这两个模块
+
 
 # TODO
 

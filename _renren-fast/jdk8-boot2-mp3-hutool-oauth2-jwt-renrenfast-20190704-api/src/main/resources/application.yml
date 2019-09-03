@@ -96,6 +96,6 @@ renren:
     copyrightYear: 2019
     # 文件路径
     # 示例（ Windows配置D:/renren/uploadPath，Linux配置 /home/renren/uploadPath）
-    profile: D:/renren/uploadPath
+    profile: D:/renren
     # 获取ip地址开关
     addressEnabled: true

@@ -47,3 +47,18 @@ spring:
 #      url: jdbc:postgresql://localhost:5432/renren_security
 #      username: renren
 #      password: 123456
+
+
+
+renren:
+  # APP模块，是通过jwt认证的，如果要使用APP模块，则需要修改【加密秘钥】
+  jwt:
+    # 加密秘钥
+    secret: f4e2e52034348f86b67cde581c0f9eb5[www.renren.io]
+    # token有效时长，7天，单位秒
+    expire: 604800
+  # 本地文件上传下载配置
+  storage:
+    # 文件路径
+    # 示例（ Windows配置D:/renren/upload，Linux配置 /home/renren/uploadPath）
+    profile: /opt/renren
