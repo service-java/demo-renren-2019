@@ -168,7 +168,10 @@ public class DemoController {
         MapUtils query = new MapUtils().put("page", 1).put("limit", 10);
         IPage<BizAreaEntity> page = bizAreaService.page(
             new Query<BizAreaEntity>().getPage(query),
-            new QueryWrapper<BizAreaEntity>().lambda().eq(BizAreaEntity::getIsDelete, 0)
+            new QueryWrapper<BizAreaEntity>().lambda()
+                    .eq(BizAreaEntity::getIsDelete, 0)
+                    .or().eq(BizAreaEntity::getCode, 0)
+                    .and(wrapper -> wrapper.like(BizAreaEntity::getName, ""))
         );
 
         return R.ok().put("data", new PageUtils(page));

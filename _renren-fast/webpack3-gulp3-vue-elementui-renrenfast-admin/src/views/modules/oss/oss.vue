@@ -98,7 +98,7 @@
         if (url.indexOf('http') === 0) {
           return url
         }
-        return `${window.SITE_CONFIG['baseUrl']}/common/download?fileName=${url}&delete=false`
+        return `${window.SITE_CONFIG['baseUrl']}/demo/download?fileName=${url}&delete=false`
       },
       // 获取数据列表
       getDataList () {
