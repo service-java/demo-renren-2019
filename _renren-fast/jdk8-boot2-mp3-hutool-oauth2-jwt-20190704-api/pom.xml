@@ -37,7 +37,7 @@
 		<qcloud.cos.version>4.4</qcloud.cos.version>
         <poi.version>3.17</poi.version>
         <excelkit.version>2.0.72</excelkit.version>
-        <easyexcel.version>2.0.0-beta3</easyexcel.version>
+        <easyexcel.version>2.0.5</easyexcel.version>
 		<swagger.version>2.7.0</swagger.version>
 		<joda.time.version>2.9.9</joda.time.version>
 		<fastjson.version>1.2.47</fastjson.version>

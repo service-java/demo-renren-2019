@@ -1,6 +1,7 @@
 package io.renren.modules.demo.controller;
 
 import cn.hutool.core.lang.Console;
+import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.EasyExcelFactory;
 import com.alibaba.excel.metadata.Sheet;
 import io.renren.common.base.R;
@@ -8,6 +9,8 @@ import io.renren.common.base.exception.RRException;
 import io.renren.common.util.BeanUtils;
 import io.renren.common.util.excel.EasyExcelListener;
 import io.renren.common.util.excel.EasyExcelUtils;
+import io.renren.modules.demo.entity.dto.DemoUserExcelDTO;
+import io.renren.modules.demo.listener.DemoUserExcelListener;
 import io.renren.modules.sys.entity.SysUserEntity;
 import io.renren.modules.sys.model.dto.EasyExcelUserDTO;
 import io.renren.modules.sys.service.SysUserService;
@@ -73,6 +76,23 @@ public class DemoEasyExcelController {
     }
 
 
+    @ApiOperation(value = "easyexcel-导入用户-v2", httpMethod = "POST")
+    @PostMapping("/import/v2/user")
+    @ResponseBody
+    public R importV2EasyExcelUser(@RequestParam("file") MultipartFile file) throws Exception {
+        if (file.isEmpty()) {
+            throw new RRException("上传文件不能为空");
+        }
+
+        DemoUserExcelListener excelListener = new DemoUserExcelListener();
+        EasyExcel.read(file.getInputStream(), DemoUserExcelDTO.class, excelListener).sheet(0).doRead();
+        List<DemoUserExcelDTO> list = excelListener.getList();
+
+        return R.ok().put("data", list);
+    }
+
+
+
     @ApiOperation(value = "easyexcel-导出用户", httpMethod = "GET")
     @GetMapping("/export/user")
     public void exportEasyExcelUser(HttpServletResponse response, HttpServletRequest request) throws Exception {
@@ -109,6 +129,5 @@ public class DemoEasyExcelController {
         inputStream.close();
         Console.log(data);
     }
-
 
 }

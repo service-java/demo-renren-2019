@@ -8,6 +8,7 @@
 
 package io.renren.common.base.exception;
 
+import com.alibaba.excel.exception.ExcelAnalysisException;
 import io.renren.common.base.R;
 import org.apache.shiro.authz.AuthorizationException;
 import org.slf4j.Logger;
@@ -55,6 +56,12 @@ public class RRExceptionHandler {
 		logger.error(e.getMessage(), e);
 		return R.error("没有权限，请联系管理员授权");
 	}
+
+    @ExceptionHandler(ExcelAnalysisException.class)
+    public R handleExcelAnalysisException(ExcelAnalysisException e){
+        logger.error(e.getCause().getMessage(), e);
+        return R.error(e.getCause().getMessage());
+    }
 
 	@ExceptionHandler(Exception.class)
 	public R handleException(Exception e){
