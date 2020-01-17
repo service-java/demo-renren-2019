@@ -21,8 +21,8 @@ mvn clean package wagon:upload-single wagon:sshexec
 ```yml
 # mybatis
 mybatis-plus:
-  mapper-locations: classpath*:io/renren/modules/**/mapping/*.xml
-  typeAliasesPackage: io.renren.modules.*.entity
+  mapper-locations: classpath*:com/xyz/modules/**/mapping/*.xml
+  typeAliasesPackage: com.xyz.modules.*.entity
 ```
 
 ```xml

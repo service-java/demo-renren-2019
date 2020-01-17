@@ -5,7 +5,7 @@ server:
     max-threads: 1000
     min-spare-threads: 30
 
-  port: 8088
+  port: 8080
   connection-timeout: 5000ms
   servlet:
     # 写上前缀 多个系统则易于辨识
@@ -52,9 +52,9 @@ spring:
 #mybatis
 mybatis-plus:
   #  mapper-locations: classpath*:/mapper/**/*.xml
-  mapper-locations: classpath*:io/renren/modules/**/mapping/*.xml
+  mapper-locations: classpath*:com/xyz/modules/**/mapping/*.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: io.renren.modules.*.entity
+  typeAliasesPackage: com.xyz.modules.*.entity
   global-config:
     #数据库相关配置
     db-config:
