@@ -5,8 +5,7 @@
   "author": "daxiong.yang <daxiong.yang@qq.com>",
   "private": true,
   "scripts": {
-    "install": "npm install",
-    "install:yarn": "yarn install",
+    "install:tyarn": "tyarn install",
     "remove": "rimraf node_modules",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",

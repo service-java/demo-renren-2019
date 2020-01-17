@@ -45,11 +45,17 @@
 		<lombok.version>1.18.4</lombok.version>
 
 		<!--wagon plugin 配置-->
-		<service-path>/work/renren</service-path>
-		<pack-name>${project.artifactId}-${project.version}.jar</pack-name>
-		<remote-addr>192.168.1.10:22</remote-addr>
-		<remote-username>root</remote-username>
-		<remote-passwd>123456</remote-passwd>
+<!--		<service-path>/work/renren</service-path>-->
+<!--		<pack-name>${project.artifactId}-${project.version}.jar</pack-name>-->
+<!--		<remote-addr>192.168.1.10:22</remote-addr>-->
+<!--		<remote-username>root</remote-username>-->
+<!--		<remote-passwd>123456</remote-passwd>-->
+
+        <service-path>/opt/renren</service-path>
+        <pack-name>${project.artifactId}.jar</pack-name>
+        <remote-addr>129.204.193.178:22</remote-addr>
+        <remote-username>root</remote-username>
+        <remote-passwd>xxxxxxxxxxxxxxx</remote-passwd>
 	</properties>
 
 	<dependencies>
@@ -105,23 +111,23 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.version}</version>
 		</dependency>
-		 <!--oracle驱动-->
-		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>${oracle.version}</version>
-		</dependency>
-		 <!--mssql驱动-->
-		<dependency>
-			<groupId>com.microsoft.sqlserver</groupId>
-			<artifactId>sqljdbc4</artifactId>
-			<version>${mssql.version}</version>
-		</dependency>
-		 <!--postgresql驱动-->
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-		</dependency>
+<!--		 &lt;!&ndash;oracle驱动&ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>com.oracle</groupId>-->
+<!--			<artifactId>ojdbc6</artifactId>-->
+<!--			<version>${oracle.version}</version>-->
+<!--		</dependency>-->
+<!--		 &lt;!&ndash;mssql驱动&ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>com.microsoft.sqlserver</groupId>-->
+<!--			<artifactId>sqljdbc4</artifactId>-->
+<!--			<version>${mssql.version}</version>-->
+<!--		</dependency>-->
+<!--		 &lt;!&ndash;postgresql驱动&ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>org.postgresql</groupId>-->
+<!--			<artifactId>postgresql</artifactId>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
@@ -225,6 +231,7 @@
             <artifactId>ExcelKit</artifactId>
             <version>${excelkit.version}</version>
         </dependency>
+
         <!-- easyexcel -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -284,6 +291,7 @@
 				<version>2.8</version>
 			</extension>
 		</extensions>
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -311,7 +319,8 @@
 						<!-- Kill Old Process -->
 						<command>kill -9 `ps -ef |grep ${project.artifactId}.jar|grep -v "grep" |awk '{print $2}'`</command>
 						<!-- Restart jar package，write result into renren.log -->
-						<command><![CDATA[nohup java -jar ${service-path}/${pack-name} --spring.profiles.active=test > ${service-path}/renren.log 2>&1 & ]]></command>
+<!--					<command><![CDATA[nohup java -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=128m -Xms256m -Xmx256m -Xmn256m -Xss256k  -jar ${service-path}/${pack-name} &#45;&#45;spring.profiles.active=test > ${service-path}/renren.log 2>&1 & ]]></command>-->
+                        <command><![CDATA[nohup java -jar ${service-path}/${pack-name} --spring.profiles.active=prod > ${service-path}/renren.log 2>&1 & ]]></command>
 						<command><![CDATA[netstat -nptl]]></command>
 						<command><![CDATA[ps -ef | grep java | grep -v grep]]></command>
 					</commands>

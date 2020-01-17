@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 @Service("scheduleJobLogService")
-public class ScheduleJobLogService extends ServiceImpl<ScheduleJobLogDao, ScheduleJobLogEntity>  {
+public class ScheduleJobLogService extends ServiceImpl<ScheduleJobLogDao, ScheduleJobLogEntity>    {
 
 	public PageUtils queryPage(Map<String, Object> params) {
 		String jobId = (String)params.get("jobId");

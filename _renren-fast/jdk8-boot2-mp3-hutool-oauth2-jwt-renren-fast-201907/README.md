@@ -1,11 +1,16 @@
 # README
 
+# 使用
 
 - http://localhost:8080/renren-fast/swagger-ui.html#/
 - http://localhost:8080/renren-fast/druid/sql.html
 - 账号 admin/admin
 - 默认不开启redis
+- 部署
 
+```java
+mvn clean package wagon:upload-single wagon:sshexec
+```
 
 # 调整
 

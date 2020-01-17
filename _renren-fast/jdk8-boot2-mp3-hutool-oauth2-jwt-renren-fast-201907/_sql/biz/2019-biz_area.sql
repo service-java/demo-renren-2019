@@ -121,6 +121,3 @@ CREATE TABLE `biz_violation` (
   PRIMARY KEY (`violation_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- ----------------------------
--- Records of biz_violation
--- ----------------------------

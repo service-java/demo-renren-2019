@@ -136,6 +136,7 @@ CREATE TABLE `schedule_job_log` (
 
 
 -- 用户表
+DROP TABLE IF EXISTS
 CREATE TABLE `tb_user` (
   `user_id` bigint NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL COMMENT '用户名',
