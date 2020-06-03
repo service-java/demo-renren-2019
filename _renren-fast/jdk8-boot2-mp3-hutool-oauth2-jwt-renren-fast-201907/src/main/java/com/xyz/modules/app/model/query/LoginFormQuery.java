@@ -21,7 +21,7 @@ import javax.validation.constraints.NotBlank;
  */
 @Data
 @ApiModel(value = "登录表单")
-public class LoginForm {
+public class LoginFormQuery {
     @ApiModelProperty(value = "手机号")
     @NotBlank(message="手机号不能为空")
     private String mobile;

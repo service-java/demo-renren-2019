@@ -99,10 +99,6 @@ http://localhost:8080/renren-fast/demo/download?fileName=/upload/2019/07/23/9841
 
 ```
 // 测试地址
-http://localhost:8080/renren-fast/demo/excelkit/export/template
-http://localhost:8080/renren-fast/demo/excelkit/export/user
-http://localhost:8080/renren-fast/demo/excelkit/import/user
-
 http://localhost:8080/renren-fast/demo/easyexcel/export/user
 http://localhost:8080/renren-fast/demo/easyexcel/import/user
 
@@ -114,21 +110,15 @@ https://juejin.im/post/5ba320546fb9a05d0b14304b
 
 # 常见问题 @faq
 
+- springboot升级至2.2.4.RELEASE目前会启动报错
 - easyexcel
 
 ```
-1. bufferedInputStream包装一下
+bufferedInputStream包装一下
 ```
 
-- excelkit @deprecated
 
-```
-1. 实体注解貌似不配合lombok，很迷??
-2. 仅支持xlsx格式
-3. 功能局限(date格式转化??, 多sheet, 单元格合并??)
-```
-
-- 管理员创建的角色好像是不能共享??
+- 管理员创建的角色好像是不能共享?? --> 业务问题,待调整 @TODO
 
 ---
 
