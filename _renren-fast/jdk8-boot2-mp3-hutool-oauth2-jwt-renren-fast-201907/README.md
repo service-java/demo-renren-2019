@@ -1,22 +1,28 @@
 # README
 
-# 使用
+- 基于renren-fast改造
 
-- http://localhost:8080/renren-fast/swagger-ui.html#/
-- http://localhost:8080/renren-fast/druid/sql.html
+# 使用运行
+
 - 账号 admin/admin
-- 默认不开启redis
+- swagger地址   
+    - http://localhost:8080/renren-fast/swagger-ui.html#/
+- druid地址
+    - http://localhost:8080/renren-fast/druid/sql.html
+- 默认是不开启redis的
 - 部署
 
 ```java
 mvn clean package wagon:upload-single wagon:sshexec
 ```
 
-# 调整
+---
 
-在renren-fast的基础上作几个简单调整
+# 结构调整
 
-1. mapping.xml移出resources/mapper, 搬到dao附近
+> 在renren-fast的基础上作几个简单调整
+
+- mapping.xml移出resources/mapper, 搬到dao附近
 
 ```yml
 # mybatis
@@ -44,15 +50,14 @@ mybatis-plus:
 </build>
 ```
 
-2. lombok.config默认启用链式调用
+- 创建lombok.config默认启用链式调用
 
 ```properties
 lombok.accessors.chain=true
 ```
 
-3. 为了方便, service不写interface -> lazy
-
-4. pojo位置
+- 为了方便, service不写interface -> @lazy
+- pojo位置
 
 ```
 1. controller/query
@@ -60,7 +65,7 @@ lombok.accessors.chain=true
 3. model/common-pojo(vo+dto+query+...)
 ```
 
-5. 禁用devtools, 用jRebel更新重载
+- 禁用devtools, 用jRebel更新重载
 
 ```
 // 遇到 xml修改 热更新失败
@@ -69,8 +74,13 @@ https://github.com/SweetInk/jrebel-mybatisplus
 -Drebel.plugins=d:\jrebel\plugin\jr-mybatisplus.jar
 ```
 
-6. demo+biz目录下的代码是瞎写的，用之前一定要删了这两个模块
+- demo+biz目录下的代码是瞎写的!!! --> 用之前一定要删了这两个模块
 
+---
+
+# ChangeLog
+
+- 更新201907-202005期间renren-fast的修改
 
 # TODO
 
@@ -102,7 +112,7 @@ https://juejin.im/post/5ba320546fb9a05d0b14304b
 ```
 
 
-# 一些问题
+# 常见问题 @faq
 
 - easyexcel
 
@@ -119,3 +129,7 @@ https://juejin.im/post/5ba320546fb9a05d0b14304b
 ```
 
 - 管理员创建的角色好像是不能共享??
+
+---
+
+# 参考
