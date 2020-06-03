@@ -23,7 +23,7 @@ import java.util.Map;
  *
  * @author Mark sunlightcs@gmail.com
  */
-public class PageQuery<T> {
+public class PageQueryUtils<T> {
 
     public IPage<T> getPage(Map<String, Object> params) {
         return this.getPage(params, null, false);

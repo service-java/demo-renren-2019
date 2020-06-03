@@ -13,8 +13,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.gson.Gson;
 import com.xyz.common.base.exception.BaseException;
-import com.xyz.common.base.PageUtils;
-import com.xyz.common.base.PageQuery;
+import com.xyz.common.base.PageDataVO;
+import com.xyz.common.base.PageQueryUtils;
 import com.xyz.modules.sys.dao.SysConfigDao;
 import com.xyz.modules.sys.model.entity.SysConfigEntity;
 import com.xyz.modules.sys.redis.SysConfigRedis;
@@ -32,17 +32,17 @@ public class SysConfigService extends ServiceImpl<SysConfigDao, SysConfigEntity>
 	private SysConfigRedis sysConfigRedis;
 
 
-	public PageUtils queryPage(Map<String, Object> params) {
+	public PageDataVO queryPage(Map<String, Object> params) {
 		String paramKey = (String)params.get("paramKey");
 
 		IPage<SysConfigEntity> page = this.page(
-			new PageQuery<SysConfigEntity>().getPage(params),
+			new PageQueryUtils<SysConfigEntity>().getPage(params),
 			new QueryWrapper<SysConfigEntity>()
 				.like(StringUtils.isNotBlank(paramKey),"param_key", paramKey)
 				.eq("status", 1)
 		);
 
-		return new PageUtils(page);
+		return new PageDataVO(page);
 	}
 
 

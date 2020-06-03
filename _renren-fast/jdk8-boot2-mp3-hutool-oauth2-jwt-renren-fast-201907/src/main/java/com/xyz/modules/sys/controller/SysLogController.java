@@ -9,7 +9,7 @@
 package com.xyz.modules.sys.controller;
 
 import com.xyz.modules.sys.service.SysLogService;
-import com.xyz.common.base.PageUtils;
+import com.xyz.common.base.PageDataVO;
 import com.xyz.common.base.ResponseVO;
 import io.swagger.annotations.Api;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -42,7 +42,7 @@ public class SysLogController {
 	@GetMapping("/list")
 	@RequiresPermissions("sys:log:list")
 	public ResponseVO list(@RequestParam Map<String, Object> params){
-		PageUtils page = sysLogService.queryPage(params);
+		PageDataVO page = sysLogService.queryPage(params);
 
 		return ResponseVO.ok().put("page", page);
 	}

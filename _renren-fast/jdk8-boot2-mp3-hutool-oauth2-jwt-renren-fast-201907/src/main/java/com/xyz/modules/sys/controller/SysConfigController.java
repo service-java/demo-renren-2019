@@ -11,7 +11,7 @@ package com.xyz.modules.sys.controller;
 
 import com.xyz.modules.sys.service.SysConfigService;
 import com.xyz.common.aop.annotation.SysLog;
-import com.xyz.common.base.PageUtils;
+import com.xyz.common.base.PageDataVO;
 import com.xyz.common.base.ResponseVO;
 import com.xyz.common.validator.ValidatorUtils;
 import com.xyz.modules.sys.model.entity.SysConfigEntity;
@@ -40,7 +40,7 @@ public class SysConfigController extends AbstractController {
 	@GetMapping("/list")
 	@RequiresPermissions("sys:config:list")
 	public ResponseVO list(@RequestParam Map<String, Object> params){
-		PageUtils page = sysConfigService.queryPage(params);
+		PageDataVO page = sysConfigService.queryPage(params);
 
 		return ResponseVO.ok().put("page", page);
 	}

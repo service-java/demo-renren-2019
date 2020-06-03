@@ -1,7 +1,7 @@
 package com.xyz.modules.biz.service;
 
-import com.xyz.common.base.PageQuery;
-import com.xyz.common.base.PageUtils;
+import com.xyz.common.base.PageQueryUtils;
+import com.xyz.common.base.PageDataVO;
 import com.xyz.modules.biz.dao.BizAreaDao;
 import com.xyz.modules.biz.entity.BizAreaEntity;
 import org.springframework.stereotype.Service;
@@ -17,13 +17,13 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 public class BizAreaService extends ServiceImpl<BizAreaDao, BizAreaEntity> {
 
 
-    public PageUtils queryPage(Map<String, Object> params) {
+    public PageDataVO queryPage(Map<String, Object> params) {
         IPage<BizAreaEntity> page = this.page(
-                new PageQuery<BizAreaEntity>().getPage(params),
+                new PageQueryUtils<BizAreaEntity>().getPage(params),
                 new QueryWrapper<BizAreaEntity>()
         );
 
-        return new PageUtils(page);
+        return new PageDataVO(page);
     }
 
     public List<BizAreaEntity> listArea() {

@@ -6,7 +6,7 @@ import java.util.Map;
 import com.xyz.modules.biz.entity.BizComplaintEntity;
 import com.xyz.modules.biz.service.BizComplaintService;
 import com.xyz.common.base.ResponseVO;
-import com.xyz.common.base.PageUtils;
+import com.xyz.common.base.PageDataVO;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,7 +38,7 @@ public class BizComplaintController {
     @RequestMapping("/list")
     @RequiresPermissions("biz:complaint:list")
     public ResponseVO list(@RequestParam Map<String, Object> params){
-        PageUtils page = bizComplaintService.queryPage(params);
+        PageDataVO page = bizComplaintService.queryPage(params);
 
         return ResponseVO.ok().put("page", page);
     }

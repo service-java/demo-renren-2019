@@ -11,10 +11,10 @@ package com.xyz.modules.sys.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xyz.common.base.PageQuery;
+import com.xyz.common.base.PageQueryUtils;
 import com.xyz.common.base.exception.BaseException;
 import com.xyz.common.constant.Constants;
-import com.xyz.common.base.PageUtils;
+import com.xyz.common.base.PageDataVO;
 import com.xyz.modules.sys.dao.SysUserDao;
 import com.xyz.modules.sys.model.entity.SysUserEntity;
 import org.apache.commons.lang.RandomStringUtils;
@@ -43,19 +43,19 @@ public class SysUserService extends ServiceImpl<SysUserDao, SysUserEntity>  {
 	private SysRoleService sysRoleService;
 
 
-	public PageUtils pageUser(Map<String, Object> params) {
+	public PageDataVO pageUser(Map<String, Object> params) {
 		String username = (String) params.get("username");
 		Long createUserId = (Long) params.get("createUserId");
 
 		IPage<SysUserEntity> page = this.page(
-			new PageQuery<SysUserEntity>().getPage(params),
+			new PageQueryUtils<SysUserEntity>().getPage(params),
 			new QueryWrapper<SysUserEntity>()
                     .lambda()
 				.like(StringUtils.isNotBlank(username), SysUserEntity::getUsername, username)
 				.eq(createUserId != null, SysUserEntity::getCreateUserId, createUserId)
 		);
 
-		return new PageUtils(page);
+		return new PageDataVO(page);
 	}
 
 

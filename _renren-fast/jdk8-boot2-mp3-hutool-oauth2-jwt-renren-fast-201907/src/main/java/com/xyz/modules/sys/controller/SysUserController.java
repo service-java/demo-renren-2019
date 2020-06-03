@@ -13,7 +13,7 @@ import com.xyz.modules.sys.service.SysUserRoleService;
 import com.xyz.modules.sys.service.SysUserService;
 import com.xyz.common.aop.annotation.SysLog;
 import com.xyz.common.constant.Constants;
-import com.xyz.common.base.PageUtils;
+import com.xyz.common.base.PageDataVO;
 import com.xyz.common.base.ResponseVO;
 import com.xyz.common.validator.Assert;
 import com.xyz.common.validator.ValidatorUtils;
@@ -55,7 +55,7 @@ public class SysUserController extends AbstractController {
 			params.put("createUserId", getUserId());
 		}
 
-		PageUtils page = sysUserService.pageUser(params);
+		PageDataVO page = sysUserService.pageUser(params);
 		return ResponseVO.ok().put("page", page);
 	}
 
@@ -109,6 +109,7 @@ public class SysUserController extends AbstractController {
 	public ResponseVO save(@RequestBody SysUserEntity user){
 		ValidatorUtils.validateEntity(user, AddGroup.class);
 
+		// 更新创建管理员ID
 		user.setCreateUserId(getUserId());
 		sysUserService.saveUser(user);
 

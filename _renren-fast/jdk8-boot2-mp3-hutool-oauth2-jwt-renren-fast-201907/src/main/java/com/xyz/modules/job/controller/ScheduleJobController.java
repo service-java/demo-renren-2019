@@ -10,7 +10,7 @@ package com.xyz.modules.job.controller;
 
 import com.xyz.common.aop.annotation.SysLog;
 import com.xyz.modules.job.service.ScheduleJobService;
-import com.xyz.common.base.PageUtils;
+import com.xyz.common.base.PageDataVO;
 import com.xyz.common.base.ResponseVO;
 import com.xyz.common.validator.ValidatorUtils;
 import com.xyz.modules.job.entity.ScheduleJobEntity;
@@ -37,7 +37,7 @@ public class ScheduleJobController {
 	@RequestMapping("/list")
 	@RequiresPermissions("sys:schedule:list")
 	public ResponseVO list(@RequestParam Map<String, Object> params){
-		PageUtils page = scheduleJobService.queryPage(params);
+		PageDataVO page = scheduleJobService.queryPage(params);
 
 		return ResponseVO.ok().put("page", page);
 	}

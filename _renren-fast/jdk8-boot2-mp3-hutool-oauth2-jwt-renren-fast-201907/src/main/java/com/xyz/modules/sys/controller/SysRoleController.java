@@ -12,7 +12,7 @@ import com.xyz.modules.sys.service.SysRoleMenuService;
 import com.xyz.modules.sys.service.SysRoleService;
 import com.xyz.common.aop.annotation.SysLog;
 import com.xyz.common.constant.Constants;
-import com.xyz.common.base.PageUtils;
+import com.xyz.common.base.PageDataVO;
 import com.xyz.common.base.ResponseVO;
 import com.xyz.common.validator.ValidatorUtils;
 import com.xyz.modules.sys.model.entity.SysRoleEntity;
@@ -50,7 +50,7 @@ public class SysRoleController extends AbstractController {
 			params.put("createUserId", getUserId());
 		}
 
-		PageUtils page = sysRoleService.queryPage(params);
+		PageDataVO page = sysRoleService.queryPage(params);
 
 		return ResponseVO.ok().put("page", page);
 	}

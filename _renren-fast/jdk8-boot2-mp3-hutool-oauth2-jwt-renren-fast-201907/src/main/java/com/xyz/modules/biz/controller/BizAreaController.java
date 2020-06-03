@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 import com.xyz.common.base.ResponseVO;
-import com.xyz.common.base.PageUtils;
+import com.xyz.common.base.PageDataVO;
 import com.xyz.modules.biz.entity.BizAreaEntity;
 import com.xyz.modules.biz.service.BizAreaService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -35,7 +35,7 @@ public class BizAreaController {
     @RequestMapping("/list")
     @RequiresPermissions("biz:area:list")
     public ResponseVO list(@RequestParam Map<String, Object> params){
-        PageUtils page = bizAreaService.queryPage(params);
+        PageDataVO page = bizAreaService.queryPage(params);
 
         return ResponseVO.ok().put("page", page);
     }

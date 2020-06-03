@@ -12,8 +12,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xyz.common.base.exception.BaseException;
-import com.xyz.common.base.PageUtils;
-import com.xyz.common.base.PageQuery;
+import com.xyz.common.base.PageDataVO;
+import com.xyz.common.base.PageQueryUtils;
 import com.xyz.common.constant.Constants;
 import com.xyz.modules.sys.dao.SysRoleDao;
 import com.xyz.modules.sys.model.entity.SysRoleEntity;
@@ -42,18 +42,18 @@ public class SysRoleService extends ServiceImpl<SysRoleDao, SysRoleEntity>  {
     private SysUserRoleService sysUserRoleService;
 
 
-	public PageUtils queryPage(Map<String, Object> params) {
+	public PageDataVO queryPage(Map<String, Object> params) {
 		String roleName = (String)params.get("roleName");
 		Long createUserId = (Long)params.get("createUserId");
 
 		IPage<SysRoleEntity> page = this.page(
-			new PageQuery<SysRoleEntity>().getPage(params),
+			new PageQueryUtils<SysRoleEntity>().getPage(params),
 			new QueryWrapper<SysRoleEntity>()
 				.like(StringUtils.isNotBlank(roleName),"role_name", roleName)
 				.eq(createUserId != null,"create_user_id", createUserId)
 		);
 
-		return new PageUtils(page);
+		return new PageDataVO(page);
 	}
 
 

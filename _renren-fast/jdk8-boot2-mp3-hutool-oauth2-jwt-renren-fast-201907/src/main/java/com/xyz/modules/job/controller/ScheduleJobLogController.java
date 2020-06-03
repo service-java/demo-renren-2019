@@ -9,7 +9,7 @@
 package com.xyz.modules.job.controller;
 
 import com.xyz.modules.job.service.ScheduleJobLogService;
-import com.xyz.common.base.PageUtils;
+import com.xyz.common.base.PageDataVO;
 import com.xyz.common.base.ResponseVO;
 import com.xyz.modules.job.entity.ScheduleJobLogEntity;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -38,7 +38,7 @@ public class ScheduleJobLogController {
 	@RequestMapping("/list")
 	@RequiresPermissions("sys:schedule:log")
 	public ResponseVO list(@RequestParam Map<String, Object> params){
-		PageUtils page = scheduleJobLogService.queryPage(params);
+		PageDataVO page = scheduleJobLogService.queryPage(params);
 
 		return ResponseVO.ok().put("page", page);
 	}

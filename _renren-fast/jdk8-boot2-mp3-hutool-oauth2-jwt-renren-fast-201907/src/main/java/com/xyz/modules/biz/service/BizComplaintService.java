@@ -1,7 +1,7 @@
 package com.xyz.modules.biz.service;
 
-import com.xyz.common.base.PageQuery;
-import com.xyz.common.base.PageUtils;
+import com.xyz.common.base.PageQueryUtils;
+import com.xyz.common.base.PageDataVO;
 import com.xyz.modules.biz.dao.BizComplaintDao;
 import com.xyz.modules.biz.entity.BizComplaintEntity;
 import org.springframework.stereotype.Service;
@@ -15,13 +15,13 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 public class BizComplaintService extends ServiceImpl<BizComplaintDao, BizComplaintEntity>  {
 
 
-    public PageUtils queryPage(Map<String, Object> params) {
+    public PageDataVO queryPage(Map<String, Object> params) {
         IPage<BizComplaintEntity> page = this.page(
-                new PageQuery<BizComplaintEntity>().getPage(params),
+                new PageQueryUtils<BizComplaintEntity>().getPage(params),
                 new QueryWrapper<BizComplaintEntity>()
         );
 
-        return new PageUtils(page);
+        return new PageDataVO(page);
     }
 
 }

@@ -20,7 +20,7 @@ import com.xyz.modules.oss.service.SysOssService;
 import com.xyz.modules.sys.service.SysConfigService;
 import com.xyz.common.base.ResponseVO;
 import com.xyz.common.constant.Constants;
-import com.xyz.common.base.PageUtils;
+import com.xyz.common.base.PageDataVO;
 import com.xyz.common.validator.ValidatorUtils;
 import com.xyz.config.property.LocalStorageProperties;
 import com.xyz.modules.oss.cloud.CloudStorageConfig;
@@ -58,7 +58,7 @@ public class SysOssController {
 	@GetMapping("/list")
 	@RequiresPermissions("sys:oss:all")
 	public ResponseVO list(@RequestParam Map<String, Object> params){
-		PageUtils page = sysOssService.queryPage(params);
+		PageDataVO page = sysOssService.queryPage(params);
 
 		return ResponseVO.ok().put("page", page);
 	}

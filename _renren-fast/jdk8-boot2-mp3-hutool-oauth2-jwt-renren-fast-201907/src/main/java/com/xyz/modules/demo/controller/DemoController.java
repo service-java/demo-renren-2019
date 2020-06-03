@@ -2,11 +2,11 @@ package com.xyz.modules.demo.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.xyz.common.base.PageQuery;
+import com.xyz.common.base.PageQueryUtils;
 import com.xyz.common.base.ResponseVO;
 import com.xyz.common.base.exception.BaseException;
 import com.xyz.common.util.MapUtils;
-import com.xyz.common.base.PageUtils;
+import com.xyz.common.base.PageDataVO;
 import com.xyz.common.util.file.FileUploadUtils;
 import com.xyz.common.util.file.FileUtils;
 import com.xyz.config.property.LocalStorageProperties;
@@ -161,14 +161,14 @@ public class DemoController {
         // lambda查询
         MapUtils query = new MapUtils().put("page", 1).put("limit", 10);
         IPage<BizAreaEntity> page = bizAreaService.page(
-            new PageQuery<BizAreaEntity>().getPage(query),
+            new PageQueryUtils<BizAreaEntity>().getPage(query),
             new QueryWrapper<BizAreaEntity>().lambda()
                     .eq(BizAreaEntity::getIsDelete, 0)
                     .or().eq(BizAreaEntity::getCode, 0)
                     .and(wrapper -> wrapper.like(BizAreaEntity::getName, ""))
         );
 
-        return ResponseVO.ok().put("data", new PageUtils(page));
+        return ResponseVO.ok().put("data", new PageDataVO(page));
     }
 
 }

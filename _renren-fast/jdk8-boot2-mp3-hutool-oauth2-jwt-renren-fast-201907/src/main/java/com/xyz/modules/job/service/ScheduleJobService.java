@@ -11,8 +11,8 @@ package com.xyz.modules.job.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xyz.common.base.PageUtils;
-import com.xyz.common.base.PageQuery;
+import com.xyz.common.base.PageDataVO;
+import com.xyz.common.base.PageQueryUtils;
 import com.xyz.common.constant.Constants;
 import com.xyz.modules.job.dao.ScheduleJobDao;
 import com.xyz.modules.job.entity.ScheduleJobEntity;
@@ -50,15 +50,15 @@ public class ScheduleJobService extends ServiceImpl<ScheduleJobDao, ScheduleJobE
 	}
 
 
-	public PageUtils queryPage(Map<String, Object> params) {
+	public PageDataVO queryPage(Map<String, Object> params) {
 		String beanName = (String)params.get("beanName");
 
 		IPage<ScheduleJobEntity> page = this.page(
-			new PageQuery<ScheduleJobEntity>().getPage(params),
+			new PageQueryUtils<ScheduleJobEntity>().getPage(params),
 			new QueryWrapper <ScheduleJobEntity>().like(StringUtils.isNotBlank(beanName),"bean_name", beanName)
 		);
 
-		return new PageUtils(page);
+		return new PageDataVO(page);
 	}
 
 

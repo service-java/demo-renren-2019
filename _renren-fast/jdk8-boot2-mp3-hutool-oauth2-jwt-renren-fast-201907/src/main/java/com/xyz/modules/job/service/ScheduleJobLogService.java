@@ -11,8 +11,8 @@ package com.xyz.modules.job.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xyz.common.base.PageUtils;
-import com.xyz.common.base.PageQuery;
+import com.xyz.common.base.PageDataVO;
+import com.xyz.common.base.PageQueryUtils;
 import com.xyz.modules.job.dao.ScheduleJobLogDao;
 import com.xyz.modules.job.entity.ScheduleJobLogEntity;
 import org.apache.commons.lang.StringUtils;
@@ -23,15 +23,15 @@ import java.util.Map;
 @Service("scheduleJobLogService")
 public class ScheduleJobLogService extends ServiceImpl<ScheduleJobLogDao, ScheduleJobLogEntity>    {
 
-	public PageUtils queryPage(Map<String, Object> params) {
+	public PageDataVO queryPage(Map<String, Object> params) {
 		String jobId = (String)params.get("jobId");
 
 		IPage<ScheduleJobLogEntity> page = this.page(
-			new PageQuery<ScheduleJobLogEntity>().getPage(params),
+			new PageQueryUtils<ScheduleJobLogEntity>().getPage(params),
 			new QueryWrapper<ScheduleJobLogEntity>().like(StringUtils.isNotBlank(jobId),"job_id", jobId)
 		);
 
-		return new PageUtils(page);
+		return new PageDataVO(page);
 	}
 
 }
