@@ -9,8 +9,7 @@
 package com.xyz.modules.sys.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.xyz.modules.sys.entity.SysUserRoleEntity;
-import com.xyz.modules.sys.entity.SysUserRoleEntity;
+import com.xyz.modules.sys.model.entity.SysUserRoleEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

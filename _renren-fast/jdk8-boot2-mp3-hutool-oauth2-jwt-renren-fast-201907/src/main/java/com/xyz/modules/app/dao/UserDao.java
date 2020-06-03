@@ -9,8 +9,7 @@
 package com.xyz.modules.app.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.xyz.modules.app.entity.UserEntity;
-import com.xyz.modules.app.entity.UserEntity;
+import com.xyz.modules.app.model.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

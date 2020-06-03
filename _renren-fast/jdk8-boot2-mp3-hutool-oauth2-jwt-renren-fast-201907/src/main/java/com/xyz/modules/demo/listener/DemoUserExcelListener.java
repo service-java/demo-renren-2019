@@ -3,8 +3,8 @@ package com.xyz.modules.demo.listener;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
-import com.xyz.common.base.exception.RRException;
-import com.xyz.modules.demo.entity.dto.DemoUserExcelDTO;
+import com.xyz.common.base.exception.BaseException;
+import com.xyz.modules.demo.dto.DemoUserExcelDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class DemoUserExcelListener extends AnalysisEventListener<DemoUserExcelDT
     public void invoke(DemoUserExcelDTO data, AnalysisContext context) {
 
         if (StrUtil.isEmpty(data.getName())) {
-            throw new RRException("代表不能为空");
+            throw new BaseException("代表不能为空");
         }
         list.add(data);
 

@@ -24,14 +24,14 @@ import org.springframework.web.servlet.NoHandlerFoundException;
  * @author Mark sunlightcs@gmail.com
  */
 @RestControllerAdvice
-public class RRExceptionHandler {
+public class BaseExceptionHandler {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	/**
 	 * 处理自定义异常
 	 */
-	@ExceptionHandler(RRException.class)
-	public ResponseVO handleRRException(RRException e){
+	@ExceptionHandler(BaseException.class)
+	public ResponseVO handleRRException(BaseException e){
 		ResponseVO r = new ResponseVO();
 		r.put("code", e.getCode());
 		r.put("msg", e.getMessage());

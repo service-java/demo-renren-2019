@@ -15,7 +15,7 @@ import com.xyz.common.constant.Constants;
 import com.xyz.common.util.PageUtils;
 import com.xyz.common.base.ResponseVO;
 import com.xyz.common.validator.ValidatorUtils;
-import com.xyz.modules.sys.entity.SysRoleEntity;
+import com.xyz.modules.sys.model.entity.SysRoleEntity;
 import io.swagger.annotations.Api;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;

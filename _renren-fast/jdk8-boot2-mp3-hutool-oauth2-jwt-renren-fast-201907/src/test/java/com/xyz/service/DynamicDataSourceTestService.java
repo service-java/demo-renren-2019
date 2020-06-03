@@ -9,10 +9,8 @@
 package com.xyz.service;
 
 import com.xyz.datasource.annotation.DataSource;
-import com.xyz.modules.sys.entity.SysUserEntity;
-import com.xyz.datasource.annotation.DataSource;
+import com.xyz.modules.sys.model.entity.SysUserEntity;
 import com.xyz.modules.sys.dao.SysUserDao;
-import com.xyz.modules.sys.entity.SysUserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

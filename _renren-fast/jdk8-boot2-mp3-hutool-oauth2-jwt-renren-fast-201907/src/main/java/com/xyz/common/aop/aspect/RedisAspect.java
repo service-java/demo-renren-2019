@@ -8,8 +8,7 @@
 
 package com.xyz.common.aop.aspect;
 
-import com.xyz.common.base.exception.RRException;
-import com.xyz.common.base.exception.RRException;
+import com.xyz.common.base.exception.BaseException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -39,7 +38,7 @@ public class RedisAspect {
                 result = point.proceed();
             }catch (Exception e){
                 logger.error("redis error", e);
-                throw new RRException("Redis服务异常");
+                throw new BaseException("Redis服务异常");
             }
         }
         return result;

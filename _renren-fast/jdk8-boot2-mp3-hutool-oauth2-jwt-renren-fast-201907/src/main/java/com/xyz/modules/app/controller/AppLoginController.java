@@ -11,9 +11,9 @@ package com.xyz.modules.app.controller;
 
 import com.xyz.common.base.ResponseVO;
 import com.xyz.common.validator.ValidatorUtils;
-import com.xyz.modules.app.form.LoginForm;
+import com.xyz.modules.app.model.query.LoginFormQuery;
 import com.xyz.modules.app.service.UserService;
-import com.xyz.modules.app.utils.JwtUtils;
+import com.xyz.modules.app.util.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,7 +42,7 @@ public class AppLoginController {
      */
     @PostMapping("login")
     // @ApiOperation("登录")
-    public ResponseVO login(@RequestBody LoginForm form){
+    public ResponseVO login(@RequestBody LoginFormQuery form){
         //表单校验
         ValidatorUtils.validateEntity(form);
 

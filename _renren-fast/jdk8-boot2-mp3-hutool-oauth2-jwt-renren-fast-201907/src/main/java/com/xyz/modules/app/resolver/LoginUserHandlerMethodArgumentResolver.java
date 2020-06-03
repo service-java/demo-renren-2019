@@ -9,7 +9,7 @@
 package com.xyz.modules.app.resolver;
 
 import com.xyz.modules.app.annotation.LoginUser;
-import com.xyz.modules.app.entity.UserEntity;
+import com.xyz.modules.app.model.entity.UserEntity;
 import com.xyz.modules.app.service.UserService;
 import com.xyz.modules.app.interceptor.AuthorizationInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -16,7 +16,7 @@ import com.xyz.common.base.PageQuery;
 import com.xyz.common.constant.Constants;
 import com.xyz.modules.job.dao.ScheduleJobDao;
 import com.xyz.modules.job.entity.ScheduleJobEntity;
-import com.xyz.modules.job.utils.ScheduleUtils;
+import com.xyz.modules.job.util.ScheduleUtils;
 import org.apache.commons.lang.StringUtils;
 import org.quartz.CronTrigger;
 import org.quartz.Scheduler;

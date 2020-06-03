@@ -6,35 +6,46 @@
  * 版权所有，侵权必究！
  */
 
-package com.xyz.modules.sys.entity;
+package com.xyz.modules.app.model.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
+
 
 /**
- * 角色与菜单对应关系
+ * 用户
  *
  * @author Mark sunlightcs@gmail.com
  */
 @Data
-@TableName("sys_role_menu")
-public class SysRoleMenuEntity implements Serializable {
+@TableName("tb_user")
+public class UserEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * 用户ID
+	 */
 	@TableId
-	private Long id;
-
+	private Long userId;
 	/**
-	 * 角色ID
+	 * 用户名
 	 */
-	private Long roleId;
-
+	private String username;
 	/**
-	 * 菜单ID
+	 * 手机号
 	 */
-	private Long menuId;
+	private String mobile;
+	/**
+	 * 密码
+	 */
+	private String password;
+	/**
+	 * 创建时间
+	 */
+	private Date createTime;
 
 }

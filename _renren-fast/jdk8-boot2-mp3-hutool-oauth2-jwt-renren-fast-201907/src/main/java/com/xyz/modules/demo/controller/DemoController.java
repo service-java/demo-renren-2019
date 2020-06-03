@@ -4,12 +4,12 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.xyz.common.base.PageQuery;
 import com.xyz.common.base.ResponseVO;
-import com.xyz.common.base.exception.RRException;
+import com.xyz.common.base.exception.BaseException;
 import com.xyz.common.util.MapUtils;
 import com.xyz.common.util.PageUtils;
 import com.xyz.common.util.file.FileUploadUtils;
 import com.xyz.common.util.file.FileUtils;
-import com.xyz.config.properties.LocalStorageProperties;
+import com.xyz.config.property.LocalStorageProperties;
 import com.xyz.modules.biz.dao.BizAreaDao;
 import com.xyz.modules.biz.entity.BizAreaEntity;
 import com.xyz.modules.biz.service.BizAreaService;
@@ -81,7 +81,7 @@ public class DemoController {
     @ResponseBody
     public ResponseVO upload(@RequestParam("file") MultipartFile file) throws Exception {
         if (file.isEmpty()) {
-            throw new RRException("上传文件不能为空");
+            throw new BaseException("上传文件不能为空");
         }
 
         // 上传文件路径(真实存储路径)
@@ -111,7 +111,7 @@ public class DemoController {
     @ResponseBody
     public ResponseVO getFileType(@RequestParam("file") MultipartFile file) throws IOException {
         if (file.isEmpty()) {
-            throw new RRException("上传文件不能为空");
+            throw new BaseException("上传文件不能为空");
         }
 
         Tika tika = new Tika();

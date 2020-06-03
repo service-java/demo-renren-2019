@@ -12,7 +12,7 @@ package com.xyz.modules.app.controller;
 import com.xyz.modules.app.annotation.LoginUser;
 import com.xyz.common.base.ResponseVO;
 import com.xyz.modules.app.annotation.Login;
-import com.xyz.modules.app.entity.UserEntity;
+import com.xyz.modules.app.model.entity.UserEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -11,12 +11,12 @@ package com.xyz.modules.sys.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xyz.common.base.exception.RRException;
+import com.xyz.common.base.exception.BaseException;
 import com.xyz.common.util.PageUtils;
 import com.xyz.common.base.PageQuery;
 import com.xyz.common.constant.Constants;
 import com.xyz.modules.sys.dao.SysRoleDao;
-import com.xyz.modules.sys.entity.SysRoleEntity;
+import com.xyz.modules.sys.model.entity.SysRoleEntity;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -114,7 +114,7 @@ public class SysRoleService extends ServiceImpl<SysRoleDao, SysRoleEntity>  {
 
 		//判断是否越权
 		if(!menuIdList.containsAll(role.getMenuIdList())){
-			throw new RRException("新增角色的权限，已超出你的权限范围");
+			throw new BaseException("新增角色的权限，已超出你的权限范围");
 		}
 	}
 }

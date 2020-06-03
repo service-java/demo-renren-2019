@@ -6,15 +6,12 @@
  * 版权所有，侵权必究！
  */
 
-package com.xyz.modules.job.utils;
+package com.xyz.modules.job.util;
 
 import com.xyz.modules.job.entity.ScheduleJobEntity;
 import com.xyz.modules.job.entity.ScheduleJobLogEntity;
 import com.xyz.modules.job.service.ScheduleJobLogService;
 import com.xyz.common.util.SpringContextUtils;
-import com.xyz.modules.job.entity.ScheduleJobEntity;
-import com.xyz.modules.job.entity.ScheduleJobLogEntity;
-import com.xyz.modules.job.service.ScheduleJobLogService;
 import org.apache.commons.lang.StringUtils;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;

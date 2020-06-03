@@ -11,12 +11,11 @@ package com.xyz.modules.app.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xyz.common.base.exception.RRException;
-import com.xyz.common.base.exception.RRException;
+import com.xyz.common.base.exception.BaseException;
 import com.xyz.common.validator.Assert;
 import com.xyz.modules.app.dao.UserDao;
-import com.xyz.modules.app.entity.UserEntity;
-import com.xyz.modules.app.form.LoginForm;
+import com.xyz.modules.app.model.entity.UserEntity;
+import com.xyz.modules.app.model.query.LoginFormQuery;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Service;
 
@@ -28,13 +27,13 @@ public class UserService extends ServiceImpl<UserDao, UserEntity> {
 		return baseMapper.selectOne(new QueryWrapper<UserEntity>().eq("mobile", mobile));
 	}
 
-	public long login(LoginForm form) {
+	public long login(LoginFormQuery form) {
 		UserEntity user = queryByMobile(form.getMobile());
 		Assert.isNull(user, "手机号或密码错误");
 
 		//密码错误
 		if(!user.getPassword().equals(DigestUtils.sha256Hex(form.getPassword()))){
-			throw new RRException("手机号或密码错误");
+			throw new BaseException("手机号或密码错误");
 		}
 
 		return user.getUserId();

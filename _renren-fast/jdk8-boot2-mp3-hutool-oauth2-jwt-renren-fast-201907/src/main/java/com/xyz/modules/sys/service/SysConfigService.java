@@ -12,11 +12,11 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.gson.Gson;
-import com.xyz.common.base.exception.RRException;
+import com.xyz.common.base.exception.BaseException;
 import com.xyz.common.util.PageUtils;
 import com.xyz.common.base.PageQuery;
 import com.xyz.modules.sys.dao.SysConfigDao;
-import com.xyz.modules.sys.entity.SysConfigEntity;
+import com.xyz.modules.sys.model.entity.SysConfigEntity;
 import com.xyz.modules.sys.redis.SysConfigRedis;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,7 +97,7 @@ public class SysConfigService extends ServiceImpl<SysConfigDao, SysConfigEntity>
 		try {
 			return clazz.newInstance();
 		} catch (Exception e) {
-			throw new RRException("获取参数失败");
+			throw new BaseException("获取参数失败");
 		}
 	}
 }

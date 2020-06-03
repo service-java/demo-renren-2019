@@ -11,8 +11,8 @@ package com.xyz.modules.app.controller;
 
 import com.xyz.common.base.ResponseVO;
 import com.xyz.common.validator.ValidatorUtils;
-import com.xyz.modules.app.entity.UserEntity;
-import com.xyz.modules.app.form.RegisterForm;
+import com.xyz.modules.app.model.entity.UserEntity;
+import com.xyz.modules.app.model.query.RegisterFormQuery;
 import com.xyz.modules.app.service.UserService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,7 @@ public class AppRegisterController {
 
     @PostMapping("register")
     // @ApiOperation("注册")
-    public ResponseVO register(@RequestBody RegisterForm form){
+    public ResponseVO register(@RequestBody RegisterFormQuery form){
         //表单校验
         ValidatorUtils.validateEntity(form);
 

@@ -11,9 +11,7 @@ package com.xyz.modules.sys.redis;
 
 import com.xyz.common.util.RedisKeys;
 import com.xyz.common.util.RedisUtils;
-import com.xyz.common.util.RedisKeys;
-import com.xyz.common.util.RedisUtils;
-import com.xyz.modules.sys.entity.SysConfigEntity;
+import com.xyz.modules.sys.model.entity.SysConfigEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

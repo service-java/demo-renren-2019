@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.xyz.modules.app.form;
+package com.xyz.modules.app.model.query;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -15,13 +15,13 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 /**
- * 登录表单
+ * 注册表单
  *
  * @author Mark sunlightcs@gmail.com
  */
 @Data
-@ApiModel(value = "登录表单")
-public class LoginForm {
+@ApiModel(value = "注册表单")
+public class RegisterFormQuery {
     @ApiModelProperty(value = "手机号")
     @NotBlank(message="手机号不能为空")
     private String mobile;

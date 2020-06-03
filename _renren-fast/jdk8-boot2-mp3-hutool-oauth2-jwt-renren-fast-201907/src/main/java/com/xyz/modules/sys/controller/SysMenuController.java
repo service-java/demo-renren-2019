@@ -11,10 +11,10 @@ package com.xyz.modules.sys.controller;
 import com.xyz.modules.sys.service.ShiroService;
 import com.xyz.modules.sys.service.SysMenuService;
 import com.xyz.common.aop.annotation.SysLog;
-import com.xyz.common.base.exception.RRException;
+import com.xyz.common.base.exception.BaseException;
 import com.xyz.common.constant.Constants;
 import com.xyz.common.base.ResponseVO;
-import com.xyz.modules.sys.entity.SysMenuEntity;
+import com.xyz.modules.sys.model.entity.SysMenuEntity;
 import io.swagger.annotations.Api;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -152,17 +152,17 @@ public class SysMenuController extends AbstractController {
 	 */
 	private void verifyForm(SysMenuEntity menu){
 		if(StringUtils.isBlank(menu.getName())){
-			throw new RRException("菜单名称不能为空");
+			throw new BaseException("菜单名称不能为空");
 		}
 
 		if(menu.getParentId() == null){
-			throw new RRException("上级菜单不能为空");
+			throw new BaseException("上级菜单不能为空");
 		}
 
 		//菜单
 		if(menu.getType() == Constants.MenuType.MENU.getValue()){
 			if(StringUtils.isBlank(menu.getUrl())){
-				throw new RRException("菜单URL不能为空");
+				throw new BaseException("菜单URL不能为空");
 			}
 		}
 
@@ -177,7 +177,7 @@ public class SysMenuController extends AbstractController {
 		if(menu.getType() == Constants.MenuType.CATALOG.getValue() ||
 				menu.getType() == Constants.MenuType.MENU.getValue()){
 			if(parentType != Constants.MenuType.CATALOG.getValue()){
-				throw new RRException("上级菜单只能为目录类型");
+				throw new BaseException("上级菜单只能为目录类型");
 			}
 			return ;
 		}
@@ -185,7 +185,7 @@ public class SysMenuController extends AbstractController {
 		//按钮
 		if(menu.getType() == Constants.MenuType.BUTTON.getValue()){
 			if(parentType != Constants.MenuType.MENU.getValue()){
-				throw new RRException("上级菜单只能为菜单类型");
+				throw new BaseException("上级菜单只能为菜单类型");
 			}
 			return ;
 		}

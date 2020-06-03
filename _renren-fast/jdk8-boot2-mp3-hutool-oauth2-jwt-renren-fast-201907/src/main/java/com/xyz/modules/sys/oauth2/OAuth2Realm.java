@@ -8,8 +8,8 @@
 
 package com.xyz.modules.sys.oauth2;
 
-import com.xyz.modules.sys.entity.SysUserEntity;
-import com.xyz.modules.sys.entity.SysUserTokenEntity;
+import com.xyz.modules.sys.model.entity.SysUserEntity;
+import com.xyz.modules.sys.model.entity.SysUserTokenEntity;
 import com.xyz.modules.sys.service.ShiroService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;

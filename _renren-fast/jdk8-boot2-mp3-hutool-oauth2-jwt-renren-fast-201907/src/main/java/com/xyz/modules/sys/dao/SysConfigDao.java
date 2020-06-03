@@ -10,7 +10,7 @@ package com.xyz.modules.sys.dao;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.xyz.modules.sys.entity.SysConfigEntity;
+import com.xyz.modules.sys.model.entity.SysConfigEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

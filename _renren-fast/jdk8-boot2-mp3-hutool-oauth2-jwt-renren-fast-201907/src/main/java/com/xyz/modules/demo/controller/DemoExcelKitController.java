@@ -4,10 +4,10 @@ import cn.hutool.core.lang.Console;
 import com.wuwenze.poi.ExcelKit;
 import com.wuwenze.poi.handler.ExcelReadHandler;
 import com.wuwenze.poi.pojo.ExcelErrorField;
-import com.xyz.modules.sys.entity.SysUserEntity;
+import com.xyz.modules.sys.model.entity.SysUserEntity;
 import com.xyz.modules.sys.service.SysUserService;
 import com.xyz.common.base.ResponseVO;
-import com.xyz.common.base.exception.RRException;
+import com.xyz.common.base.exception.BaseException;
 import com.xyz.modules.sys.model.dto.ExcelKitUserDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -96,7 +96,7 @@ public class DemoExcelKitController {
             ExcelKit.$Export(SysUserEntity.class, response).downXlsx(list, false);
 
         } catch (Exception e) {
-            throw new RRException("文件导出失败");
+            throw new BaseException("文件导出失败");
         }
     }
 

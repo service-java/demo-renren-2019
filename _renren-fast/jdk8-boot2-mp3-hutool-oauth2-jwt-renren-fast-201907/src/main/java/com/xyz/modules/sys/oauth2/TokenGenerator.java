@@ -8,7 +8,7 @@
 
 package com.xyz.modules.sys.oauth2;
 
-import com.xyz.common.base.exception.RRException;
+import com.xyz.common.base.exception.BaseException;
 
 import java.security.MessageDigest;
 import java.util.UUID;
@@ -46,7 +46,7 @@ public class TokenGenerator {
             byte[] messageDigest = algorithm.digest();
             return toHexString(messageDigest);
         } catch (Exception e) {
-            throw new RRException("生成Token失败", e);
+            throw new BaseException("生成Token失败", e);
         }
     }
 }

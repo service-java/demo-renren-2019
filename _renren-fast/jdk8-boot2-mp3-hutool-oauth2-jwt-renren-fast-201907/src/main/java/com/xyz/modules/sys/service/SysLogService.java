@@ -14,7 +14,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xyz.common.util.PageUtils;
 import com.xyz.common.base.PageQuery;
 import com.xyz.modules.sys.dao.SysLogDao;
-import com.xyz.modules.sys.entity.SysLogEntity;
+import com.xyz.modules.sys.model.entity.SysLogEntity;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 

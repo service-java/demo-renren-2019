@@ -4,14 +4,14 @@ import cn.hutool.core.lang.Console;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.EasyExcelFactory;
 import com.alibaba.excel.metadata.Sheet;
-import com.xyz.modules.sys.entity.SysUserEntity;
+import com.xyz.modules.sys.model.entity.SysUserEntity;
 import com.xyz.modules.sys.service.SysUserService;
 import com.xyz.common.base.ResponseVO;
-import com.xyz.common.base.exception.RRException;
+import com.xyz.common.base.exception.BaseException;
 import com.xyz.common.util.BeanUtils;
 import com.xyz.common.util.excel.EasyExcelListener;
 import com.xyz.common.util.excel.EasyExcelUtils;
-import com.xyz.modules.demo.entity.dto.DemoUserExcelDTO;
+import com.xyz.modules.demo.dto.DemoUserExcelDTO;
 import com.xyz.modules.demo.listener.DemoUserExcelListener;
 import com.xyz.modules.sys.model.dto.EasyExcelUserDTO;
 import io.swagger.annotations.Api;
@@ -46,7 +46,7 @@ public class DemoEasyExcelController {
     @ResponseBody
     public ResponseVO importEasyExcelUser(@RequestParam("file") MultipartFile file) throws Exception {
         if (file.isEmpty()) {
-            throw new RRException("上传文件不能为空");
+            throw new BaseException("上传文件不能为空");
         }
 
         // List<Object> data = ExcelUtils.readExcel(file, new ExcelUserDTO());
@@ -81,7 +81,7 @@ public class DemoEasyExcelController {
     @ResponseBody
     public ResponseVO importV2EasyExcelUser(@RequestParam("file") MultipartFile file) throws Exception {
         if (file.isEmpty()) {
-            throw new RRException("上传文件不能为空");
+            throw new BaseException("上传文件不能为空");
         }
 
         DemoUserExcelListener excelListener = new DemoUserExcelListener();

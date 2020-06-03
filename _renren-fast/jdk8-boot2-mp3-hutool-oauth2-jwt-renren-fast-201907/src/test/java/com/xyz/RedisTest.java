@@ -1,8 +1,7 @@
 package com.xyz;
 
-import com.xyz.modules.sys.entity.SysUserEntity;
+import com.xyz.modules.sys.model.entity.SysUserEntity;
 import com.xyz.common.util.RedisUtils;
-import com.xyz.modules.sys.entity.SysUserEntity;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;

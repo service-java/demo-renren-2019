@@ -11,7 +11,7 @@ package com.xyz.modules.sys.service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xyz.common.util.MapUtils;
 import com.xyz.modules.sys.dao.SysUserRoleDao;
-import com.xyz.modules.sys.entity.SysUserRoleEntity;
+import com.xyz.modules.sys.model.entity.SysUserRoleEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

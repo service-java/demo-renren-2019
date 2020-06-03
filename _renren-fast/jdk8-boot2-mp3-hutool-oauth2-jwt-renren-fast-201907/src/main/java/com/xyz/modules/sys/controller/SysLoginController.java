@@ -8,7 +8,7 @@
 
 package com.xyz.modules.sys.controller;
 
-import com.xyz.modules.sys.entity.SysUserEntity;
+import com.xyz.modules.sys.model.entity.SysUserEntity;
 import com.xyz.modules.sys.service.SysCaptchaService;
 import com.xyz.modules.sys.service.SysUserService;
 import com.xyz.common.base.ResponseVO;

@@ -8,10 +8,8 @@
 
 package com.xyz.common.util;
 
-import com.xyz.common.base.exception.RRException;
-import com.xyz.modules.sys.entity.SysUserEntity;
-import com.xyz.common.base.exception.RRException;
-import com.xyz.modules.sys.entity.SysUserEntity;
+import com.xyz.common.base.exception.BaseException;
+import com.xyz.modules.sys.model.entity.SysUserEntity;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
@@ -54,7 +52,7 @@ public class ShiroUtils {
 	public static String getKaptcha(String key) {
 		Object kaptcha = getSessionAttribute(key);
 		if(kaptcha == null){
-			throw new RRException("验证码已失效");
+			throw new BaseException("验证码已失效");
 		}
 		getSession().removeAttribute(key);
 		return kaptcha.toString();

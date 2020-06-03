@@ -10,7 +10,7 @@ package com.xyz.modules.sys.dao;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.xyz.modules.sys.entity.SysLogEntity;
+import com.xyz.modules.sys.model.entity.SysLogEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

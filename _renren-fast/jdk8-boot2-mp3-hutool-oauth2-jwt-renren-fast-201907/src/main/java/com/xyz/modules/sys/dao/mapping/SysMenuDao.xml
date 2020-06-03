@@ -3,14 +3,14 @@
 
 <mapper namespace="com.xyz.modules.sys.dao.SysMenuDao">
 
-	<select id="queryListParentId" resultType="com.xyz.modules.sys.entity.SysMenuEntity">
+	<select id="queryListParentId" resultType="com.xyz.modules.sys.model.entity.SysMenuEntity">
 		select *
 		from sys_menu
 		where parent_id = #{parentId}
 		order by order_num asc
 	</select>
 
-	<select id="queryNotButtonList" resultType="com.xyz.modules.sys.entity.SysMenuEntity">
+	<select id="queryNotButtonList" resultType="com.xyz.modules.sys.model.entity.SysMenuEntity">
 		select *
 		from sys_menu
 		where `type` != 2

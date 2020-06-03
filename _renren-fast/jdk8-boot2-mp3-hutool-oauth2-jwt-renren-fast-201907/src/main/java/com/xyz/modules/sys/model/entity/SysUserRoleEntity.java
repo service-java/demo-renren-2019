@@ -6,46 +6,35 @@
  * 版权所有，侵权必究！
  */
 
-package com.xyz.modules.app.entity;
+package com.xyz.modules.sys.model.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
-
 
 /**
- * 用户
+ * 用户与角色对应关系
  *
  * @author Mark sunlightcs@gmail.com
  */
 @Data
-@TableName("tb_user")
-public class UserEntity implements Serializable {
+@TableName("sys_user_role")
+public class SysUserRoleEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
+	@TableId
+	private Long id;
 
 	/**
 	 * 用户ID
 	 */
-	@TableId
 	private Long userId;
+
 	/**
-	 * 用户名
+	 * 角色ID
 	 */
-	private String username;
-	/**
-	 * 手机号
-	 */
-	private String mobile;
-	/**
-	 * 密码
-	 */
-	private String password;
-	/**
-	 * 创建时间
-	 */
-	private Date createTime;
+	private Long roleId;
+
 
 }

@@ -9,7 +9,7 @@
 package com.xyz.modules.oss.controller;
 
 import com.google.gson.Gson;
-import com.xyz.common.base.exception.RRException;
+import com.xyz.common.base.exception.BaseException;
 import com.xyz.common.constant.ConfigConstants;
 import com.xyz.common.util.file.FileUploadUtils;
 import com.xyz.common.validator.group.AliyunGroup;
@@ -22,7 +22,7 @@ import com.xyz.common.base.ResponseVO;
 import com.xyz.common.constant.Constants;
 import com.xyz.common.util.PageUtils;
 import com.xyz.common.validator.ValidatorUtils;
-import com.xyz.config.properties.LocalStorageProperties;
+import com.xyz.config.property.LocalStorageProperties;
 import com.xyz.modules.oss.cloud.CloudStorageConfig;
 import com.xyz.modules.oss.cloud.OSSFactory;
 import io.swagger.annotations.Api;
@@ -109,7 +109,7 @@ public class SysOssController {
 	@RequiresPermissions("sys:oss:all")
 	public ResponseVO upload(@RequestParam("file") MultipartFile file) throws Exception {
 		if (file.isEmpty()) {
-			throw new RRException("上传文件不能为空");
+			throw new BaseException("上传文件不能为空");
 		}
 
 		//上传文件
@@ -132,7 +132,7 @@ public class SysOssController {
     @RequiresPermissions("sys:oss:all")
     public ResponseVO localUpload(@RequestParam("file") MultipartFile file) throws Exception {
         if (file.isEmpty()) {
-            throw new RRException("上传文件不能为空");
+            throw new BaseException("上传文件不能为空");
         }
 
         // 上传文件路径(真实存储路径)

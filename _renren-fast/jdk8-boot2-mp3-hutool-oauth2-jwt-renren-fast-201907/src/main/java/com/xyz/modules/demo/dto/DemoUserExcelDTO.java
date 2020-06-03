@@ -1,4 +1,4 @@
-package com.xyz.modules.demo.entity.dto;
+package com.xyz.modules.demo.dto;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.annotation.format.DateTimeFormat;

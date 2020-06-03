@@ -6,7 +6,7 @@ import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.metadata.BaseRowModel;
 import com.alibaba.excel.metadata.Sheet;
 import com.alibaba.excel.support.ExcelTypeEnum;
-import com.xyz.common.base.exception.RRException;
+import com.xyz.common.base.exception.BaseException;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
@@ -125,7 +125,7 @@ public class EasyExcelUtils {
             response.addHeader("Content-Disposition", "filename=" + fileName);
             return response.getOutputStream();
         } catch (IOException e) {
-            throw new RRException("创建文件失败！");
+            throw new BaseException("创建文件失败！");
         }
     }
 
@@ -139,7 +139,7 @@ public class EasyExcelUtils {
                                          EasyExcelListener excelListener) {
         String filename = excel.getOriginalFilename();
         if (filename == null || (!filename.toLowerCase().endsWith(".xls") && !filename.toLowerCase().endsWith(".xlsx"))) {
-            throw new RRException("文件格式错误！");
+            throw new BaseException("文件格式错误！");
         }
 
         InputStream inputStream;

@@ -10,7 +10,7 @@ package com.xyz.modules.sys.service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xyz.modules.sys.dao.SysRoleMenuDao;
-import com.xyz.modules.sys.entity.SysRoleMenuEntity;
+import com.xyz.modules.sys.model.entity.SysRoleMenuEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

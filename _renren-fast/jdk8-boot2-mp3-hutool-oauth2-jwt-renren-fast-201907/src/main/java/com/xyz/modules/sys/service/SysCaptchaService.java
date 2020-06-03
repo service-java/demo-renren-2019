@@ -12,10 +12,10 @@ package com.xyz.modules.sys.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.code.kaptcha.Producer;
-import com.xyz.common.base.exception.RRException;
+import com.xyz.common.base.exception.BaseException;
 import com.xyz.common.util.DateUtils;
 import com.xyz.modules.sys.dao.SysCaptchaDao;
-import com.xyz.modules.sys.entity.SysCaptchaEntity;
+import com.xyz.modules.sys.model.entity.SysCaptchaEntity;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +36,7 @@ public class SysCaptchaService extends ServiceImpl<SysCaptchaDao, SysCaptchaEnti
 
     public BufferedImage getCaptcha(String uuid) {
         if(StringUtils.isBlank(uuid)){
-            throw new RRException("uuid不能为空");
+            throw new BaseException("uuid不能为空");
         }
         //生成文字验证码
         String code = producer.createText();

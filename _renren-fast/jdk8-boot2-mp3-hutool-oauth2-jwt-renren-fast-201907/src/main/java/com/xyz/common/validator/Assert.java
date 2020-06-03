@@ -8,8 +8,7 @@
 
 package com.xyz.common.validator;
 
-import com.xyz.common.base.exception.RRException;
-import com.xyz.common.base.exception.RRException;
+import com.xyz.common.base.exception.BaseException;
 import org.apache.commons.lang.StringUtils;
 
 /**
@@ -21,13 +20,13 @@ public abstract class Assert {
 
     public static void isBlank(String str, String message) {
         if (StringUtils.isBlank(str)) {
-            throw new RRException(message);
+            throw new BaseException(message);
         }
     }
 
     public static void isNull(Object object, String message) {
         if (object == null) {
-            throw new RRException(message);
+            throw new BaseException(message);
         }
     }
 }

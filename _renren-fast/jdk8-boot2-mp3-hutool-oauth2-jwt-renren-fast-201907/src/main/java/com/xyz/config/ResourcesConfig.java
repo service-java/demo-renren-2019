@@ -1,6 +1,6 @@
 package com.xyz.config;
 
-import com.xyz.config.properties.LocalStorageProperties;
+import com.xyz.config.property.LocalStorageProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

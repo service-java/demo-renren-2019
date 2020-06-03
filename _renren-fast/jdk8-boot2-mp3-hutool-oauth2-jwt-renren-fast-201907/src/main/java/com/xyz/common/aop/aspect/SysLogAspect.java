@@ -10,14 +10,11 @@ package com.xyz.common.aop.aspect;
 
 import com.google.gson.Gson;
 import com.xyz.common.aop.annotation.SysLog;
-import com.xyz.modules.sys.entity.SysUserEntity;
+import com.xyz.modules.sys.model.entity.SysUserEntity;
 import com.xyz.modules.sys.service.SysLogService;
-import com.xyz.common.aop.annotation.SysLog;
 import com.xyz.common.util.HttpContextUtils;
 import com.xyz.common.util.IPUtils;
-import com.xyz.modules.sys.entity.SysLogEntity;
-import com.xyz.modules.sys.entity.SysUserEntity;
-import com.xyz.modules.sys.service.SysLogService;
+import com.xyz.modules.sys.model.entity.SysLogEntity;
 import org.apache.shiro.SecurityUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

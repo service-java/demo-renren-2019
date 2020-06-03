@@ -14,7 +14,7 @@ import com.xyz.common.aop.annotation.SysLog;
 import com.xyz.common.util.PageUtils;
 import com.xyz.common.base.ResponseVO;
 import com.xyz.common.validator.ValidatorUtils;
-import com.xyz.modules.sys.entity.SysConfigEntity;
+import com.xyz.modules.sys.model.entity.SysConfigEntity;
 import io.swagger.annotations.Api;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;

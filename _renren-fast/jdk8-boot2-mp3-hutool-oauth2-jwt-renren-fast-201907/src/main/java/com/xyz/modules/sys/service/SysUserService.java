@@ -12,11 +12,11 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xyz.common.base.PageQuery;
-import com.xyz.common.base.exception.RRException;
+import com.xyz.common.base.exception.BaseException;
 import com.xyz.common.constant.Constants;
 import com.xyz.common.util.PageUtils;
 import com.xyz.modules.sys.dao.SysUserDao;
-import com.xyz.modules.sys.entity.SysUserEntity;
+import com.xyz.modules.sys.model.entity.SysUserEntity;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.crypto.hash.Sha256Hash;
@@ -154,7 +154,7 @@ public class SysUserService extends ServiceImpl<SysUserDao, SysUserEntity>  {
 
 		//判断是否越权
 		if (!roleIdList.containsAll(user.getRoleIdList())) {
-			throw new RRException("新增用户所选角色，不是本人创建");
+			throw new BaseException("新增用户所选角色，不是本人创建");
 		}
 	}
 }

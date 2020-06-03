@@ -9,7 +9,7 @@
 package com.xyz.modules.sys.service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xyz.modules.sys.entity.SysUserTokenEntity;
+import com.xyz.modules.sys.model.entity.SysUserTokenEntity;
 import com.xyz.modules.sys.oauth2.TokenGenerator;
 import com.xyz.common.base.ResponseVO;
 import com.xyz.modules.sys.dao.SysUserTokenDao;

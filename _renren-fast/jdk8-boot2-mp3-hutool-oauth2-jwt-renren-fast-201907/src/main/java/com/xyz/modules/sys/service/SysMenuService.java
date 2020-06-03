@@ -13,7 +13,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xyz.common.util.MapUtils;
 import com.xyz.common.constant.Constants;
 import com.xyz.modules.sys.dao.SysMenuDao;
-import com.xyz.modules.sys.entity.SysMenuEntity;
+import com.xyz.modules.sys.model.entity.SysMenuEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

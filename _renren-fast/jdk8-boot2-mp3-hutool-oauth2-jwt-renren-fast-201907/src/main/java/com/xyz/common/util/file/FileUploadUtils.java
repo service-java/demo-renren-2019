@@ -2,10 +2,9 @@ package com.xyz.common.util.file;
 
 
 import cn.hutool.core.util.StrUtil;
-import com.xyz.common.base.exception.RRException;
-import com.xyz.common.base.exception.RRException;
+import com.xyz.common.base.exception.BaseException;
 import com.xyz.common.util.Md5Utils;
-import com.xyz.config.properties.LocalStorageProperties;
+import com.xyz.config.property.LocalStorageProperties;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateFormatUtils;
@@ -89,7 +88,7 @@ public class FileUploadUtils {
             throws IOException {
         int fileNamelength = file.getOriginalFilename().length();
         if (fileNamelength > FileUploadUtils.DEFAULT_FILE_NAME_LENGTH) {
-            throw new RRException(StrUtil.format("文件名超过最大长度：{}", FileUploadUtils.DEFAULT_FILE_NAME_LENGTH));
+            throw new BaseException(StrUtil.format("文件名超过最大长度：{}", FileUploadUtils.DEFAULT_FILE_NAME_LENGTH));
         }
 
         assertAllowed(file, allowedExtension);
@@ -150,20 +149,20 @@ public class FileUploadUtils {
     public static final void assertAllowed(MultipartFile file, String[] allowedExtension) {
         long size = file.getSize();
         if (DEFAULT_MAX_SIZE != -1 && size > DEFAULT_MAX_SIZE) {
-            throw new RRException(StrUtil.format("文件大小超过最大限制：{}mb", DEFAULT_MAX_SIZE / 1024 / 1024));
+            throw new BaseException(StrUtil.format("文件大小超过最大限制：{}mb", DEFAULT_MAX_SIZE / 1024 / 1024));
         }
 
         String fileName = file.getOriginalFilename();
         String extension = getExtension(file);
         if (allowedExtension != null && !isAllowedExtension(extension, allowedExtension)) {
             if (allowedExtension == MimeTypeUtils.IMAGE_EXTENSION) {
-                throw new RRException(StrUtil.format("{}后缀格式{}不在允许范围内{}", fileName, extension, allowedExtension));
+                throw new BaseException(StrUtil.format("{}后缀格式{}不在允许范围内{}", fileName, extension, allowedExtension));
             } else if (allowedExtension == MimeTypeUtils.FLASH_EXTENSION) {
-                throw new RRException(StrUtil.format("{}后缀格式{}不在允许范围内{}", fileName, extension, allowedExtension));
+                throw new BaseException(StrUtil.format("{}后缀格式{}不在允许范围内{}", fileName, extension, allowedExtension));
             } else if (allowedExtension == MimeTypeUtils.MEDIA_EXTENSION) {
-                throw new RRException(StrUtil.format("{}后缀格式{}不在允许范围内{}", fileName, extension, allowedExtension));
+                throw new BaseException(StrUtil.format("{}后缀格式{}不在允许范围内{}", fileName, extension, allowedExtension));
             } else {
-                throw new RRException(StrUtil.format("{}后缀格式{}不在允许范围内{}", fileName, extension, allowedExtension));
+                throw new BaseException(StrUtil.format("{}后缀格式{}不在允许范围内{}", fileName, extension, allowedExtension));
             }
         }
 
