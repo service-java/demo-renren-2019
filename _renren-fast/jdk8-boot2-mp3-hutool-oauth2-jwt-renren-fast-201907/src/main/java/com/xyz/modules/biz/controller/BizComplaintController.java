@@ -5,10 +5,8 @@ import java.util.Map;
 
 import com.xyz.modules.biz.entity.BizComplaintEntity;
 import com.xyz.modules.biz.service.BizComplaintService;
-import com.xyz.common.base.R;
+import com.xyz.common.base.ResponseVO;
 import com.xyz.common.util.PageUtils;
-import com.xyz.modules.biz.entity.BizComplaintEntity;
-import com.xyz.modules.biz.service.BizComplaintService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,10 +37,10 @@ public class BizComplaintController {
      */
     @RequestMapping("/list")
     @RequiresPermissions("biz:complaint:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public ResponseVO list(@RequestParam Map<String, Object> params){
         PageUtils page = bizComplaintService.queryPage(params);
 
-        return R.ok().put("page", page);
+        return ResponseVO.ok().put("page", page);
     }
 
 
@@ -51,10 +49,10 @@ public class BizComplaintController {
      */
     @RequestMapping("/info/{complaintId}")
     @RequiresPermissions("biz:complaint:info")
-    public R info(@PathVariable("complaintId") Long complaintId){
+    public ResponseVO info(@PathVariable("complaintId") Long complaintId){
 		BizComplaintEntity bizComplaint = bizComplaintService.getById(complaintId);
 
-        return R.ok().put("bizComplaint", bizComplaint);
+        return ResponseVO.ok().put("bizComplaint", bizComplaint);
     }
 
     /**
@@ -62,10 +60,10 @@ public class BizComplaintController {
      */
     @RequestMapping("/save")
     @RequiresPermissions("biz:complaint:save")
-    public R save(@RequestBody BizComplaintEntity bizComplaint){
+    public ResponseVO save(@RequestBody BizComplaintEntity bizComplaint){
 		bizComplaintService.save(bizComplaint);
 
-        return R.ok();
+        return ResponseVO.ok();
     }
 
     /**
@@ -73,10 +71,10 @@ public class BizComplaintController {
      */
     @RequestMapping("/update")
     @RequiresPermissions("biz:complaint:update")
-    public R update(@RequestBody BizComplaintEntity bizComplaint){
+    public ResponseVO update(@RequestBody BizComplaintEntity bizComplaint){
 		bizComplaintService.updateById(bizComplaint);
 
-        return R.ok();
+        return ResponseVO.ok();
     }
 
     /**
@@ -84,10 +82,10 @@ public class BizComplaintController {
      */
     @RequestMapping("/delete")
     @RequiresPermissions("biz:complaint:delete")
-    public R delete(@RequestBody Long[] complaintIds){
+    public ResponseVO delete(@RequestBody Long[] complaintIds){
 		bizComplaintService.removeByIds(Arrays.asList(complaintIds));
 
-        return R.ok();
+        return ResponseVO.ok();
     }
 
 }

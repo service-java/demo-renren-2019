@@ -10,9 +10,8 @@ package com.xyz.modules.job.controller;
 
 import com.xyz.modules.job.service.ScheduleJobLogService;
 import com.xyz.common.util.PageUtils;
-import com.xyz.common.base.R;
+import com.xyz.common.base.ResponseVO;
 import com.xyz.modules.job.entity.ScheduleJobLogEntity;
-import com.xyz.modules.job.service.ScheduleJobLogService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,19 +37,19 @@ public class ScheduleJobLogController {
 	 */
 	@RequestMapping("/list")
 	@RequiresPermissions("sys:schedule:log")
-	public R list(@RequestParam Map<String, Object> params){
+	public ResponseVO list(@RequestParam Map<String, Object> params){
 		PageUtils page = scheduleJobLogService.queryPage(params);
 
-		return R.ok().put("page", page);
+		return ResponseVO.ok().put("page", page);
 	}
 
 	/**
 	 * 定时任务日志信息
 	 */
 	@RequestMapping("/info/{logId}")
-	public R info(@PathVariable("logId") Long logId){
+	public ResponseVO info(@PathVariable("logId") Long logId){
 		ScheduleJobLogEntity log = scheduleJobLogService.getById(logId);
 
-		return R.ok().put("log", log);
+		return ResponseVO.ok().put("log", log);
 	}
 }

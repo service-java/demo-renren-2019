@@ -9,13 +9,11 @@
 package com.xyz.modules.app.controller;
 
 
-import com.xyz.common.base.R;
+import com.xyz.common.base.ResponseVO;
 import com.xyz.common.validator.ValidatorUtils;
 import com.xyz.modules.app.entity.UserEntity;
 import com.xyz.modules.app.form.RegisterForm;
 import com.xyz.modules.app.service.UserService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,7 +37,7 @@ public class AppRegisterController {
 
     @PostMapping("register")
     // @ApiOperation("注册")
-    public R register(@RequestBody RegisterForm form){
+    public ResponseVO register(@RequestBody RegisterForm form){
         //表单校验
         ValidatorUtils.validateEntity(form);
 
@@ -50,6 +48,6 @@ public class AppRegisterController {
         user.setCreateTime(new Date());
         userService.save(user);
 
-        return R.ok();
+        return ResponseVO.ok();
     }
 }

@@ -13,7 +13,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xyz.common.base.exception.RRException;
 import com.xyz.common.util.PageUtils;
-import com.xyz.common.base.Query;
+import com.xyz.common.base.PageQuery;
 import com.xyz.common.constant.Constants;
 import com.xyz.modules.sys.dao.SysRoleDao;
 import com.xyz.modules.sys.entity.SysRoleEntity;
@@ -47,7 +47,7 @@ public class SysRoleService extends ServiceImpl<SysRoleDao, SysRoleEntity>  {
 		Long createUserId = (Long)params.get("createUserId");
 
 		IPage<SysRoleEntity> page = this.page(
-			new Query<SysRoleEntity>().getPage(params),
+			new PageQuery<SysRoleEntity>().getPage(params),
 			new QueryWrapper<SysRoleEntity>()
 				.like(StringUtils.isNotBlank(roleName),"role_name", roleName)
 				.eq(createUserId != null,"create_user_id", createUserId)

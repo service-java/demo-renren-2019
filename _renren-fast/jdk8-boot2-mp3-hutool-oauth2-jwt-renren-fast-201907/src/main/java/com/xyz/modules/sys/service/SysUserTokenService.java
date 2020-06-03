@@ -11,10 +11,8 @@ package com.xyz.modules.sys.service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xyz.modules.sys.entity.SysUserTokenEntity;
 import com.xyz.modules.sys.oauth2.TokenGenerator;
-import com.xyz.common.base.R;
+import com.xyz.common.base.ResponseVO;
 import com.xyz.modules.sys.dao.SysUserTokenDao;
-import com.xyz.modules.sys.entity.SysUserTokenEntity;
-import com.xyz.modules.sys.oauth2.TokenGenerator;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -27,7 +25,7 @@ public class SysUserTokenService extends ServiceImpl<SysUserTokenDao, SysUserTok
 
 
 
-	public R createToken(long userId) {
+	public ResponseVO createToken(long userId) {
 		//生成一个token
 		String token = TokenGenerator.generateValue();
 
@@ -52,7 +50,7 @@ public class SysUserTokenService extends ServiceImpl<SysUserTokenDao, SysUserTok
 			this.updateById(tokenEntity);
 		}
 
-		R r = R.ok().put("token", token).put("expire", EXPIRE);
+		ResponseVO r = ResponseVO.ok().put("token", token).put("expire", EXPIRE);
 
 		return r;
 	}

@@ -14,15 +14,12 @@ import com.xyz.modules.sys.service.SysUserService;
 import com.xyz.common.aop.annotation.SysLog;
 import com.xyz.common.constant.Constants;
 import com.xyz.common.util.PageUtils;
-import com.xyz.common.base.R;
+import com.xyz.common.base.ResponseVO;
 import com.xyz.common.validator.Assert;
 import com.xyz.common.validator.ValidatorUtils;
 import com.xyz.common.validator.group.AddGroup;
 import com.xyz.common.validator.group.UpdateGroup;
-import com.xyz.modules.sys.entity.SysUserEntity;
 import com.xyz.modules.sys.model.query.PasswordFormQuery;
-import com.xyz.modules.sys.service.SysUserRoleService;
-import com.xyz.modules.sys.service.SysUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang.ArrayUtils;
@@ -52,28 +49,28 @@ public class SysUserController extends AbstractController {
 	@ApiOperation("所有用户列表")
     @GetMapping("/list")
 	@RequiresPermissions("sys:user:list")
-	public R list(@RequestParam Map<String, Object> params){
+	public ResponseVO list(@RequestParam Map<String, Object> params){
 		//只有超级管理员，才能查看所有管理员列表
 		if(getUserId() != Constants.SUPER_ADMIN){
 			params.put("createUserId", getUserId());
 		}
 		PageUtils page = sysUserService.queryPage(params);
 
-		return R.ok().put("page", page);
+		return ResponseVO.ok().put("page", page);
 	}
 
 
 	@ApiOperation("获取登录的用户信息")
 	@GetMapping("/info")
-	public R info(){
-		return R.ok().put("user", getUser());
+	public ResponseVO info(){
+		return ResponseVO.ok().put("user", getUser());
 	}
 
 
 	@ApiOperation("修改密码")
 	@SysLog("修改密码")
 	@PostMapping("/password")
-	public R password(@RequestBody PasswordFormQuery form){
+	public ResponseVO password(@RequestBody PasswordFormQuery form){
 		Assert.isBlank(form.getNewPassword(), "新密码不为能空");
 
 		//sha256加密
@@ -84,24 +81,24 @@ public class SysUserController extends AbstractController {
 		//更新密码
 		boolean flag = sysUserService.updatePassword(getUserId(), password, newPassword);
 		if(!flag){
-			return R.error("原密码不正确");
+			return ResponseVO.error("原密码不正确");
 		}
 
-		return R.ok();
+		return ResponseVO.ok();
 	}
 
 
 	@ApiOperation("用户信息")
 	@GetMapping("/info/{userId}")
 	@RequiresPermissions("sys:user:info")
-	public R info(@PathVariable("userId") Long userId){
+	public ResponseVO info(@PathVariable("userId") Long userId){
 		SysUserEntity user = sysUserService.getById(userId);
 
 		//获取用户所属的角色列表
 		List<Long> roleIdList = sysUserRoleService.queryRoleIdList(userId);
 		user.setRoleIdList(roleIdList);
 
-		return R.ok().put("user", user);
+		return ResponseVO.ok().put("user", user);
 	}
 
 
@@ -109,13 +106,13 @@ public class SysUserController extends AbstractController {
 	@SysLog("保存用户")
 	@PostMapping("/save")
 	@RequiresPermissions("sys:user:save")
-	public R save(@RequestBody SysUserEntity user){
+	public ResponseVO save(@RequestBody SysUserEntity user){
 		ValidatorUtils.validateEntity(user, AddGroup.class);
 
 		user.setCreateUserId(getUserId());
 		sysUserService.saveUser(user);
 
-		return R.ok();
+		return ResponseVO.ok();
 	}
 
 
@@ -123,31 +120,31 @@ public class SysUserController extends AbstractController {
 	@SysLog("修改用户")
 	@PostMapping("/update")
 	@RequiresPermissions("sys:user:update")
-	public R update(@RequestBody SysUserEntity user){
+	public ResponseVO update(@RequestBody SysUserEntity user){
 		ValidatorUtils.validateEntity(user, UpdateGroup.class);
 
 		// 更新修改者
 		user.setCreateUserId(getUserId());
 		sysUserService.update(user);
 
-		return R.ok();
+		return ResponseVO.ok();
 	}
 
 	@ApiOperation("删除用户")
 	@SysLog("删除用户")
 	@PostMapping("/delete")
 	@RequiresPermissions("sys:user:delete")
-	public R delete(@RequestBody Long[] userIds){
+	public ResponseVO delete(@RequestBody Long[] userIds){
 		if(ArrayUtils.contains(userIds, 1L)){
-			return R.error("系统管理员不能删除");
+			return ResponseVO.error("系统管理员不能删除");
 		}
 
 		if(ArrayUtils.contains(userIds, getUserId())){
-			return R.error("当前用户不能删除");
+			return ResponseVO.error("当前用户不能删除");
 		}
 
 		sysUserService.deleteBatch(userIds);
 
-		return R.ok();
+		return ResponseVO.ok();
 	}
 }

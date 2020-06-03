@@ -6,16 +6,14 @@ import com.alibaba.excel.EasyExcelFactory;
 import com.alibaba.excel.metadata.Sheet;
 import com.xyz.modules.sys.entity.SysUserEntity;
 import com.xyz.modules.sys.service.SysUserService;
-import com.xyz.common.base.R;
+import com.xyz.common.base.ResponseVO;
 import com.xyz.common.base.exception.RRException;
 import com.xyz.common.util.BeanUtils;
 import com.xyz.common.util.excel.EasyExcelListener;
 import com.xyz.common.util.excel.EasyExcelUtils;
 import com.xyz.modules.demo.entity.dto.DemoUserExcelDTO;
 import com.xyz.modules.demo.listener.DemoUserExcelListener;
-import com.xyz.modules.sys.entity.SysUserEntity;
 import com.xyz.modules.sys.model.dto.EasyExcelUserDTO;
-import com.xyz.modules.sys.service.SysUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.junit.Test;
@@ -46,7 +44,7 @@ public class DemoEasyExcelController {
     @ApiOperation(value = "easyexcel-导入用户", httpMethod = "POST")
     @PostMapping("/import/user")
     @ResponseBody
-    public R importEasyExcelUser(@RequestParam("file") MultipartFile file) throws Exception {
+    public ResponseVO importEasyExcelUser(@RequestParam("file") MultipartFile file) throws Exception {
         if (file.isEmpty()) {
             throw new RRException("上传文件不能为空");
         }
@@ -74,14 +72,14 @@ public class DemoEasyExcelController {
 //        data = excelListener.getData();
 //        Console.log(data);
 
-        return R.ok().put("list", data);
+        return ResponseVO.ok().put("list", data);
     }
 
 
     @ApiOperation(value = "easyexcel-导入用户-v2", httpMethod = "POST")
     @PostMapping("/import/v2/user")
     @ResponseBody
-    public R importV2EasyExcelUser(@RequestParam("file") MultipartFile file) throws Exception {
+    public ResponseVO importV2EasyExcelUser(@RequestParam("file") MultipartFile file) throws Exception {
         if (file.isEmpty()) {
             throw new RRException("上传文件不能为空");
         }
@@ -90,7 +88,7 @@ public class DemoEasyExcelController {
         EasyExcel.read(file.getInputStream(), DemoUserExcelDTO.class, excelListener).sheet(0).doRead();
         List<DemoUserExcelDTO> list = excelListener.getList();
 
-        return R.ok().put("data", list);
+        return ResponseVO.ok().put("data", list);
     }
 
 

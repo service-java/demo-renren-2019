@@ -1,20 +1,17 @@
 package com.xyz.modules.demo.controller;
 
-import cn.hutool.core.lang.Console;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.xyz.common.base.Query;
-import com.xyz.common.base.R;
+import com.xyz.common.base.PageQuery;
+import com.xyz.common.base.ResponseVO;
 import com.xyz.common.base.exception.RRException;
 import com.xyz.common.util.MapUtils;
 import com.xyz.common.util.PageUtils;
 import com.xyz.common.util.file.FileUploadUtils;
 import com.xyz.common.util.file.FileUtils;
 import com.xyz.config.properties.LocalStorageProperties;
-import com.xyz.modules.app.service.UserService;
 import com.xyz.modules.biz.dao.BizAreaDao;
 import com.xyz.modules.biz.entity.BizAreaEntity;
-import com.xyz.modules.biz.entity.BizViolationEntity;
 import com.xyz.modules.biz.service.BizAreaService;
 import com.xyz.modules.oss.entity.SysOssEntity;
 import com.xyz.modules.oss.service.SysOssService;
@@ -31,10 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 /**
  * 示例请求处理
@@ -85,7 +79,7 @@ public class DemoController {
     @ApiOperation("本地上传")
     @PostMapping("/upload")
     @ResponseBody
-    public R upload(@RequestParam("file") MultipartFile file) throws Exception {
+    public ResponseVO upload(@RequestParam("file") MultipartFile file) throws Exception {
         if (file.isEmpty()) {
             throw new RRException("上传文件不能为空");
         }
@@ -100,7 +94,7 @@ public class DemoController {
         SysOssEntity ossEntity = new SysOssEntity();
         ossEntity.setUrl(fileName).setCreateDate(new Date());
         sysOssService.save(ossEntity);
-        return R.ok().put("data", fileName);
+        return ResponseVO.ok().put("data", fileName);
     }
 
 
@@ -115,7 +109,7 @@ public class DemoController {
     @ApiOperation("判断文件类型")
     @PostMapping("/detectFileType")
     @ResponseBody
-    public R getFileType(@RequestParam("file") MultipartFile file) throws IOException {
+    public ResponseVO getFileType(@RequestParam("file") MultipartFile file) throws IOException {
         if (file.isEmpty()) {
             throw new RRException("上传文件不能为空");
         }
@@ -123,14 +117,14 @@ public class DemoController {
         Tika tika = new Tika();
         String fileType = tika.detect(file.getInputStream());
 
-        return R.ok().put("data", fileType);
+        return ResponseVO.ok().put("data", fileType);
     }
 
 
     @ApiOperation("测试一番")
     @PostMapping("/test")
     @ResponseBody
-    public R getAllArea() {
+    public ResponseVO getAllArea() {
         BizAreaDao baseMapper = bizAreaService.getBaseMapper();
 
 //        List<BizAreaEntity> area = bizAreaService.listArea();
@@ -167,14 +161,14 @@ public class DemoController {
         // lambda查询
         MapUtils query = new MapUtils().put("page", 1).put("limit", 10);
         IPage<BizAreaEntity> page = bizAreaService.page(
-            new Query<BizAreaEntity>().getPage(query),
+            new PageQuery<BizAreaEntity>().getPage(query),
             new QueryWrapper<BizAreaEntity>().lambda()
                     .eq(BizAreaEntity::getIsDelete, 0)
                     .or().eq(BizAreaEntity::getCode, 0)
                     .and(wrapper -> wrapper.like(BizAreaEntity::getName, ""))
         );
 
-        return R.ok().put("data", new PageUtils(page));
+        return ResponseVO.ok().put("data", new PageUtils(page));
     }
 
 }

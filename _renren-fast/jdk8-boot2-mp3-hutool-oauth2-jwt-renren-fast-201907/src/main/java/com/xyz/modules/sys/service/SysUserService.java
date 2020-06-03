@@ -11,7 +11,7 @@ package com.xyz.modules.sys.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xyz.common.base.Query;
+import com.xyz.common.base.PageQuery;
 import com.xyz.common.base.exception.RRException;
 import com.xyz.common.constant.Constants;
 import com.xyz.common.util.PageUtils;
@@ -48,7 +48,7 @@ public class SysUserService extends ServiceImpl<SysUserDao, SysUserEntity>  {
 		Long createUserId = (Long)params.get("createUserId");
 
 		IPage<SysUserEntity> page = this.page(
-			new Query<SysUserEntity>().getPage(params),
+			new PageQuery<SysUserEntity>().getPage(params),
 			new QueryWrapper<SysUserEntity>()
 				.like(StringUtils.isNotBlank(username),"username", username)
 				.eq(createUserId != null,"create_user_id", createUserId)

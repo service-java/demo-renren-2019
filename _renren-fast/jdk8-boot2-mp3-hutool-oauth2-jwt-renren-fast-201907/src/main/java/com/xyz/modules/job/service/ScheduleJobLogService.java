@@ -12,7 +12,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xyz.common.util.PageUtils;
-import com.xyz.common.base.Query;
+import com.xyz.common.base.PageQuery;
 import com.xyz.modules.job.dao.ScheduleJobLogDao;
 import com.xyz.modules.job.entity.ScheduleJobLogEntity;
 import org.apache.commons.lang.StringUtils;
@@ -27,7 +27,7 @@ public class ScheduleJobLogService extends ServiceImpl<ScheduleJobLogDao, Schedu
 		String jobId = (String)params.get("jobId");
 
 		IPage<ScheduleJobLogEntity> page = this.page(
-			new Query<ScheduleJobLogEntity>().getPage(params),
+			new PageQuery<ScheduleJobLogEntity>().getPage(params),
 			new QueryWrapper<ScheduleJobLogEntity>().like(StringUtils.isNotBlank(jobId),"job_id", jobId)
 		);
 

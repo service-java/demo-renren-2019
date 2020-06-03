@@ -14,7 +14,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.gson.Gson;
 import com.xyz.common.base.exception.RRException;
 import com.xyz.common.util.PageUtils;
-import com.xyz.common.base.Query;
+import com.xyz.common.base.PageQuery;
 import com.xyz.modules.sys.dao.SysConfigDao;
 import com.xyz.modules.sys.entity.SysConfigEntity;
 import com.xyz.modules.sys.redis.SysConfigRedis;
@@ -36,7 +36,7 @@ public class SysConfigService extends ServiceImpl<SysConfigDao, SysConfigEntity>
 		String paramKey = (String)params.get("paramKey");
 
 		IPage<SysConfigEntity> page = this.page(
-			new Query<SysConfigEntity>().getPage(params),
+			new PageQuery<SysConfigEntity>().getPage(params),
 			new QueryWrapper<SysConfigEntity>()
 				.like(StringUtils.isNotBlank(paramKey),"param_key", paramKey)
 				.eq("status", 1)

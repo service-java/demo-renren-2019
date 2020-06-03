@@ -11,11 +11,8 @@ package com.xyz.modules.sys.controller;
 import com.xyz.modules.sys.entity.SysUserEntity;
 import com.xyz.modules.sys.service.SysCaptchaService;
 import com.xyz.modules.sys.service.SysUserService;
-import com.xyz.common.base.R;
-import com.xyz.modules.sys.entity.SysUserEntity;
+import com.xyz.common.base.ResponseVO;
 import com.xyz.modules.sys.model.query.SysLoginFormQuery;
-import com.xyz.modules.sys.service.SysCaptchaService;
-import com.xyz.modules.sys.service.SysUserService;
 import com.xyz.modules.sys.service.SysUserTokenService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -70,7 +67,7 @@ public class SysLoginController extends AbstractController {
     @GetMapping("captcha")
     @ApiOperation("获取验证码")
     @ResponseBody
-    public R captchaBase64(HttpServletResponse response, String uuid)throws IOException {
+    public ResponseVO captchaBase64(HttpServletResponse response, String uuid)throws IOException {
         response.setHeader("Cache-Control", "no-store, no-cache");
         response.setContentType("image/jpeg");
 
@@ -90,7 +87,7 @@ public class SysLoginController extends AbstractController {
         }
 //		IOUtils.closeQuietly(outputStream);
 
-        return R.ok().put("data", captchaBase64);
+        return ResponseVO.ok().put("data", captchaBase64);
     }
 
 
@@ -99,10 +96,10 @@ public class SysLoginController extends AbstractController {
 	 */
 	@ApiOperation("用户登录")
 	@PostMapping("/sys/login")
-	public R login(@RequestBody SysLoginFormQuery form)throws IOException {
+	public ResponseVO login(@RequestBody SysLoginFormQuery form)throws IOException {
 		boolean captcha = sysCaptchaService.validate(form.getUuid(), form.getCaptcha());
 		if(!captcha){
-			return R.error("验证码不正确");
+			return ResponseVO.error("验证码不正确");
 		}
 
 		//用户信息
@@ -110,16 +107,16 @@ public class SysLoginController extends AbstractController {
 
 		//账号不存在、密码错误
 		if(user == null || !user.getPassword().equals(new Sha256Hash(form.getPassword(), user.getSalt()).toHex())) {
-			return R.error("账号或密码不正确");
+			return ResponseVO.error("账号或密码不正确");
 		}
 
 		//账号锁定
 		if(user.getStatus() == 0){
-			return R.error("账号已被锁定,请联系管理员");
+			return ResponseVO.error("账号已被锁定,请联系管理员");
 		}
 
 		//生成token，并保存到数据库
-		R r = sysUserTokenService.createToken(user.getUserId());
+		ResponseVO r = sysUserTokenService.createToken(user.getUserId());
 		return r;
 	}
 
@@ -128,9 +125,9 @@ public class SysLoginController extends AbstractController {
 	 * 退出
 	 */
 	@PostMapping("/sys/logout")
-	public R logout() {
+	public ResponseVO logout() {
 		sysUserTokenService.logout(getUserId());
-		return R.ok();
+		return ResponseVO.ok();
 	}
 
 }

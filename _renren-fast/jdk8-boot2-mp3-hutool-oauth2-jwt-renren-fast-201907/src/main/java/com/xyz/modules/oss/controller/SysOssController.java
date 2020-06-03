@@ -18,22 +18,13 @@ import com.xyz.common.validator.group.QiniuGroup;
 import com.xyz.modules.oss.entity.SysOssEntity;
 import com.xyz.modules.oss.service.SysOssService;
 import com.xyz.modules.sys.service.SysConfigService;
-import com.xyz.common.base.R;
-import com.xyz.common.base.exception.RRException;
-import com.xyz.common.constant.ConfigConstants;
+import com.xyz.common.base.ResponseVO;
 import com.xyz.common.constant.Constants;
 import com.xyz.common.util.PageUtils;
-import com.xyz.common.util.file.FileUploadUtils;
 import com.xyz.common.validator.ValidatorUtils;
-import com.xyz.common.validator.group.AliyunGroup;
-import com.xyz.common.validator.group.QcloudGroup;
-import com.xyz.common.validator.group.QiniuGroup;
 import com.xyz.config.properties.LocalStorageProperties;
 import com.xyz.modules.oss.cloud.CloudStorageConfig;
 import com.xyz.modules.oss.cloud.OSSFactory;
-import com.xyz.modules.oss.entity.SysOssEntity;
-import com.xyz.modules.oss.service.SysOssService;
-import com.xyz.modules.sys.service.SysConfigService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -66,10 +57,10 @@ public class SysOssController {
 	 */
 	@GetMapping("/list")
 	@RequiresPermissions("sys:oss:all")
-	public R list(@RequestParam Map<String, Object> params){
+	public ResponseVO list(@RequestParam Map<String, Object> params){
 		PageUtils page = sysOssService.queryPage(params);
 
-		return R.ok().put("page", page);
+		return ResponseVO.ok().put("page", page);
 	}
 
 
@@ -78,10 +69,10 @@ public class SysOssController {
      */
     @GetMapping("/config")
     @RequiresPermissions("sys:oss:all")
-    public R config(){
+    public ResponseVO config(){
         CloudStorageConfig config = sysConfigService.getConfigObject(KEY, CloudStorageConfig.class);
 
-        return R.ok().put("config", config);
+        return ResponseVO.ok().put("config", config);
     }
 
 
@@ -90,7 +81,7 @@ public class SysOssController {
 	 */
 	@PostMapping("/saveConfig")
 	@RequiresPermissions("sys:oss:all")
-	public R saveConfig(@RequestBody CloudStorageConfig config){
+	public ResponseVO saveConfig(@RequestBody CloudStorageConfig config){
 		//校验类型
 		ValidatorUtils.validateEntity(config);
 
@@ -107,7 +98,7 @@ public class SysOssController {
 
         sysConfigService.updateValueByKey(KEY, new Gson().toJson(config));
 
-		return R.ok();
+		return ResponseVO.ok();
 	}
 
 
@@ -116,7 +107,7 @@ public class SysOssController {
 	 */
 	@PostMapping("/upload")
 	@RequiresPermissions("sys:oss:all")
-	public R upload(@RequestParam("file") MultipartFile file) throws Exception {
+	public ResponseVO upload(@RequestParam("file") MultipartFile file) throws Exception {
 		if (file.isEmpty()) {
 			throw new RRException("上传文件不能为空");
 		}
@@ -131,7 +122,7 @@ public class SysOssController {
 		ossEntity.setCreateDate(new Date());
 		sysOssService.save(ossEntity);
 
-		return R.ok().put("url", url);
+		return ResponseVO.ok().put("url", url);
 	}
 
 
@@ -139,7 +130,7 @@ public class SysOssController {
     @PostMapping("/upload/local")
     @ResponseBody
     @RequiresPermissions("sys:oss:all")
-    public R localUpload(@RequestParam("file") MultipartFile file) throws Exception {
+    public ResponseVO localUpload(@RequestParam("file") MultipartFile file) throws Exception {
         if (file.isEmpty()) {
             throw new RRException("上传文件不能为空");
         }
@@ -155,7 +146,7 @@ public class SysOssController {
         ossEntity.setUrl(fileName).setCreateDate(new Date());
         sysOssService.save(ossEntity);
 
-        return R.ok().put("data", fileName);
+        return ResponseVO.ok().put("data", fileName);
     }
 
 
@@ -165,10 +156,10 @@ public class SysOssController {
 	 */
 	@PostMapping("/delete")
 	@RequiresPermissions("sys:oss:all")
-	public R delete(@RequestBody Long[] ids){
+	public ResponseVO delete(@RequestBody Long[] ids){
 		sysOssService.removeByIds(Arrays.asList(ids));
 
-		return R.ok();
+		return ResponseVO.ok();
 	}
 
 }

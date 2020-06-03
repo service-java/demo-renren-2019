@@ -9,13 +9,11 @@
 package com.xyz.modules.app.controller;
 
 
-import com.xyz.common.base.R;
+import com.xyz.common.base.ResponseVO;
 import com.xyz.common.validator.ValidatorUtils;
 import com.xyz.modules.app.form.LoginForm;
 import com.xyz.modules.app.service.UserService;
 import com.xyz.modules.app.utils.JwtUtils;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,7 +42,7 @@ public class AppLoginController {
      */
     @PostMapping("login")
     // @ApiOperation("登录")
-    public R login(@RequestBody LoginForm form){
+    public ResponseVO login(@RequestBody LoginForm form){
         //表单校验
         ValidatorUtils.validateEntity(form);
 
@@ -58,7 +56,7 @@ public class AppLoginController {
         map.put("token", token);
         map.put("expire", jwtUtils.getExpire());
 
-        return R.ok(map);
+        return ResponseVO.ok(map);
     }
 
 }

@@ -10,8 +10,7 @@ package com.xyz.modules.sys.controller;
 
 import com.xyz.modules.sys.service.SysLogService;
 import com.xyz.common.util.PageUtils;
-import com.xyz.common.base.R;
-import com.xyz.modules.sys.service.SysLogService;
+import com.xyz.common.base.ResponseVO;
 import io.swagger.annotations.Api;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,10 +41,10 @@ public class SysLogController {
 	@ResponseBody
 	@GetMapping("/list")
 	@RequiresPermissions("sys:log:list")
-	public R list(@RequestParam Map<String, Object> params){
+	public ResponseVO list(@RequestParam Map<String, Object> params){
 		PageUtils page = sysLogService.queryPage(params);
 
-		return R.ok().put("page", page);
+		return ResponseVO.ok().put("page", page);
 	}
 
 }

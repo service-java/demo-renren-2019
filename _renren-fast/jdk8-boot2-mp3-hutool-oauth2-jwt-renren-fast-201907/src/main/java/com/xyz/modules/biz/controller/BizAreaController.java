@@ -3,7 +3,7 @@ package com.xyz.modules.biz.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import com.xyz.common.base.R;
+import com.xyz.common.base.ResponseVO;
 import com.xyz.common.util.PageUtils;
 import com.xyz.modules.biz.entity.BizAreaEntity;
 import com.xyz.modules.biz.service.BizAreaService;
@@ -34,10 +34,10 @@ public class BizAreaController {
      */
     @RequestMapping("/list")
     @RequiresPermissions("biz:area:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public ResponseVO list(@RequestParam Map<String, Object> params){
         PageUtils page = bizAreaService.queryPage(params);
 
-        return R.ok().put("page", page);
+        return ResponseVO.ok().put("page", page);
     }
 
 
@@ -46,10 +46,10 @@ public class BizAreaController {
      */
     @RequestMapping("/info/{areaId}")
     @RequiresPermissions("biz:area:info")
-    public R info(@PathVariable("areaId") Long areaId){
+    public ResponseVO info(@PathVariable("areaId") Long areaId){
 		BizAreaEntity bizArea = bizAreaService.getById(areaId);
 
-        return R.ok().put("bizArea", bizArea);
+        return ResponseVO.ok().put("bizArea", bizArea);
     }
 
     /**
@@ -57,10 +57,10 @@ public class BizAreaController {
      */
     @RequestMapping("/save")
     @RequiresPermissions("biz:area:save")
-    public R save(@RequestBody BizAreaEntity bizArea){
+    public ResponseVO save(@RequestBody BizAreaEntity bizArea){
 		bizAreaService.save(bizArea);
 
-        return R.ok();
+        return ResponseVO.ok();
     }
 
     /**
@@ -68,10 +68,10 @@ public class BizAreaController {
      */
     @RequestMapping("/update")
     @RequiresPermissions("biz:area:update")
-    public R update(@RequestBody BizAreaEntity bizArea){
+    public ResponseVO update(@RequestBody BizAreaEntity bizArea){
 		bizAreaService.updateById(bizArea);
 
-        return R.ok();
+        return ResponseVO.ok();
     }
 
     /**
@@ -79,10 +79,10 @@ public class BizAreaController {
      */
     @RequestMapping("/delete")
     @RequiresPermissions("biz:area:delete")
-    public R delete(@RequestBody Long[] areaIds){
+    public ResponseVO delete(@RequestBody Long[] areaIds){
 		bizAreaService.removeByIds(Arrays.asList(areaIds));
 
-        return R.ok();
+        return ResponseVO.ok();
     }
 
 }

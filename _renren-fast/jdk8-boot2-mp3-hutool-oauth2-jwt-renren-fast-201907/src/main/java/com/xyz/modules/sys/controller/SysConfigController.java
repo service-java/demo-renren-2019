@@ -12,10 +12,9 @@ package com.xyz.modules.sys.controller;
 import com.xyz.modules.sys.service.SysConfigService;
 import com.xyz.common.aop.annotation.SysLog;
 import com.xyz.common.util.PageUtils;
-import com.xyz.common.base.R;
+import com.xyz.common.base.ResponseVO;
 import com.xyz.common.validator.ValidatorUtils;
 import com.xyz.modules.sys.entity.SysConfigEntity;
-import com.xyz.modules.sys.service.SysConfigService;
 import io.swagger.annotations.Api;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,10 +39,10 @@ public class SysConfigController extends AbstractController {
 	 */
 	@GetMapping("/list")
 	@RequiresPermissions("sys:config:list")
-	public R list(@RequestParam Map<String, Object> params){
+	public ResponseVO list(@RequestParam Map<String, Object> params){
 		PageUtils page = sysConfigService.queryPage(params);
 
-		return R.ok().put("page", page);
+		return ResponseVO.ok().put("page", page);
 	}
 
 
@@ -52,10 +51,10 @@ public class SysConfigController extends AbstractController {
 	 */
 	@GetMapping("/info/{id}")
 	@RequiresPermissions("sys:config:info")
-	public R info(@PathVariable("id") Long id){
+	public ResponseVO info(@PathVariable("id") Long id){
 		SysConfigEntity config = sysConfigService.getById(id);
 
-		return R.ok().put("config", config);
+		return ResponseVO.ok().put("config", config);
 	}
 
 	/**
@@ -64,12 +63,12 @@ public class SysConfigController extends AbstractController {
 	@SysLog("保存配置")
 	@PostMapping("/save")
 	@RequiresPermissions("sys:config:save")
-	public R save(@RequestBody SysConfigEntity config){
+	public ResponseVO save(@RequestBody SysConfigEntity config){
 		ValidatorUtils.validateEntity(config);
 
 		sysConfigService.saveConfig(config);
 
-		return R.ok();
+		return ResponseVO.ok();
 	}
 
 	/**
@@ -78,12 +77,12 @@ public class SysConfigController extends AbstractController {
 	@SysLog("修改配置")
 	@PostMapping("/update")
 	@RequiresPermissions("sys:config:update")
-	public R update(@RequestBody SysConfigEntity config){
+	public ResponseVO update(@RequestBody SysConfigEntity config){
 		ValidatorUtils.validateEntity(config);
 
 		sysConfigService.update(config);
 
-		return R.ok();
+		return ResponseVO.ok();
 	}
 
 	/**
@@ -92,10 +91,10 @@ public class SysConfigController extends AbstractController {
 	@SysLog("删除配置")
 	@PostMapping("/delete")
 	@RequiresPermissions("sys:config:delete")
-	public R delete(@RequestBody Long[] ids){
+	public ResponseVO delete(@RequestBody Long[] ids){
 		sysConfigService.deleteBatch(ids);
 
-		return R.ok();
+		return ResponseVO.ok();
 	}
 
 }

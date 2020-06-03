@@ -6,11 +6,9 @@ import com.wuwenze.poi.handler.ExcelReadHandler;
 import com.wuwenze.poi.pojo.ExcelErrorField;
 import com.xyz.modules.sys.entity.SysUserEntity;
 import com.xyz.modules.sys.service.SysUserService;
-import com.xyz.common.base.R;
+import com.xyz.common.base.ResponseVO;
 import com.xyz.common.base.exception.RRException;
-import com.xyz.modules.sys.entity.SysUserEntity;
 import com.xyz.modules.sys.model.dto.ExcelKitUserDTO;
-import com.xyz.modules.sys.service.SysUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +58,7 @@ public class DemoExcelKitController {
     @ApiOperation(value = "excelkit-导入用户", httpMethod = "POST")
     @PostMapping("/import/user")
     @ResponseBody
-    public R importUser(@RequestParam MultipartFile file) throws IOException {
+    public ResponseVO importUser(@RequestParam MultipartFile file) throws IOException {
         InputStream inputStream = file.getInputStream();
 
         ArrayList<ExcelKitUserDTO> userList = new ArrayList<>();
@@ -78,7 +76,7 @@ public class DemoExcelKitController {
                     }
                 });
 
-        return R.ok().put("list", userList);
+        return ResponseVO.ok().put("list", userList);
     }
 
     @Deprecated

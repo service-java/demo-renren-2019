@@ -3,7 +3,7 @@ package com.xyz.modules.biz.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import com.xyz.common.base.R;
+import com.xyz.common.base.ResponseVO;
 import com.xyz.common.util.PageUtils;
 import com.xyz.modules.biz.entity.BizCompanyEntity;
 import com.xyz.modules.biz.service.BizCompanyService;
@@ -36,10 +36,10 @@ public class BizCompanyController {
      */
     @RequestMapping("/list")
     @RequiresPermissions("biz:company:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public ResponseVO list(@RequestParam Map<String, Object> params){
         PageUtils page = bizCompanyService.queryPage(params);
 
-        return R.ok().put("page", page);
+        return ResponseVO.ok().put("page", page);
     }
 
 
@@ -48,10 +48,10 @@ public class BizCompanyController {
      */
     @RequestMapping("/info/{companyId}")
     @RequiresPermissions("biz:company:info")
-    public R info(@PathVariable("companyId") Long companyId){
+    public ResponseVO info(@PathVariable("companyId") Long companyId){
 		BizCompanyEntity bizCompany = bizCompanyService.getById(companyId);
 
-        return R.ok().put("bizCompany", bizCompany);
+        return ResponseVO.ok().put("bizCompany", bizCompany);
     }
 
     /**
@@ -59,10 +59,10 @@ public class BizCompanyController {
      */
     @RequestMapping("/save")
     @RequiresPermissions("biz:company:save")
-    public R save(@RequestBody BizCompanyEntity bizCompany){
+    public ResponseVO save(@RequestBody BizCompanyEntity bizCompany){
 		bizCompanyService.save(bizCompany);
 
-        return R.ok();
+        return ResponseVO.ok();
     }
 
     /**
@@ -70,10 +70,10 @@ public class BizCompanyController {
      */
     @RequestMapping("/update")
     @RequiresPermissions("biz:company:update")
-    public R update(@RequestBody BizCompanyEntity bizCompany){
+    public ResponseVO update(@RequestBody BizCompanyEntity bizCompany){
 		bizCompanyService.updateById(bizCompany);
 
-        return R.ok();
+        return ResponseVO.ok();
     }
 
     /**
@@ -81,10 +81,10 @@ public class BizCompanyController {
      */
     @RequestMapping("/delete")
     @RequiresPermissions("biz:company:delete")
-    public R delete(@RequestBody Long[] companyIds){
+    public ResponseVO delete(@RequestBody Long[] companyIds){
 		bizCompanyService.removeByIds(Arrays.asList(companyIds));
 
-        return R.ok();
+        return ResponseVO.ok();
     }
 
 }
