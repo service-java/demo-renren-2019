@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 import com.xyz.common.base.ResponseVO;
-import com.xyz.common.util.PageUtils;
+import com.xyz.common.base.PageUtils;
 import com.xyz.modules.biz.entity.BizCompanyEntity;
 import com.xyz.modules.biz.service.BizCompanyService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;

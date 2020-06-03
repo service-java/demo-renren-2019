@@ -9,7 +9,7 @@
 package com.xyz.modules.job.controller;
 
 import com.xyz.modules.job.service.ScheduleJobLogService;
-import com.xyz.common.util.PageUtils;
+import com.xyz.common.base.PageUtils;
 import com.xyz.common.base.ResponseVO;
 import com.xyz.modules.job.entity.ScheduleJobLogEntity;
 import org.apache.shiro.authz.annotation.RequiresPermissions;

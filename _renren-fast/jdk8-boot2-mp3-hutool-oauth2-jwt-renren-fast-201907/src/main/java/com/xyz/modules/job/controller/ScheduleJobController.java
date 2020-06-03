@@ -10,7 +10,7 @@ package com.xyz.modules.job.controller;
 
 import com.xyz.common.aop.annotation.SysLog;
 import com.xyz.modules.job.service.ScheduleJobService;
-import com.xyz.common.util.PageUtils;
+import com.xyz.common.base.PageUtils;
 import com.xyz.common.base.ResponseVO;
 import com.xyz.common.validator.ValidatorUtils;
 import com.xyz.modules.job.entity.ScheduleJobEntity;

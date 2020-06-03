@@ -10,7 +10,7 @@ package com.xyz.modules.oss.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xyz.common.util.PageUtils;
+import com.xyz.common.base.PageUtils;
 import com.xyz.common.base.PageQuery;
 import com.xyz.modules.oss.dao.SysOssDao;
 import com.xyz.modules.oss.entity.SysOssEntity;

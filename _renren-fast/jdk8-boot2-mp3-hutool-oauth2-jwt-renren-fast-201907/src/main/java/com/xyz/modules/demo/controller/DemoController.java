@@ -6,7 +6,7 @@ import com.xyz.common.base.PageQuery;
 import com.xyz.common.base.ResponseVO;
 import com.xyz.common.base.exception.BaseException;
 import com.xyz.common.util.MapUtils;
-import com.xyz.common.util.PageUtils;
+import com.xyz.common.base.PageUtils;
 import com.xyz.common.util.file.FileUploadUtils;
 import com.xyz.common.util.file.FileUtils;
 import com.xyz.config.property.LocalStorageProperties;

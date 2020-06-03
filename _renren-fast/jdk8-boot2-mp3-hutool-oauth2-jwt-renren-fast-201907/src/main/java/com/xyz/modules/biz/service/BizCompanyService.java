@@ -1,7 +1,7 @@
 package com.xyz.modules.biz.service;
 
 import com.xyz.common.base.PageQuery;
-import com.xyz.common.util.PageUtils;
+import com.xyz.common.base.PageUtils;
 import com.xyz.modules.biz.dao.BizCompanyDao;
 import com.xyz.modules.biz.entity.BizCompanyEntity;
 import org.springframework.stereotype.Service;

@@ -11,7 +11,7 @@ package com.xyz.modules.job.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xyz.common.util.PageUtils;
+import com.xyz.common.base.PageUtils;
 import com.xyz.common.base.PageQuery;
 import com.xyz.modules.job.dao.ScheduleJobLogDao;
 import com.xyz.modules.job.entity.ScheduleJobLogEntity;

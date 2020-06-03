@@ -6,7 +6,7 @@ import java.util.Map;
 import com.xyz.modules.biz.entity.BizViolationEntity;
 import com.xyz.modules.biz.service.BizViolationService;
 import com.xyz.common.base.ResponseVO;
-import com.xyz.common.util.PageUtils;
+import com.xyz.common.base.PageUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

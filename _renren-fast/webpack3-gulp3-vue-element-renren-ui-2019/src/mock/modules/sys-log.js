@@ -43,7 +43,7 @@ export function list () {
         'totalCount': dataList.length,
         'pageSize': 10,
         'totalPage': 1,
-        'currPage': 1,
+        'currentPage': 1,
         'list': dataList
       }
     }
@@ -63,7 +63,7 @@ export function scheduleList () {
         'totalCount': scheduleDataList.length,
         'pageSize': 10,
         'totalPage': 1,
-        'currPage': 1,
+        'currentPage': 1,
         'list': scheduleDataList
       }
     }

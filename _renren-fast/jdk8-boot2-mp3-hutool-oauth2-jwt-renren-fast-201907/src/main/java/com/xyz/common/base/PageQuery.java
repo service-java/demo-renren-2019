@@ -30,7 +30,9 @@ public class PageQuery<T> {
     }
 
     public IPage<T> getPage(Map<String, Object> params, String defaultOrderField, boolean isAsc) {
-        //分页参数
+        // 分页参数进行转换
+        // page --> currentPage
+        // limit --> pageSize
         long curPage = 1;
         long limit = 10;
 
@@ -39,6 +41,7 @@ public class PageQuery<T> {
             // curPage = Long.parseLong((String)params.get(Constants.PAGE));
             curPage = Convert.toLong(params.get(Constants.PAGE));
         }
+
         if (params.get(Constants.LIMIT) != null) {
             limit = Convert.toLong(params.get(Constants.LIMIT));
         }
@@ -49,12 +52,12 @@ public class PageQuery<T> {
         //分页参数
         params.put(Constants.PAGE, page);
 
-        //排序字段
-        //防止SQL注入（因为sidx、order是通过拼接SQL实现排序的，会有SQL注入风险）
+        // 排序字段
+        // 防止SQL注入（因为sidx、order是通过拼接SQL实现排序的，会有SQL注入风险）
         String orderField = SQLFilter.sqlInject((String) params.get(Constants.ORDER_FIELD));
         String order = (String) params.get(Constants.ORDER);
 
-        //前端字段排序
+        // 前端字段排序
         if (StringUtils.isNotEmpty(orderField) && StringUtils.isNotEmpty(order)) {
             if (Constants.ASC.equalsIgnoreCase(order)) {
                 return page.addOrder(OrderItem.asc(defaultOrderField));

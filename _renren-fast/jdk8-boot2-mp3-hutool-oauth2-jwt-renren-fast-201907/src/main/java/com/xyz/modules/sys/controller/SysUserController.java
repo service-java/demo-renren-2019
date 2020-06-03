@@ -13,7 +13,7 @@ import com.xyz.modules.sys.service.SysUserRoleService;
 import com.xyz.modules.sys.service.SysUserService;
 import com.xyz.common.aop.annotation.SysLog;
 import com.xyz.common.constant.Constants;
-import com.xyz.common.util.PageUtils;
+import com.xyz.common.base.PageUtils;
 import com.xyz.common.base.ResponseVO;
 import com.xyz.common.validator.Assert;
 import com.xyz.common.validator.ValidatorUtils;
@@ -50,12 +50,12 @@ public class SysUserController extends AbstractController {
     @GetMapping("/list")
 	@RequiresPermissions("sys:user:list")
 	public ResponseVO list(@RequestParam Map<String, Object> params){
-		//只有超级管理员，才能查看所有管理员列表
-		if(getUserId() != Constants.SUPER_ADMIN){
+		// @TODO 只有超级管理员，才能查看所有管理员列表, 普通管理员只能查看自己创建的管理员
+		if (getUserId() != Constants.SUPER_ADMIN){
 			params.put("createUserId", getUserId());
 		}
-		PageUtils page = sysUserService.queryPage(params);
 
+		PageUtils page = sysUserService.pageUser(params);
 		return ResponseVO.ok().put("page", page);
 	}
 

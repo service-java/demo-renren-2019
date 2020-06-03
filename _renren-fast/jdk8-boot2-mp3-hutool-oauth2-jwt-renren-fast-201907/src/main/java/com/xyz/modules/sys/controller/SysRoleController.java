@@ -12,7 +12,7 @@ import com.xyz.modules.sys.service.SysRoleMenuService;
 import com.xyz.modules.sys.service.SysRoleService;
 import com.xyz.common.aop.annotation.SysLog;
 import com.xyz.common.constant.Constants;
-import com.xyz.common.util.PageUtils;
+import com.xyz.common.base.PageUtils;
 import com.xyz.common.base.ResponseVO;
 import com.xyz.common.validator.ValidatorUtils;
 import com.xyz.modules.sys.model.entity.SysRoleEntity;

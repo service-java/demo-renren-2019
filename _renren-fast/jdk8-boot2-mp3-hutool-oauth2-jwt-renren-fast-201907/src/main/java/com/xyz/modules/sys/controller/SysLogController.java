@@ -9,7 +9,7 @@
 package com.xyz.modules.sys.controller;
 
 import com.xyz.modules.sys.service.SysLogService;
-import com.xyz.common.util.PageUtils;
+import com.xyz.common.base.PageUtils;
 import com.xyz.common.base.ResponseVO;
 import io.swagger.annotations.Api;
 import org.apache.shiro.authz.annotation.RequiresPermissions;

@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.xyz.common.util;
+package com.xyz.common.base;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 
@@ -35,7 +35,7 @@ public class PageUtils implements Serializable {
 	/**
 	 * 当前页数
 	 */
-	private int currPage;
+	private int currentPage;
 	/**
 	 * 列表数据
 	 */
@@ -46,13 +46,13 @@ public class PageUtils implements Serializable {
 	 * @param list        列表数据
 	 * @param totalCount  总记录数
 	 * @param pageSize    每页记录数
-	 * @param currPage    当前页数
+	 * @param currentPage    当前页数
 	 */
-	public PageUtils(List<?> list, int totalCount, int pageSize, int currPage) {
+	public PageUtils(List<?> list, int totalCount, int pageSize, int currentPage) {
 		this.list = list;
 		this.totalCount = totalCount;
 		this.pageSize = pageSize;
-		this.currPage = currPage;
+		this.currentPage = currentPage;
 		this.totalPage = (int)Math.ceil((double)totalCount/pageSize);
 	}
 
@@ -63,7 +63,7 @@ public class PageUtils implements Serializable {
 		this.list = page.getRecords();
 		this.totalCount = (int)page.getTotal();
 		this.pageSize = (int)page.getSize();
-		this.currPage = (int)page.getCurrent();
+		this.currentPage = (int)page.getCurrent();
 		this.totalPage = (int)page.getPages();
 	}
 
@@ -91,12 +91,12 @@ public class PageUtils implements Serializable {
 		this.totalPage = totalPage;
 	}
 
-	public int getCurrPage() {
-		return currPage;
+	public int getCurrentPage() {
+		return currentPage;
 	}
 
-	public void setCurrPage(int currPage) {
-		this.currPage = currPage;
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
 	}
 
 	public List<?> getList() {
@@ -106,5 +106,7 @@ public class PageUtils implements Serializable {
 	public void setList(List<?> list) {
 		this.list = list;
 	}
+
+
 
 }

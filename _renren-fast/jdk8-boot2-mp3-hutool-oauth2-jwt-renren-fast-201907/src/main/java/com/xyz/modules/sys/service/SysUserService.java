@@ -14,7 +14,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xyz.common.base.PageQuery;
 import com.xyz.common.base.exception.BaseException;
 import com.xyz.common.constant.Constants;
-import com.xyz.common.util.PageUtils;
+import com.xyz.common.base.PageUtils;
 import com.xyz.modules.sys.dao.SysUserDao;
 import com.xyz.modules.sys.model.entity.SysUserEntity;
 import org.apache.commons.lang.RandomStringUtils;
@@ -43,15 +43,16 @@ public class SysUserService extends ServiceImpl<SysUserDao, SysUserEntity>  {
 	private SysRoleService sysRoleService;
 
 
-	public PageUtils queryPage(Map<String, Object> params) {
-		String username = (String)params.get("username");
-		Long createUserId = (Long)params.get("createUserId");
+	public PageUtils pageUser(Map<String, Object> params) {
+		String username = (String) params.get("username");
+		Long createUserId = (Long) params.get("createUserId");
 
 		IPage<SysUserEntity> page = this.page(
 			new PageQuery<SysUserEntity>().getPage(params),
 			new QueryWrapper<SysUserEntity>()
-				.like(StringUtils.isNotBlank(username),"username", username)
-				.eq(createUserId != null,"create_user_id", createUserId)
+                    .lambda()
+				.like(StringUtils.isNotBlank(username), SysUserEntity::getUsername, username)
+				.eq(createUserId != null, SysUserEntity::getCreateUserId, createUserId)
 		);
 
 		return new PageUtils(page);

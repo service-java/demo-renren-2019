@@ -11,7 +11,7 @@ package com.xyz.modules.sys.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xyz.common.util.PageUtils;
+import com.xyz.common.base.PageUtils;
 import com.xyz.common.base.PageQuery;
 import com.xyz.modules.sys.dao.SysLogDao;
 import com.xyz.modules.sys.model.entity.SysLogEntity;
