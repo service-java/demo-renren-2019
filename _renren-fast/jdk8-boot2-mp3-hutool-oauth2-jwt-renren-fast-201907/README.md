@@ -4,12 +4,23 @@
 
 # 使用运行
 
-- 账号 admin/admin
+- 账号 admin
+- 密码 123456/admin
 - swagger地址   
     - http://localhost:8080/renren-fast/swagger-ui.html#/
 - druid地址
     - http://localhost:8080/renren-fast/druid/sql.html
 - 默认是不开启redis的
+- 上传下载
+
+```
+http://localhost:8080/renren-fast/profile/upload/2019/07/22/f3c65c5a111a6da10bd9acd426d2cd03.jpg
+
+
+http://localhost:8080/renren-fast/demo/download?fileName=/upload/2019/07/22/f3c65c5a111a6da10bd9acd426d2cd03.jpg&delete=false
+http://localhost:8080/renren-fast/demo/download?fileName=/upload/2019/07/23/984174d33a8ef75aba4b855a0c2715e8.xlsx&delete=false
+```
+
 - 部署
 
 ```java
@@ -84,18 +95,7 @@ https://github.com/SweetInk/jrebel-mybatisplus
 
 # TODO
 
-- 上传下载支持本地
-
-```
-http://localhost:8080/renren-fast/profile/upload/2019/07/22/f3c65c5a111a6da10bd9acd426d2cd03.jpg
-
-
-http://localhost:8080/renren-fast/demo/download?fileName=/upload/2019/07/22/f3c65c5a111a6da10bd9acd426d2cd03.jpg&delete=false
-http://localhost:8080/renren-fast/demo/download?fileName=/upload/2019/07/23/984174d33a8ef75aba4b855a0c2715e8.xlsx&delete=false
-```
-
-
-- 报表导入导出
+- EasyExcel使用方法更新
 
 ```
 // 测试地址
