@@ -13,7 +13,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xyz.common.constant.Constants;
-import com.xyz.common.xss.SQLFilter;
+import com.xyz.common.xss.SQLFilterUtils;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.Map;
@@ -54,7 +54,7 @@ public class PageQueryUtils<T> {
 
         // 排序字段
         // 防止SQL注入（因为sidx、order是通过拼接SQL实现排序的，会有SQL注入风险）
-        String orderField = SQLFilter.sqlInject((String) params.get(Constants.ORDER_FIELD));
+        String orderField = SQLFilterUtils.sqlInject((String) params.get(Constants.ORDER_FIELD));
         String order = (String) params.get(Constants.ORDER);
 
         // 前端字段排序

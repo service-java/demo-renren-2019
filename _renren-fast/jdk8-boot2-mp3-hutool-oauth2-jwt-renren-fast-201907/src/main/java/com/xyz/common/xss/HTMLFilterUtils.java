@@ -40,7 +40,7 @@ import java.util.regex.Pattern;
  * @author Cal Hendersen
  * @author Michael Semb Wever
  */
-public final class HTMLFilter {
+public final class HTMLFilterUtils {
 
     /** regex flag union representing /si modifiers in php **/
     private static final int REGEX_FLAGS_SI = Pattern.CASE_INSENSITIVE | Pattern.DOTALL;
@@ -105,7 +105,7 @@ public final class HTMLFilter {
     /** Default constructor.
      *
      */
-    public HTMLFilter() {
+    public HTMLFilterUtils() {
         vAllowed = new HashMap<>();
 
         final ArrayList<String> a_atts = new ArrayList<String>();
@@ -142,7 +142,7 @@ public final class HTMLFilter {
      *
      * @param debug turn debug on with a true argument
      */
-    public HTMLFilter(final boolean debug) {
+    public HTMLFilterUtils(final boolean debug) {
         this();
         vDebug = debug;
 
@@ -152,7 +152,7 @@ public final class HTMLFilter {
      *
      * @param conf map containing configuration. keys match field names.
      */
-    public HTMLFilter(final Map<String,Object> conf) {
+    public HTMLFilterUtils(final Map<String,Object> conf) {
 
         assert conf.containsKey("vAllowed") : "configuration requires vAllowed";
         assert conf.containsKey("vSelfClosingTags") : "configuration requires vSelfClosingTags";
