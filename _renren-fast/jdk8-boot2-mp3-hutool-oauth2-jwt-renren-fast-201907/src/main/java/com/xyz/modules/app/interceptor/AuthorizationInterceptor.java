@@ -9,7 +9,7 @@
 package com.xyz.modules.app.interceptor;
 
 
-import com.xyz.common.base.exception.BaseException;
+import com.xyz.common.exception.BaseException;
 import com.xyz.modules.app.annotation.Login;
 import com.xyz.modules.app.util.JwtUtils;
 import io.jsonwebtoken.Claims;

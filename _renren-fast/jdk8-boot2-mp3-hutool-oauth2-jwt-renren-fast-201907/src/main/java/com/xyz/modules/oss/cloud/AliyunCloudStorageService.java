@@ -9,7 +9,7 @@
 package com.xyz.modules.oss.cloud;
 
 import com.aliyun.oss.OSSClient;
-import com.xyz.common.base.exception.BaseException;
+import com.xyz.common.exception.BaseException;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

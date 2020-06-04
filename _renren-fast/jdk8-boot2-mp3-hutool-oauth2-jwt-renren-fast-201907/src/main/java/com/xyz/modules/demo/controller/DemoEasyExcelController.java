@@ -7,7 +7,7 @@ import com.alibaba.excel.metadata.Sheet;
 import com.xyz.modules.sys.model.entity.SysUserEntity;
 import com.xyz.modules.sys.service.SysUserService;
 import com.xyz.common.base.ResponseVO;
-import com.xyz.common.base.exception.BaseException;
+import com.xyz.common.exception.BaseException;
 import com.xyz.common.util.BeanUtils;
 import com.xyz.modules.demo.util.EasyExcelListener;
 import com.xyz.modules.demo.util.EasyExcelUtils;

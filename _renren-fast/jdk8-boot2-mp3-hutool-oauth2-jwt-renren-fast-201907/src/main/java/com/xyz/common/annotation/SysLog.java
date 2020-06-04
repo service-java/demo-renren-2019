@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.xyz.common.aop.annotation;
+package com.xyz.common.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

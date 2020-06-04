@@ -3,7 +3,7 @@ package com.xyz.modules.demo.listener;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
-import com.xyz.common.base.exception.BaseException;
+import com.xyz.common.exception.BaseException;
 import com.xyz.modules.demo.dto.DemoUserExcelDTO;
 
 import java.util.ArrayList;

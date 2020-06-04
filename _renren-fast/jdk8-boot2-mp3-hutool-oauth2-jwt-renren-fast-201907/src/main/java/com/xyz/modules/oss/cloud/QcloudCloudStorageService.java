@@ -14,7 +14,7 @@ import com.qcloud.cos.COSClient;
 import com.qcloud.cos.ClientConfig;
 import com.qcloud.cos.request.UploadFileRequest;
 import com.qcloud.cos.sign.Credentials;
-import com.xyz.common.base.exception.BaseException;
+import com.xyz.common.exception.BaseException;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;

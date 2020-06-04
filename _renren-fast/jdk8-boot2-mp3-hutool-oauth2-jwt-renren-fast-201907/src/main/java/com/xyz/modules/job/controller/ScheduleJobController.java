@@ -8,7 +8,7 @@
 
 package com.xyz.modules.job.controller;
 
-import com.xyz.common.aop.annotation.SysLog;
+import com.xyz.common.annotation.SysLog;
 import com.xyz.modules.job.service.ScheduleJobService;
 import com.xyz.common.base.PageDataVO;
 import com.xyz.common.base.ResponseVO;

@@ -13,7 +13,7 @@ import com.qiniu.http.Response;
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
-import com.xyz.common.base.exception.BaseException;
+import com.xyz.common.exception.BaseException;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;

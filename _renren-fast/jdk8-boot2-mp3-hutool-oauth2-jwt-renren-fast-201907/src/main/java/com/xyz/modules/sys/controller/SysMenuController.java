@@ -10,8 +10,8 @@ package com.xyz.modules.sys.controller;
 
 import com.xyz.modules.sys.service.ShiroService;
 import com.xyz.modules.sys.service.SysMenuService;
-import com.xyz.common.aop.annotation.SysLog;
-import com.xyz.common.base.exception.BaseException;
+import com.xyz.common.annotation.SysLog;
+import com.xyz.common.exception.BaseException;
 import com.xyz.common.constant.Constants;
 import com.xyz.common.base.ResponseVO;
 import com.xyz.modules.sys.model.entity.SysMenuEntity;

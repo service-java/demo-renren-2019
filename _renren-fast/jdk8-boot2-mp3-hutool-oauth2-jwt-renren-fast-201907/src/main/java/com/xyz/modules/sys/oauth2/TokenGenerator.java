@@ -8,7 +8,7 @@
 
 package com.xyz.modules.sys.oauth2;
 
-import com.xyz.common.base.exception.BaseException;
+import com.xyz.common.exception.BaseException;
 
 import java.security.MessageDigest;
 import java.util.UUID;

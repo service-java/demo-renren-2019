@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.xyz.common.base.exception;
+package com.xyz.common.exception;
 
 import com.alibaba.excel.exception.ExcelAnalysisException;
 import com.xyz.common.base.ResponseVO;
@@ -24,7 +24,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
  * @author Mark sunlightcs@gmail.com
  */
 @RestControllerAdvice
-public class BaseExceptionHandler {
+public class GlobalExceptionHandler {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	/**

@@ -9,7 +9,7 @@
 package com.xyz.modules.oss.controller;
 
 import com.google.gson.Gson;
-import com.xyz.common.base.exception.BaseException;
+import com.xyz.common.exception.BaseException;
 import com.xyz.common.constant.ConfigConstants;
 import com.xyz.common.util.file.FileUploadUtils;
 import com.xyz.common.validator.group.AliyunGroup;

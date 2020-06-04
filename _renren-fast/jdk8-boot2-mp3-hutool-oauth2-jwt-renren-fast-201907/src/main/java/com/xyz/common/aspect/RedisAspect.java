@@ -6,9 +6,9 @@
  * 版权所有，侵权必究！
  */
 
-package com.xyz.common.aop.aspect;
+package com.xyz.common.aspect;
 
-import com.xyz.common.base.exception.BaseException;
+import com.xyz.common.exception.BaseException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;

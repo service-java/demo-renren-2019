@@ -9,9 +9,8 @@
 package com.xyz.datasource.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.xyz.datasource.properties.DynamicDataSourceProperties;
-import com.xyz.datasource.properties.DataSourceProperties;
-import com.xyz.datasource.properties.DynamicDataSourceProperties;
+import com.xyz.datasource.property.DynamicDataSourceProperties;
+import com.xyz.datasource.property.DataSourceProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

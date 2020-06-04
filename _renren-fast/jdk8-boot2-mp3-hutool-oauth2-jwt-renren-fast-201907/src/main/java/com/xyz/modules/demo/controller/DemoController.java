@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.xyz.common.base.PageQueryUtils;
 import com.xyz.common.base.ResponseVO;
-import com.xyz.common.base.exception.BaseException;
+import com.xyz.common.exception.BaseException;
 import com.xyz.common.util.MapUtils;
 import com.xyz.common.base.PageDataVO;
 import com.xyz.common.util.file.FileUploadUtils;

@@ -11,7 +11,7 @@ package com.xyz.modules.sys.controller;
 import com.xyz.modules.sys.model.entity.SysUserEntity;
 import com.xyz.modules.sys.service.SysUserRoleService;
 import com.xyz.modules.sys.service.SysUserService;
-import com.xyz.common.aop.annotation.SysLog;
+import com.xyz.common.annotation.SysLog;
 import com.xyz.common.constant.Constants;
 import com.xyz.common.base.PageDataVO;
 import com.xyz.common.base.ResponseVO;

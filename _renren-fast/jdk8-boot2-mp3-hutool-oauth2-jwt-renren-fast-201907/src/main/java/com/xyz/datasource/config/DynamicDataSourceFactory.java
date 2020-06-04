@@ -9,7 +9,7 @@
 package com.xyz.datasource.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.xyz.datasource.properties.DataSourceProperties;
+import com.xyz.datasource.property.DataSourceProperties;
 
 import java.sql.SQLException;
 

@@ -11,7 +11,7 @@ package com.xyz.modules.app.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xyz.common.base.exception.BaseException;
+import com.xyz.common.exception.BaseException;
 import com.xyz.common.validator.Assert;
 import com.xyz.modules.app.dao.UserDao;
 import com.xyz.modules.app.model.entity.UserEntity;

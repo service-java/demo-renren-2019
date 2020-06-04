@@ -8,7 +8,7 @@
 
 package com.xyz.common.validator;
 
-import com.xyz.common.base.exception.BaseException;
+import com.xyz.common.exception.BaseException;
 import org.apache.commons.lang.StringUtils;
 
 /**

@@ -2,7 +2,7 @@ package com.xyz.common.util.file;
 
 
 import cn.hutool.core.util.StrUtil;
-import com.xyz.common.base.exception.BaseException;
+import com.xyz.common.exception.BaseException;
 import com.xyz.common.util.Md5Utils;
 import com.xyz.config.property.LocalStorageProperties;
 import org.apache.commons.io.FilenameUtils;

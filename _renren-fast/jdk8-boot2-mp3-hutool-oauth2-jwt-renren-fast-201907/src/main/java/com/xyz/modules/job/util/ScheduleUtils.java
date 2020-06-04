@@ -8,7 +8,7 @@
 
 package com.xyz.modules.job.util;
 
-import com.xyz.common.base.exception.BaseException;
+import com.xyz.common.exception.BaseException;
 import com.xyz.common.constant.Constants;
 import com.xyz.modules.job.entity.ScheduleJobEntity;
 import org.quartz.*;

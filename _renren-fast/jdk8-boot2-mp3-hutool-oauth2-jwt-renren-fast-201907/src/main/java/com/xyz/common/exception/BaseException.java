@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.xyz.common.base.exception;
+package com.xyz.common.exception;
 
 /**
  * 自定义异常

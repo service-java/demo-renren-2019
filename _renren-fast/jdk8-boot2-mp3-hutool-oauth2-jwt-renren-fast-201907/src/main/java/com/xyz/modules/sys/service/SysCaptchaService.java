@@ -12,7 +12,7 @@ package com.xyz.modules.sys.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.code.kaptcha.Producer;
-import com.xyz.common.base.exception.BaseException;
+import com.xyz.common.exception.BaseException;
 import com.xyz.common.util.DateUtils;
 import com.xyz.modules.sys.dao.SysCaptchaDao;
 import com.xyz.modules.sys.model.entity.SysCaptchaEntity;

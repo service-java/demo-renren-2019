@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.xyz.datasource.properties;
+package com.xyz.datasource.property;
 
 /**
  * 多数据源属性

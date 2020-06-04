@@ -21,9 +21,19 @@ import java.util.Map;
 public class ResponseVO extends HashMap<String, Object> {
 	private static final long serialVersionUID = 1L;
 
+//	private Integer code;
+//	private String msg;
+
+// @TODO @FIXME 前端对接结构目前不确定
+// HashMap返回追加字段比较方便, 但很不规范!!
+// private Object data;
+
 	public ResponseVO() {
 		put("code", 0);
 		put("msg", "success");
+
+//		setCode(0);
+//		setMsg("success");
 	}
 
 	public static ResponseVO error() {
@@ -35,16 +45,22 @@ public class ResponseVO extends HashMap<String, Object> {
 	}
 
 	public static ResponseVO error(int code, String msg) {
-		ResponseVO r = new ResponseVO();
-		r.put("code", code);
-		r.put("msg", msg);
-		return r;
+		ResponseVO responseVO = new ResponseVO();
+
+		responseVO.put("code", code);
+		responseVO.put("msg", msg);
+
+//		responseVO.setCode(code);
+//		responseVO.setMsg(msg);
+		return responseVO;
 	}
 
 	public static ResponseVO ok(String msg) {
-		ResponseVO r = new ResponseVO();
-		r.put("msg", msg);
-		return r;
+		ResponseVO responseVO = new ResponseVO();
+		responseVO.put("msg", msg);
+
+//        responseVO.setMsg(msg);
+		return responseVO;
 	}
 
 	public static ResponseVO ok(Map<String, Object> map) {
@@ -61,4 +77,20 @@ public class ResponseVO extends HashMap<String, Object> {
 		super.put(key, value);
 		return this;
 	}
+
+//    public Integer getCode() {
+//        return code;
+//    }
+//
+//    public void setCode(Integer code) {
+//        this.code = code;
+//    }
+//
+//    public String getMsg() {
+//        return msg;
+//    }
+//
+//    public void setMsg(String msg) {
+//        this.msg = msg;
+//    }
 }

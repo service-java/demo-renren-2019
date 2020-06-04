@@ -6,10 +6,10 @@
  * 版权所有，侵权必究！
  */
 
-package com.xyz.common.aop.aspect;
+package com.xyz.common.aspect;
 
 import com.google.gson.Gson;
-import com.xyz.common.aop.annotation.SysLog;
+import com.xyz.common.annotation.SysLog;
 import com.xyz.modules.sys.model.entity.SysUserEntity;
 import com.xyz.modules.sys.service.SysLogService;
 import com.xyz.common.util.HttpContextUtils;
@@ -40,7 +40,7 @@ public class SysLogAspect {
 	@Autowired
 	private SysLogService sysLogService;
 
-	@Pointcut("@annotation(com.xyz.common.aop.annotation.SysLog)")
+	@Pointcut("@annotation(com.xyz.common.annotation.SysLog)")
 	public void logPointCut() {
 
 	}
