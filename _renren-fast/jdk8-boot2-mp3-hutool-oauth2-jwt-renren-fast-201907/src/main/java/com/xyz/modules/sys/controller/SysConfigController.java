@@ -64,7 +64,7 @@ public class SysConfigController extends AbstractController {
 	@PostMapping("/save")
 	@RequiresPermissions("sys:config:save")
 	public ResponseVO save(@RequestBody SysConfigEntity config){
-		ValidatorUtils.validateEntity(config);
+		ValidatorUtils.validateParams(config);
 
 		sysConfigService.saveConfig(config);
 
@@ -78,7 +78,7 @@ public class SysConfigController extends AbstractController {
 	@PostMapping("/update")
 	@RequiresPermissions("sys:config:update")
 	public ResponseVO update(@RequestBody SysConfigEntity config){
-		ValidatorUtils.validateEntity(config);
+		ValidatorUtils.validateParams(config);
 
 		sysConfigService.update(config);
 

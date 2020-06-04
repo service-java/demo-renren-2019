@@ -44,7 +44,7 @@ public class AppLoginController {
     // @ApiOperation("登录")
     public ResponseVO login(@RequestBody LoginFormQuery form){
         //表单校验
-        ValidatorUtils.validateEntity(form);
+        ValidatorUtils.validateParams(form);
 
         //用户登录
         long userId = userService.login(form);

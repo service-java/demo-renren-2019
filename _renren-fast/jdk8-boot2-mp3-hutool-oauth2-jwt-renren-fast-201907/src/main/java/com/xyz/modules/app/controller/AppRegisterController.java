@@ -39,7 +39,7 @@ public class AppRegisterController {
     // @ApiOperation("注册")
     public ResponseVO register(@RequestBody RegisterFormQuery form){
         //表单校验
-        ValidatorUtils.validateEntity(form);
+        ValidatorUtils.validateParams(form);
 
         UserEntity user = new UserEntity();
         user.setMobile(form.getMobile());

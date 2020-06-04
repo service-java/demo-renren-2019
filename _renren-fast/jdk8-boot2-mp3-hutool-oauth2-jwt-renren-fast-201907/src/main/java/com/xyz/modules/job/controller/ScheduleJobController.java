@@ -60,7 +60,7 @@ public class ScheduleJobController {
 	@RequestMapping("/save")
 	@RequiresPermissions("sys:schedule:save")
 	public ResponseVO save(@RequestBody ScheduleJobEntity scheduleJob){
-		ValidatorUtils.validateEntity(scheduleJob);
+		ValidatorUtils.validateParams(scheduleJob);
 
 		scheduleJobService.saveJob(scheduleJob);
 
@@ -74,7 +74,7 @@ public class ScheduleJobController {
 	@RequestMapping("/update")
 	@RequiresPermissions("sys:schedule:update")
 	public ResponseVO update(@RequestBody ScheduleJobEntity scheduleJob){
-		ValidatorUtils.validateEntity(scheduleJob);
+		ValidatorUtils.validateParams(scheduleJob);
 
 		scheduleJobService.update(scheduleJob);
 

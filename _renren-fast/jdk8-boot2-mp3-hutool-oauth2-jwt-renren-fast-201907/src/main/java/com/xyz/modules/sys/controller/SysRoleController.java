@@ -94,7 +94,7 @@ public class SysRoleController extends AbstractController {
 	@PostMapping("/save")
 	@RequiresPermissions("sys:role:save")
 	public ResponseVO save(@RequestBody SysRoleEntity role){
-		ValidatorUtils.validateEntity(role);
+		ValidatorUtils.validateParams(role);
 
 		role.setCreateUserId(getUserId());
 		sysRoleService.saveRole(role);
@@ -109,7 +109,7 @@ public class SysRoleController extends AbstractController {
 	@PostMapping("/update")
 	@RequiresPermissions("sys:role:update")
 	public ResponseVO update(@RequestBody SysRoleEntity role){
-		ValidatorUtils.validateEntity(role);
+		ValidatorUtils.validateParams(role);
 
 		role.setCreateUserId(getUserId());
 		sysRoleService.update(role);

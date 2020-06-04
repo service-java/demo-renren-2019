@@ -107,7 +107,7 @@ public class SysUserController extends AbstractController {
 	@PostMapping("/save")
 	@RequiresPermissions("sys:user:save")
 	public ResponseVO save(@RequestBody SysUserEntity user){
-		ValidatorUtils.validateEntity(user, AddGroup.class);
+		ValidatorUtils.validateParams(user, AddGroup.class);
 
 		// 更新创建管理员ID
 		user.setCreateUserId(getUserId());
@@ -122,7 +122,7 @@ public class SysUserController extends AbstractController {
 	@PostMapping("/update")
 	@RequiresPermissions("sys:user:update")
 	public ResponseVO update(@RequestBody SysUserEntity user){
-		ValidatorUtils.validateEntity(user, UpdateGroup.class);
+		ValidatorUtils.validateParams(user, UpdateGroup.class);
 
 		// 更新修改者
 		user.setCreateUserId(getUserId());
