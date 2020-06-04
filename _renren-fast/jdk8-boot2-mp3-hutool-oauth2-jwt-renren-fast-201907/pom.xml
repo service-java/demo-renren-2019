@@ -39,7 +39,7 @@
         <easyexcel.version>2.2.3</easyexcel.version>
 		<swagger.version>2.7.0</swagger.version>
 		<joda.time.version>2.9.9</joda.time.version>
-		<fastjson.version>1.2.68</fastjson.version>
+		<fastjson.version>1.2.69</fastjson.version>
 		<hutool.version>4.1.1</hutool.version>
 		<lombok.version>1.18.4</lombok.version>
 
